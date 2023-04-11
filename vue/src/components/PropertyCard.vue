@@ -19,6 +19,6 @@ export default {
 
 <style>
 .property-card {
-  border: 2px, solid green;
+  border: 2px solid green;
 }
 </style>
