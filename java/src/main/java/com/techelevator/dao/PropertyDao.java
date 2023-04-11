@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface PropertyDao {
     public List<Property> getAllProperties();
+
+    Property getPropertyById(int id);
 }
