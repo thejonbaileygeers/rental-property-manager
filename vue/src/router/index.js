@@ -69,7 +69,8 @@ const router = new Router({
       name: "tenant-portal",
       component: TenantPortal,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'tenant'
       }
     },
     {
@@ -77,7 +78,8 @@ const router = new Router({
       name: "landlord-portal",
       component: LandlordPortal,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'landlord'
       }
     },
     {
@@ -85,7 +87,8 @@ const router = new Router({
       name: "maintenance-portal",
       component: MaintenancePortal,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'maintenance'
       }
     },
     {
@@ -109,7 +112,8 @@ const router = new Router({
       name: "payment",
       component: Payment,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'tenant'
       }
     },
     {
@@ -117,7 +121,7 @@ const router = new Router({
       name: "maintenance-request",
       component: NewMaintenanceRequest,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       }
     },
     {
@@ -125,7 +129,8 @@ const router = new Router({
       name: "request-details",
       component: MaintenanceRequestDetails,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'maintenance'
       }
     }
   ]
@@ -140,8 +145,37 @@ router.beforeEach((to, from, next) => {
     next("/login");
   } else {
     // Else let them go to their next destination
-    next();
+
+    //Check for required Type value
+    const requiredType = to.meta.requiredType;
+    if (requiredType && store.state.user.type !== requiredType) {
+      next(getDestinationPage());
+    } else {
+      next();
+
+    }
   }
 });
+
+function getDestinationPage() {
+  const userType = store.state.user.type;
+  let destination = "";
+  switch (userType) {
+    case "tenant":
+      destination = "tenant-portal";
+      break;
+    case "landlord":
+      destination = "landlord-portal";
+      break;
+    case "maintenance":
+      destination = "maintenance-portal";
+      break;
+    default:
+      destination = "/login";
+      break;
+  }
+
+  return destination;
+}
 
 export default router;

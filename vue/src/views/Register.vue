@@ -120,7 +120,7 @@ export default {
           destination = "maintenance-portal";
           break;
         default:
-          destination = "/";
+          destination = "/login";
           break;
       }
 
