@@ -33,6 +33,7 @@ public class JdbcPropertyDao implements PropertyDao {
     private Property mapRowToProperty(SqlRowSet rs)  {
         Property property = new Property();
 
+        property.setPropertyId(rs.getInt("property_id"));
         property.setName(rs.getString("name"));
         property.setStreetAddress(rs.getString("street_address"));
         property.setUnit(rs.getInt("unit"));
