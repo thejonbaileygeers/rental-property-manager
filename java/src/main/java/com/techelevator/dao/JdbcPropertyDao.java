@@ -22,15 +22,27 @@ public class JdbcPropertyDao implements PropertyDao {
         String sql = "SELECT * FROM properties;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
         List<Property> properties = new ArrayList<>();
-        while(rs.next()) {
+        while (rs.next()) {
             Property property = mapRowToProperty(rs);
             properties.add(property);
         }
-
         return properties;
     }
 
-    private Property mapRowToProperty(SqlRowSet rs)  {
+    @Override
+    public Property getPropertyById(int id) {
+        Property property = new Property();
+        String sql = "SELECT *\n" +
+                "\tFROM properties\n" +
+                "\tWHERE property_id = ?;";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
+        if (rs.next()) {
+            property = mapRowToProperty(rs);
+        }
+        return property;
+    }
+
+    private Property mapRowToProperty(SqlRowSet rs) {
         Property property = new Property();
 
         property.setPropertyId(rs.getInt("property_id"));
@@ -47,5 +59,7 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setImgUrl(rs.getString("image_url"));
 
         return property;
-    };
+    }
+
+    ;
 }
