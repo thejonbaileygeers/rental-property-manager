@@ -12,7 +12,7 @@ import PropertyDetails from '../views/PropertyDetails.vue'
 import Property from '../views/Property.vue'
 import Payment from '../views/Payment.vue'
 import NewMaintenanceRequest from '../views/NewMaintenanceRequest.vue'
-import MaintenanceRequestDetails from '..views/MaintenanceRequestDetails.vue'
+import MaintenanceRequestDetails from '../views/MaintenanceRequestDetails.vue'
 
 
 
