@@ -21,11 +21,9 @@ public class RegisterUserDto {
     private String role;
     @NotEmpty
     private String phone;
-    @JsonProperty("first-name")
     @NotEmpty
     private String firstName;
     @NotEmpty
-    @JsonProperty("last-name")
     private String lastName;
     @NotEmpty
     private String type;

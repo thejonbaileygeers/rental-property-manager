@@ -7,7 +7,13 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input
+          type="text"
+          id="username"
+          v-model="user.username"
+          required
+          autofocus
+        />
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
@@ -15,44 +21,78 @@
       </div>
       <div class="form-input-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          v-model="user.confirmPassword"
+          required
+        />
+      </div>
+      <div class="form-input-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" v-model="user.phone" required />
+      </div>
+      <div class="form-input-group">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" v-model="user.firstName" required />
+      </div>
+      <div class="form-input-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" v-model="user.lastName" required />
+      </div>
+      <div class="form-input-group">
+        <!--DROPDOWN FOR TYPE-->
+        <label for="type">User Type</label>
+        <select id="type" v-model="user.type" required>
+          <option :value="'tenant'">Tenant</option>
+          <option :value="'landlord'">Landlord</option>
+          <option :value="'maintenance'">Maintenance</option>
+        </select>
       </div>
       <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p>
+        <router-link :to="{ name: 'login' }"
+          >Already have an account? Log in.</router-link
+        >
+      </p>
     </form>
   </div>
 </template>
 
 <script>
-import authService from '../services/AuthService';
+import authService from "../services/AuthService";
 
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
+        phone: "",
+        firstName: "",
+        lastName: "",
+        type: "",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: "There were problems registering this user.",
     };
   },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: "/login",
+                query: { registration: "success" },
               });
             }
           })
@@ -60,14 +100,14 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
 };
