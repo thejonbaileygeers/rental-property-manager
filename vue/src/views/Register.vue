@@ -1,12 +1,17 @@
 <template>
   <div id="register" class="text-center">
+  <div class="register-container">
     <form @submit.prevent="register">
+    <img src="../assets/templatelogo.png" alt="Logo" class="registerlogo">
       <h1>Create Account</h1>
+      <p class="subheading">Start your journey!</p>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
+      <div class="input-label">
         <label for="username">Username</label>
+        </div>
         <input
           type="text"
           id="username"
@@ -16,11 +21,15 @@
         />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="password">Password</label>
+        </div>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="confirmPassword">Confirm Password</label>
+        </div>
         <input
           type="password"
           id="confirmPassword"
@@ -29,20 +38,28 @@
         />
       </div>
       <div class="form-input-group">
+       <div class="input-label">
         <label for="phone">Phone</label>
+        </div>
         <input type="tel" id="phone" v-model="user.phone" required />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="first-name">First Name</label>
+        </div>
         <input type="text" id="first-name" v-model="user.firstName" required />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="last-name">Last Name</label>
+        </div>
         <input type="text" id="last-name" v-model="user.lastName" required />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <!--DROPDOWN FOR TYPE-->
         <label for="type">User Type</label>
+        </div>
         <select id="type" v-model="user.type" required>
           <option :value="'tenant'">Tenant</option>
           <option :value="'landlord'">Landlord</option>
@@ -56,6 +73,7 @@
         >
       </p>
     </form>
+  </div>
   </div>
 </template>
 
@@ -120,7 +138,7 @@ export default {
           destination = "maintenance-portal";
           break;
         default:
-          destination = "/login";
+          destination = "/";
           break;
       }
 
@@ -149,10 +167,58 @@ export default {
 </script>
 
 <style scoped>
+
+#register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  }
+
 .form-input-group {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
 }
+
+.input-label {
+    margin-bottom: 0.5rem;
+    margin-right: auto;
+ }
+
+.register-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
 label {
-  margin-right: 0.5rem;
+  margin-right: 6.5rem;
 }
+
+h1{
+  text-align: center;
+  font: 36px;
+  margin-bottom: 20px;
+}
+
+
+.subheading {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.registerlogo {
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
+}
+
+
+
 </style>

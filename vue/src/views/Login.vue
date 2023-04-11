@@ -1,7 +1,10 @@
 <template>
   <div id="login">
+  <div class="login-container">
     <form @submit.prevent="login">
-      <h1>Please Sign In</h1>
+      <img src="../assets/templatelogo.png" alt="Logo" class="loginlogo">
+      <h1 >Login to your account</h1>
+      <p class="subheading">Welcome back! Please enter your account information to login.</p>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -9,27 +12,23 @@
         Thank you for registering, please sign in.
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          v-model="user.username"
-          required
-          autofocus
-        />
+        </div>
+        <input type="text" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
+        <div class="input-label">
         <label for="password">Password</label>
+        </div>
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
       <p>
-        <router-link :to="{ name: 'register' }"
-          >Need an account? Sign up.</router-link
-        >
-      </p>
+      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -80,7 +79,7 @@ export default {
           destination = "maintenance-portal";
           break;
         default:
-          destination = "/login";
+          destination = "/";
           break;
       }
 
@@ -91,10 +90,53 @@ export default {
 </script>
 
 <style scoped>
+#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  }
+
 .form-input-group {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.login-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.input-label {
+  padding-left: 6px;
+}
+
 label {
-  margin-right: 0.5rem;
+  margin-right: 6.5rem;
+}
+
+h1{
+  text-align: center;
+  font: 36px;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  text-align: center;
+  font-size: 10px;
+  margin-bottom: 30px;
+}
+
+.loginlogo {
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
 }
 </style>
