@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <div>
+    <h1>Welcome to the Landlord Portal!!</h1>
+    <br /><placeholder-greeting />
+  </div>
 </template>
 
 <script>
-export default {};
+import PlaceholderGreeting from "../components/PlaceholderGreeting.vue";
+
+export default {
+  components: { PlaceholderGreeting },
+};
 </script>
 
 <style>

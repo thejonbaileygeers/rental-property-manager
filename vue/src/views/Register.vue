@@ -90,10 +90,7 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({
-                path: "/login",
-                query: { registration: "success" },
-              });
+              this.login();
             }
           })
           .catch((error) => {
@@ -108,6 +105,44 @@ export default {
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = "There were problems registering this user.";
+    },
+    getDestinationPage() {
+      const userType = this.$store.state.user.type;
+      let destination = "";
+      switch (userType) {
+        case "tenant":
+          destination = "tenant-portal";
+          break;
+        case "landlord":
+          destination = "landlord-portal";
+          break;
+        case "maintenance":
+          destination = "maintenance-portal";
+          break;
+        default:
+          destination = "/";
+          break;
+      }
+
+      return destination;
+    },
+    login() {
+      authService
+        .login(this.user)
+        .then((response) => {
+          if (response.status == 200) {
+            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+            this.$store.commit("SET_USER", response.data.user);
+            this.$router.push(this.getDestinationPage());
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+
+          if (response.status === 401) {
+            this.invalidCredentials = true;
+          }
+        });
     },
   },
 };
