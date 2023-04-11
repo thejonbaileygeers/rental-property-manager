@@ -26,7 +26,7 @@ CREATE TABLE users (
 	    bathrooms numeric(10),
 	    square_footage numeric(4),
 	    owner_id int NOT NULL,
-	    description varchar(4),
+	    description TEXT,
 	    image_url VARCHAR(2083),
 		CONSTRAINT CHK_properties_state CHECK (UPPER(state) IN ('AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UM', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY')),
 		CONSTRAINT FK_properties_users_owner_id FOREIGN KEY (owner_id) REFERENCES users(user_id),
