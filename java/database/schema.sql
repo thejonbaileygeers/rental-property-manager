@@ -33,8 +33,8 @@ CREATE TABLE users (
         tenant_id int UNIQUE NOT NULL,
         property_id int UNIQUE NOT NULL,
         rent_amount numeric(6),
-        start_date,
-        end_date,
+        start_date date,
+        end_date date,
 		CONSTRAINT PK_leases_lease_id PRIMARY KEY (lease_id),
 		CONSTRAINT FK_leases_users_tenant_id FOREIGN KEY (tenant_id) REFERENCES (users(user_id)),
 		CONSTRAINT FK_leases_properties_property_id FOREIGN KEY (property_id) REFERENCES (properties(property_id))
