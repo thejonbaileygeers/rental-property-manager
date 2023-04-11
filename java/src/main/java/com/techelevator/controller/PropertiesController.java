@@ -2,11 +2,13 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PropertyDao;
 import com.techelevator.model.Property;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class PropertiesController {
     private final PropertyDao propertyDao;
