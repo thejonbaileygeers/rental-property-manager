@@ -8,6 +8,19 @@ import java.util.Set;
 
 public class User {
 
+   public User(int id, String username, String password, String authorities, String phone, String firstName, String lastName, String type) {
+      this.id = id;
+      this.username = username;
+      this.password = password;
+      this.phone = phone;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.type = type;
+
+      if(authorities != null) this.setAuthorities(authorities);
+      this.activated = true;
+   }
+
    private int id;
    private String username;
    @JsonIgnore
@@ -20,15 +33,8 @@ public class User {
    private String lastName;
    private String type;
 
-   public User() { }
 
-   public User(int id, String username, String password, String authorities) {
-      this.id = id;
-      this.username = username;
-      this.password = password;
-      if(authorities != null) this.setAuthorities(authorities);
-      this.activated = true;
-   }
+   public User() { }
 
    public int getId() {
       return id;
