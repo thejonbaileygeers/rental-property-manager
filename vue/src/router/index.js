@@ -5,6 +5,17 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import TenantPortal from '../views/TenantPortal.vue'
+import LandlordPortal from '../views/LandlordPortal.vue'
+import MaintenancePortal from '../views/MaintenancePortal.vue'
+import PropertyDetails from '../views/PropertyDetails.vue'
+import Property from '../views/Property.vue'
+import Payment from '../views/Payment.vue'
+import NewMaintenanceRequest from '../views/NewMaintenanceRequest.vue'
+import MaintenanceRequestDetails from '..views/MaintenanceRequestDetails.vue'
+
+
+
 
 Vue.use(Router)
 
@@ -51,6 +62,70 @@ const router = new Router({
       component: Register,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/tenant-portal",
+      name: "tenant-portal",
+      component: TenantPortal,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/landlord-portal",
+      name: "landlord-portal",
+      component: LandlordPortal,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/maintenance-portal",
+      name: "maintenance-portal",
+      component: MaintenancePortal,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/property/:id",
+      name: "property",
+      component: Property,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/property-detail/:id",
+      name: "property-detail",
+      component: PropertyDetails,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/tenant-portal/payment",
+      name: "payment",
+      component: Payment,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/tenant-portal/maintenance-request",
+      name: "maintenance-request",
+      component: NewMaintenanceRequest,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/maintenance-portal/:id/detail",
+      name: "request-details",
+      component: MaintenanceRequestDetails,
+      meta: {
+        requiresAuth: true
       }
     }
   ]
