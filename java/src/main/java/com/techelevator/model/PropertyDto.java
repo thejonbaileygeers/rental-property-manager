@@ -1,7 +1,6 @@
 package com.techelevator.model;
 
-public class Property {
-    private int propertyId;
+public class PropertyDto {
     private String name;
     private String streetAddress;
     private int unit;
@@ -14,12 +13,11 @@ public class Property {
     private String description;
     private String imgUrl;
 
-    public Property() {
+    public PropertyDto() {
     }
 
-    public Property(int propertyId, String name, String streetAddress, int unit, String state, String zip, int bedrooms,
-                    int bathrooms, int squareFootage, int ownerId, String description, String imgUrl) {
-        this.propertyId = propertyId;
+    public PropertyDto(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+                       int bathrooms, int squareFootage, int ownerId, String description, String imgUrl) {
         this.name = name;
         this.streetAddress = streetAddress;
         this.unit = unit;
@@ -31,22 +29,6 @@ public class Property {
         this.ownerId = ownerId;
         this.description = description;
         this.imgUrl = imgUrl;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getPropertyId() {
-        return propertyId;
-    }
-
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
     }
 
     public String getName() {
@@ -71,6 +53,14 @@ public class Property {
 
     public void setUnit(int unit) {
         this.unit = unit;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getZip() {
@@ -109,7 +99,7 @@ public class Property {
         return ownerId;
     }
 
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId() {
         this.ownerId = ownerId;
     }
 
@@ -117,7 +107,7 @@ public class Property {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription() {
         this.description = description;
     }
 
@@ -125,15 +115,8 @@ public class Property {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public void setImgUrl() {
         this.imgUrl = imgUrl;
     }
 
-    @Override
-    public String toString() {
-        return "Property{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

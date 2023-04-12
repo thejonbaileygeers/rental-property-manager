@@ -37,7 +37,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -104,7 +104,8 @@ const router = new Router({
       name: "property-detail",
       component: PropertyDetails,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
+        requiredType: 'landlord'
       }
     },
     {
@@ -122,6 +123,7 @@ const router = new Router({
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
+        requiredType: 'maintenance'
       }
     },
     {
@@ -149,7 +151,7 @@ router.beforeEach((to, from, next) => {
     //Check for required Type value
     const requiredType = to.meta.requiredType;
     if (requiredType && store.state.user.type !== requiredType) {
-      next(getDestinationPage());
+      next({ name: getDestinationPage() });
     } else {
       next();
 

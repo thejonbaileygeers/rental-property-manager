@@ -1,19 +1,12 @@
 <template>
   <div id="app" v-if="!isLoading">
-    <div id="nav">
-      <img src="../src/assets/templatelogo.png" class="logo" />
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-    </div>
+    <navigation />
     <router-view />
   </div>
 </template>
 
 <script>
+import Navigation from "./components/Navigation.vue";
 import PropertyService from "./services/PropertyService.js";
 
 export default {
@@ -21,6 +14,9 @@ export default {
     return {
       isLoading: true,
     };
+  },
+  components: {
+    Navigation,
   },
   created() {
     this.isLoading = true;
@@ -39,27 +35,4 @@ export default {
 
 
 <style>
-#nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 8vh;
-  background-color: #eeeef0;
-  font-family: "Roboto";
-  position: relative;
-  margin-bottom: 10px;
-}
-
-body {
-  margin: 0px;
-}
-
-.logo {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  max-width: 5%;
-  height: auto;
-  border-radius: 20%;
-}
 </style>
