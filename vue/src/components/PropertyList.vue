@@ -1,5 +1,5 @@
 <template>
-  <div class="property-list">
+  <div class="property-grid">
     <property-card
       v-for="property in this.$store.state.properties"
       :key="property.propertyId"
@@ -16,4 +16,10 @@ export default {
 </script>
 
 <style>
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
 </style>
