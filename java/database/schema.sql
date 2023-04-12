@@ -1,5 +1,7 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS leases;
+DROP TABLE IF EXISTS properties;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -35,11 +37,11 @@ CREATE TABLE users (
 
     CREATE TABLE leases (
         lease_id SERIAL,
-        tenant_id int UNIQUE NOT NULL,
-        property_id int UNIQUE NOT NULL,
+        tenant_id int NOT NULL,
+        property_id int NOT NULL,
         rent_amount numeric(6),
-        start_date date,
-        end_date date,
+        start_date date NOT NULL,
+        end_date date NOT NULL,
 		CONSTRAINT PK_leases_lease_id PRIMARY KEY (lease_id),
 		CONSTRAINT FK_leases_users_tenant_id FOREIGN KEY (tenant_id) REFERENCES users(user_id),
 		CONSTRAINT FK_leases_properties_property_id FOREIGN KEY (property_id) REFERENCES properties(property_id)
