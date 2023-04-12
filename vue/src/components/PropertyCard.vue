@@ -1,14 +1,16 @@
 <template>
-  <div class="property-card">
-    <img :src="property.imgUrl" />
-    <h2 id="name">{{ property.name }}</h2>
-    <h3 id="address">{{ property.streetAddress }}</h3>
-    <p>
-      <span>{{ property.bedrooms }}</span
-      ><span>{{ property.bathrooms }}</span>
-      <span>{{ property.squareFootage }}</span>
-    </p>
-  </div>
+  <router-link :to="{ name: 'property', params: { id: property.propertyId } }">
+    <div class="property-card">
+      <img :src="property.imgUrl" />
+      <h2 id="name">{{ property.name }}</h2>
+      <h3 id="address">{{ property.streetAddress }}</h3>
+      <p>
+        <span>{{ property.bedrooms }}</span
+        ><span>{{ property.bathrooms }}</span>
+        <span>{{ property.squareFootage }}</span>
+      </p>
+    </div>
+  </router-link>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="!isLoading">
     <div id="nav">
       <img src="../src/assets/templatelogo.png" class="logo" />
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
@@ -17,10 +17,17 @@
 import PropertyService from "./services/PropertyService.js";
 
 export default {
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
   created() {
+    this.isLoading = true;
     PropertyService.getAll()
       .then((response) => {
         this.$store.commit("SET_PROPERTIES", response.data);
+        this.isLoading = false;
       })
       .catch((error) => {
         //Todo: Add more appropriate error handling
