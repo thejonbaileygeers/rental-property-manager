@@ -1,13 +1,15 @@
 <template>
   <div id="overview">
-    <h1 class="property-name">{{ property.name }}</h1>
-    <h2 class="address">
-      {{ property.streetAddress }}
-      <span v-if="property.unit"
-        >Unit #{{ property.unit }}, {{ property.state }}
-        {{ property.zip }}</span
-      >
-    </h2>
+    <div id="title">
+      <h1 class="property-name">{{ property.name }}</h1>
+      <h2 class="address">
+        {{ property.streetAddress }}
+        <span v-if="property.unit"
+          >Unit #{{ property.unit }}, {{ property.state }}
+          {{ property.zip }}</span
+        >
+      </h2>
+    </div>
 
     <img :src="property.imgUrl" />
 
@@ -55,6 +57,12 @@ export default {
 </script>
 
 <style scoped>
+img {
+  max-height: 60vh;
+  width: auto;
+  object-fit: scale-down;
+}
+
 #owner-details {
   border: black 1px solid;
   display: flex;
@@ -66,25 +74,32 @@ export default {
 }
 
 #owner-details p {
-  margin: 0px;
+  margin: 0;
 }
 
 #property-details {
   display: flex;
   gap: 0.5em;
-  margin-top: 0.5em;
 }
 
 #property-description {
   flex: 1;
   border: black 1px solid;
+  padding: 0 0.5em;
 }
 
 img {
   width: 100%;
+  margin: 0.5em;
+  margin-top: 0.75em;
 }
 
 #overview {
   margin: 1em;
+}
+
+#title {
+  border: black 1px solid;
+  padding: 0 0.5em;
 }
 </style>

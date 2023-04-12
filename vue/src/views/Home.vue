@@ -1,10 +1,9 @@
 <template>
   <div class="home">
     <div class="header">
-    <h1>Let's Rent</h1>
-    <p>Helping you simplify all things renting.
-    </p>
-    <property-list />
+      <h1>Let's Rent!</h1>
+      <p>Browse our properties:</p>
+      <property-list />
     </div>
   </div>
 </template>
@@ -18,10 +17,12 @@ export default {
 </script>
 
 <style scoped>
-
-
-
-h1, p {
+h1,
+p {
   text-align: center;
+}
+
+img {
+  width: 100vw;
 }
 </style>

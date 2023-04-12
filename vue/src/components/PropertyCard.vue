@@ -1,13 +1,23 @@
 <template>
-  <div class="property-card" @click="$router.push({ name: 'property', params: { id: property.propertyId } })">
+  <div
+    class="property-card"
+    @click="
+      $router.push({ name: 'property', params: { id: property.propertyId } })
+    "
+  >
     <img :src="property.imgUrl" />
     <div class="text">
       <h2 id="name">{{ property.name }}</h2>
-      <span id="address">{{ property.streetAddress }}</span>
+      <span id="address"
+        >{{ property.streetAddress }}, {{ property.state }}
+        {{ property.zip }}</span
+      >
       <p>
-        <span>{{ property.bedrooms }}</span
-        ><span>{{ property.bathrooms }}</span>
-        <span>{{ property.squareFootage }}</span>
+        <span>{{ property.bedrooms }} &nbsp;<i class="fa-solid fa-bed" /></span
+        ><span
+          >{{ property.bathrooms }} &nbsp;<i class="fa-solid fa-bath"
+        /></span>
+        <span>{{ property.squareFootage }} Sq Ft</span>
       </p>
     </div>
   </div>
@@ -16,6 +26,11 @@
 <script>
 export default {
   props: ["property"],
+  mounted() {
+    let tag = document.createElement("script");
+    tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
+    document.head.appendChild(tag);
+  },
 };
 </script>
 
@@ -33,8 +48,7 @@ export default {
   font-size: 20px;
 }
 
-
-.property-card img{
+.property-card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
@@ -54,13 +68,13 @@ export default {
 .property .text {
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
   height: 100%;
   padding: 10px;
 }
 
-.property-card h2, 
+.property-card h2,
 .property-card span {
   margin: 0;
 }
@@ -71,10 +85,13 @@ export default {
   text-align: left;
   justify-content: space-between;
 }
- 
 
- /* Spacing between bed/bath/sqft */
+/* Spacing between bed/bath/sqft */
 .property-card p span {
   margin-right: 10px;
+}
+
+.text {
+  padding: 0 0.5em;
 }
 </style>

@@ -3,7 +3,7 @@
     <h1>Welcome to the Landlord Portal!!</h1>
     <br /><placeholder-greeting />
 
-    <div id="content">
+    <div id="content" v-show="false">
       <landlord-property-list :id="this.$store.state.user.id" />
       <!--Placeholder must be replaced with actual Maintenance Order Queue-->
       <div id="placeholder">PLACEHOLDER FOR MAINTENANCE REQUESTS</div>
