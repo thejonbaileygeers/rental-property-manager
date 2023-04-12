@@ -85,12 +85,4 @@ export default {
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
 }
-
-#log-link {
-  margin-right: 1.5em;
-}
-
-#portal-link {
-  margin-left: auto;
-}
 </style>
