@@ -43,4 +43,8 @@ landlord-property-list {
   width: 100%;
   text-align: center;
 }
+
+#portal {
+  margin: 1em;
+}
 </style>

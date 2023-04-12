@@ -8,6 +8,7 @@
 <script>
 import Navigation from "./components/Navigation.vue";
 import PropertyService from "./services/PropertyService.js";
+import UserService from "./services/UserService.js";
 
 export default {
   data() {
@@ -23,7 +24,16 @@ export default {
     PropertyService.getAll()
       .then((response) => {
         this.$store.commit("SET_PROPERTIES", response.data);
-        this.isLoading = false;
+
+        UserService.getAll()
+          .then((response) => {
+            this.$store.commit("SET_USERS", response.data);
+            this.isLoading = false;
+          })
+          .catch((error) => {
+            //Todo: Add more appropriate error handling
+            console.log(error);
+          });
       })
       .catch((error) => {
         //Todo: Add more appropriate error handling
@@ -34,5 +44,8 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+router-view {
+  margin: 1em;
+}
 </style>

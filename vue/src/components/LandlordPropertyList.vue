@@ -25,7 +25,7 @@ export default {
     propertyList() {
       const properties = this.$store.state.properties;
       return properties.filter((prop) => {
-        return prop.ownerId === this.id;
+        return prop.ownerId == this.id;
       });
     },
   },

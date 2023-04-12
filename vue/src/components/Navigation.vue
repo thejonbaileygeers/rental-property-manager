@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <img src="../../src/assets/templatelogo.png" class="logo" />
-    <router-link id="home-link" v-bind:to="{ name: 'home' }" v-show="!isHome"
+    <router-link id="home-link" v-bind:to="{ name: 'home' }"
       ><button>Home</button></router-link
     >
     <router-link

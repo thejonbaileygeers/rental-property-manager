@@ -41,6 +41,9 @@ export default new Vuex.Store({
     },
     SET_PROPERTIES(state, properties) {
       state.properties = properties;
+    },
+    SET_USERS(state, users) {
+      state.users = users;
     }
   },
   getters: {
