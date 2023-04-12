@@ -42,9 +42,8 @@ public class PropertyController {
     // Update property
 
     @PutMapping("/properties/{id}")
-    public Property updateProperty(@RequestBody PropertyDto propertyToUpdate, @PathVariable int id) {
-        Property updatedProperty = propertyDao.update(propertyToUpdate, id);
-        return updatedProperty;
+    public void updateProperty(@RequestBody PropertyDto propertyToUpdate, @PathVariable int id) {
+        propertyDao.update(propertyToUpdate, id);
     }
     // Delete property
 

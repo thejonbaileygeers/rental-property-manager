@@ -99,7 +99,7 @@ public class PropertyDto {
         return ownerId;
     }
 
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId() {
         this.ownerId = ownerId;
     }
 
@@ -107,7 +107,7 @@ public class PropertyDto {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription() {
         this.description = description;
     }
 
@@ -115,7 +115,8 @@ public class PropertyDto {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public void setImgUrl() {
         this.imgUrl = imgUrl;
     }
+
 }

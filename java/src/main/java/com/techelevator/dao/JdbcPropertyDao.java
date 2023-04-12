@@ -75,7 +75,7 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
-    public boolean update(PropertyDto propertyToUpdate, int id) {
+    public void update(PropertyDto propertyToUpdate, int id) {
         String sql = "\tUPDATE properties SET \n" +
                 "\tname = ?,\n" +
                 "\tstreet_address = ?,\n" +
@@ -88,7 +88,10 @@ public class JdbcPropertyDao implements PropertyDao {
                 "\tdescription = ?,\n" +
                 "\timg_url = ?\n" +
                 "\tWHERE property_id = ?;";
-        return jdbcTemplate.update(sql, );
+                jdbcTemplate.update(sql, propertyToUpdate.getName(), propertyToUpdate.getStreetAddress(),
+                propertyToUpdate.getState(), propertyToUpdate.getZip(), propertyToUpdate.getBedrooms(),
+                propertyToUpdate.getBathrooms(), propertyToUpdate.getSquareFootage(), propertyToUpdate.getOwnerId(),
+                propertyToUpdate.getDescription(), propertyToUpdate.getImgUrl(), id);
     }
 
 

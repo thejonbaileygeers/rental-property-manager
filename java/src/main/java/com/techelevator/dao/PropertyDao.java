@@ -15,6 +15,6 @@ public interface PropertyDao {
 
     public void deleteProperty(int id);
 
-    Property update(PropertyDto propertyToUpdate, int id);
+    public void update(PropertyDto propertyToUpdate, int id);
 
 }
