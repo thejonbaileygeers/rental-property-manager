@@ -29,10 +29,10 @@ public class PropertiesController {
 
     // Create property
 
-    @PostMapping("/properties")
-    public void createProperty(PropertyDto newProperty) {
-
-    }
+//    @PostMapping("/properties")
+//    public void createProperty(PropertyDto newProperty) {
+//
+//    }
     // Update property
     // Delete property
 
