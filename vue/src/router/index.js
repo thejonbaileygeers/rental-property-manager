@@ -37,7 +37,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -122,6 +122,7 @@ const router = new Router({
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
+        requiredType: 'maintenance'
       }
     },
     {

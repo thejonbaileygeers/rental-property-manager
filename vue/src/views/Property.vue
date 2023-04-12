@@ -25,12 +25,15 @@ export default {
     };
   },
   created() {
+    //Grab properties from the Store
     const properties = this.$store.state.properties;
 
     const prop = properties.find((property) => {
-      return this.$route.params.id === property.propertyId;
+      console.dir(property);
+      return this.$route.params.id == property.propertyId;
     });
 
+    //Set data to
     this.property = prop;
   },
 };
