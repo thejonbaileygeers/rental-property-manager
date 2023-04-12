@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Property;
+import com.techelevator.model.PropertyDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,55 @@ public class JdbcPropertyDao implements PropertyDao {
         return property;
     }
 
+    @Override
+    public boolean createProperty(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+                                  int bathrooms, int squareFootage, int ownerId, String description, String imgUrl) {
+        String sql = "INSERT INTO properties (\n" +
+                "\tname\n" +
+                "\t, street_address, unit\n" +
+                "\t, state\n" +
+                "\t, zip\n" +
+                "\t, bedrooms\n" +
+                "\t, bathrooms\n" +
+                "\t, square_footage\n" +
+                "\t, owner_id\n" +
+                "\t, description\n" +
+                "\t, img_url\n" +
+                ") VALUES (\n" +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?\n" +
+                ") RETURNING property_id;";
+        return (jdbcTemplate.queryForObject(sql, Integer.class, name, streetAddress, unit, state, zip,
+                bedrooms, bathrooms, squareFootage, ownerId, description, imgUrl) != null);
+
+    }
+
+    @Override
+    public void deleteProperty(int id) {
+        String sql = "\tDELETE FROM leases\n" +
+                "\tWHERE property_id = ?;\n" +
+                "\tDELETE FROM properties\n" +
+                "\tWHERE property_id = ?;";
+        jdbcTemplate.update(sql, id, id);
+    }
+
+    @Override
+    public boolean update(PropertyDto propertyToUpdate, int id) {
+        String sql = "\tUPDATE properties SET \n" +
+                "\tname = ?,\n" +
+                "\tstreet_address = ?,\n" +
+                "\tstate = ?,\n" +
+                "\tzip = ?,\n" +
+                "\tbedrooms = ?,\n" +
+                "\tbathrooms = ?,\n" +
+                "\tsquare_footage = ?,\n" +
+                "\towner_id = ?,\n" +
+                "\tdescription = ?,\n" +
+                "\timg_url = ?\n" +
+                "\tWHERE property_id = ?;";
+        return jdbcTemplate.update(sql, );
+    }
+
+
     private Property mapRowToProperty(SqlRowSet rs) {
         Property property = new Property();
 
@@ -56,7 +106,7 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setSquareFootage(rs.getInt("square_footage"));
         property.setOwnerId(rs.getInt("owner_id"));
         property.setDescription(rs.getString("description"));
-        property.setImgUrl(rs.getString("image_url"));
+        property.setImgUrl(rs.getString("img_url"));
 
         return property;
     }
