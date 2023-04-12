@@ -24,18 +24,15 @@ export default {
   display: inline-block;
   width: 100%;
   max-width: 400px;
+  height: 100%;
   margin-bottom: 20px;
   margin-right: 20px;
   border: 2px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 20px;
 }
 
-.property-card:last-child,
-.property-card:nth-child(3n) {
-  margin-right: 0;
-}
 
 .property-card img{
   width: 100%;
@@ -46,12 +43,12 @@ export default {
 .property-card #name,
 .property-card #address {
   display: block;
-  text-align: center;
+  text-align: left;
   margin: 10px 0;
 }
 
 .property-card #name {
-  text-align: center;
+  text-align: left;
 }
 
 .property .text {
@@ -68,16 +65,16 @@ export default {
   margin: 0;
 }
 
-/* Spacing  */
+/* Spacing and alignment of the bed/bath/sqft */
 .property-card p {
   margin-bottom: 10px 0;
-  text-align: center;
+  text-align: left;
   justify-content: space-between;
 }
  
 
  /* Spacing between bed/bath/sqft */
 .property-card p span {
-  margin: 0 15px;
+  margin-right: 10px;
 }
 </style>

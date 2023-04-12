@@ -87,7 +87,10 @@ export default {
 }
 
 #log-link {
-  margin-left: auto;
   margin-right: 1.5em;
+}
+
+#portal-link {
+  margin-left: auto;
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <div class="header">
+    <h1>Let's Rent</h1>
+    <p>Helping you simplify all things renting.
+    </p>
     <property-list />
+    </div>
   </div>
 </template>
 
@@ -13,3 +16,12 @@ export default {
   components: { PropertyList },
 };
 </script>
+
+<style scoped>
+
+
+
+h1, p {
+  text-align: center;
+}
+</style>
