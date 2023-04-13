@@ -1,22 +1,35 @@
 <template>
-  <div id="nav">
-    <img src="../../src/assets/templatelogo.png" class="logo" />
+  <nav id="nav">
+    <!--Left Side Of Nav-->
     <router-link id="home-link" v-bind:to="{ name: 'home' }"
-      ><button>Home</button></router-link
-    >
-    <router-link
-      id="portal-link"
-      :to="{ name: 'tenant-portal' }"
-      v-show="!isPortal && isLoggedIn"
-      ><button>My Dashboard</button></router-link
-    >
-    <router-link
-      id="log-link"
-      v-bind:to="{ name: 'logout' }"
-      v-show="!isLogPage"
-      ><button>{{ getLoginText() }}</button></router-link
-    >
-  </div>
+      ><img src="../../src/assets/templatelogo.png" class="logo" />
+    </router-link>
+
+    <!--Right Side Of Nav-->
+    <div id="right-nav">
+      <router-link
+        id="portal-link"
+        :to="{ name: 'tenant-portal' }"
+        v-show="isLoggedIn"
+        ><span class="link">My Dashboard</span></router-link
+      >
+
+      <span class="divider" v-show="isLoggedIn">&nbsp;|&nbsp;</span>
+
+      <router-link id="log-link" v-bind:to="getDestination()"
+        ><span class="link">{{ getLoginText() }}</span></router-link
+      >
+
+      <span class="divider" v-show="!isLoggedIn">&nbsp;|&nbsp;</span>
+
+      <router-link
+        id="log-link"
+        v-bind:to="{ name: 'register' }"
+        v-show="!isLoggedIn"
+        ><span class="link">Sign Up</span></router-link
+      >
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -59,23 +72,46 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-height: 8vh;
-  height: 100%;
-  background-color: #002f69;
-  font-family: "Roboto";
+  height: 5em;
+  background-color: #000;
+  font-family: futura-pt, sans-serif;
   position: relative;
   margin-bottom: 10px;
   gap: 0.5em;
 }
 
-.logo {
-  margin-left: 10px;
-  max-width: 5%;
-  height: auto;
-  border-radius: 20%;
+#right-nav {
+  display: flex;
+  margin-left: auto;
+  gap: 0.5em;
+  margin-right: 0.5em;
 }
 
-#nav button {
+.logo {
+  margin-left: 10px;
+  height: 100%;
+  border-radius: 20%;
+  height: 100%;
+}
+
+span {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #0087ff;
+  text-decoration: none;
+}
+
+#portal-link,
+#home-link,
+#log-link {
+  text-decoration: none;
+}
+
+/* #nav button {
   margin: 0;
   background-color: #0087ff;
   height: 2em;
@@ -84,10 +120,9 @@ export default {
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-}
+} */
 
-#log-link {
-  margin-left: auto;
-  margin-right: 0.5em;
+#home-link {
+  height: 100%;
 }
 </style>
