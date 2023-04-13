@@ -22,6 +22,7 @@ CREATE TABLE users (
 	    name varchar(50) NOT NULL UNIQUE,
 	    street_address varchar(50) NOT NULL,
 	    unit numeric (10) NOT NULL,
+	    city varchar(100) NOT NULL,
 	    state varchar(2),
 	    zip varchar(10),
 	    bedrooms numeric(10),

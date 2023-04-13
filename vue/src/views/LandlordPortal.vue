@@ -3,6 +3,7 @@
     <h1>Welcome to the Landlord Portal!!</h1>
     <br /><placeholder-greeting />
 
+    <link rel="stylesheet" href="" :to="">
     <div id="content" v-show="false">
       <landlord-property-list :id="this.$store.state.user.id" />
       <!--Placeholder must be replaced with actual Maintenance Order Queue-->
@@ -17,8 +18,21 @@ import PlaceholderGreeting from "../components/PlaceholderGreeting.vue";
 
 export default {
   components: { PlaceholderGreeting, LandlordPropertyList },
+
+  data() {
+    return {
+
+    } 
+  },
+  methods: {
+    addProperty() {
+      console.log('hi');
+    }
+  }
 };
 </script>
+
+
 
 <style>
 #content {

@@ -18,12 +18,13 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
-    public boolean createProperty(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+    public boolean createProperty(String name, String streetAddress, int unit, String city, String state, String zip, int bedrooms,
                                   int bathrooms, int squareFootage, int ownerId, String description, String imgUrl) {
         String sql = "INSERT INTO properties (\n" +
                 "\tname\n" +
                 "\t, street_address\n" +
                 "\t, unit\n" +
+                "\t, city\n" +
                 "\t, state\n" +
                 "\t, zip\n" +
                 "\t, bedrooms\n" +
@@ -33,9 +34,9 @@ public class JdbcPropertyDao implements PropertyDao {
                 "\t, description\n" +
                 "\t, img_url\n" +
                 ") VALUES (\n" +
-                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?\n" +
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?\n" +
                 ") RETURNING property_id;";
-        return (jdbcTemplate.queryForObject(sql, Integer.class, name, streetAddress, unit, state, zip,
+        return (jdbcTemplate.queryForObject(sql, Integer.class, name, streetAddress, unit, city, state, zip,
                 bedrooms, bathrooms, squareFootage, ownerId, description, imgUrl) != null);
     }
 
@@ -65,7 +66,7 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
-    public boolean update(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+    public boolean update(String name, String streetAddress, int unit, String city, String state, String zip, int bedrooms,
                           int bathrooms, int squareFootage, int ownerId, String description, String imgUrl, int id) {
 
         Integer updatedPropertyId;
@@ -73,6 +74,7 @@ public class JdbcPropertyDao implements PropertyDao {
                 "\tname = ?,\n" +
                 "\tstreet_address = ?,\n" +
                 "\tunit = ?,\n" +
+                "\tcity = ?,\n" +
                 "\tstate = ?,\n" +
                 "\tzip = ?,\n" +
                 "\tbedrooms = ?,\n" +
@@ -82,7 +84,7 @@ public class JdbcPropertyDao implements PropertyDao {
                 "\tdescription = ?,\n" +
                 "\timg_url = ?\n" +
                 "\tWHERE property_id = ?;";
-        return (jdbcTemplate.update(sql, name, streetAddress, unit, state, zip,
+        return (jdbcTemplate.update(sql, name, streetAddress, unit, city, state, zip,
                 bedrooms, bathrooms, squareFootage, ownerId, description, imgUrl, id) == 1);
     }
 
@@ -102,6 +104,7 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setName(rs.getString("name"));
         property.setStreetAddress(rs.getString("street_address"));
         property.setUnit(rs.getInt("unit"));
+        property.setCity(rs.getString("city"));
         property.setState(rs.getString("state"));
         property.setZip(rs.getString("zip"));
         property.setBedrooms(rs.getInt("bedrooms"));

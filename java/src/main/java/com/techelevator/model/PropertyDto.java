@@ -4,6 +4,7 @@ public class PropertyDto {
     private String name;
     private String streetAddress;
     private int unit;
+    private String city;
     private String state;
     private String zip;
     private int bedrooms;
@@ -16,11 +17,12 @@ public class PropertyDto {
     public PropertyDto() {
     }
 
-    public PropertyDto(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+    public PropertyDto(String name, String streetAddress, int unit, String city, String state, String zip, int bedrooms,
                        int bathrooms, int squareFootage, int ownerId, String description, String imgUrl) {
         this.name = name;
         this.streetAddress = streetAddress;
         this.unit = unit;
+        this.city = city;
         this.state = state;
         this.zip = zip;
         this.bedrooms = bedrooms;
@@ -29,6 +31,14 @@ public class PropertyDto {
         this.ownerId = ownerId;
         this.description = description;
         this.imgUrl = imgUrl;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getName() {
