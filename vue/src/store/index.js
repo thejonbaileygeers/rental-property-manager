@@ -44,6 +44,9 @@ export default new Vuex.Store({
     },
     SET_USERS(state, users) {
       state.users = users;
+    }, 
+    ADD_PROPERTY(state, property) {
+      state.properties.push(property);
     }
   },
   getters: {

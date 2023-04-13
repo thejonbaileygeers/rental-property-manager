@@ -142,9 +142,9 @@ export default {
         propertyService
           .addProperty(newProperty)
           .then((response) => {
-            console.log('it tried to add');
             if (response.status === 201 || response.status === 200) {
               this.$router.push(`/property/${newProperty.id}`);
+              this.$store.commit("ADD_PROPERTY", newProperty);
             }
           })
           .catch((error) => {
