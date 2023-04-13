@@ -34,7 +34,7 @@ public class PropertyController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/properties")
     public void createProperty(@RequestBody PropertyDto newProperty) {
-        propertyDao.createProperty(newProperty.getName(), newProperty.getStreetAddress(), newProperty.getUnit(),
+        propertyDao.createProperty(newProperty.getName(), newProperty.getStreetAddress(), newProperty.getUnit(), newProperty.getCity(),
                 newProperty.getState(), newProperty.getZip(), newProperty.getBedrooms(), newProperty.getBathrooms(),
                 newProperty.getSquareFootage(), newProperty.getOwnerId(), newProperty.getDescription(),
                 newProperty.getImgUrl());
@@ -50,7 +50,7 @@ public class PropertyController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/properties/{id}")
     public void updateProperty(@RequestBody PropertyDto propertyToUpdate, @PathVariable int id) {
-        propertyDao.update(propertyToUpdate.getName(), propertyToUpdate.getStreetAddress(), propertyToUpdate.getUnit(),
+        propertyDao.update(propertyToUpdate.getName(), propertyToUpdate.getStreetAddress(), propertyToUpdate.getUnit(), propertyToUpdate.getCity(),
                 propertyToUpdate.getState(), propertyToUpdate.getZip(), propertyToUpdate.getBedrooms(),
                 propertyToUpdate.getBathrooms(), propertyToUpdate.getSquareFootage(), propertyToUpdate.getOwnerId(),
                 propertyToUpdate.getDescription(), propertyToUpdate.getImgUrl(), id);
