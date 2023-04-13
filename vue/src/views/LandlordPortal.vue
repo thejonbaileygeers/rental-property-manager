@@ -24,9 +24,9 @@ export default {
   },
   methods: {
     addProperty() {
-      console.log('hi');
-    }
-  }
+      console.log("hi");
+    },
+  },
 };
 </script>
 
