@@ -1,0 +1,14 @@
+UPDATE properties
+SET name = 'asdf'
+, street_address = 'asdf'
+, state = 'AK'
+, zip = '12345'
+, bedrooms = 1
+, bathrooms = 1
+, square_footage = 1000
+, owner_id = 1
+, description = 'asdf'
+, img_url = 'http://dummyimage.com/173x100.png/5fa2dd/ffffff'
+WHERE property_id = 1;
+
+select * from properties

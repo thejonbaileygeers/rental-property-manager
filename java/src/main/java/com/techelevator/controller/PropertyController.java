@@ -41,10 +41,25 @@ public class PropertyController {
     }
     // Update property
 
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @PutMapping("/properties/{id}")
+//    public void updateProperty(@RequestBody PropertyDto propertyToUpdate, @PathVariable int id) {
+//        propertyDao.update(propertyToUpdate, id);
+//    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/properties/{id}")
     public void updateProperty(@RequestBody PropertyDto propertyToUpdate, @PathVariable int id) {
+<<<<<<< HEAD
         propertyDao.update(propertyToUpdate, id);
+=======
+        propertyDao.update(propertyToUpdate.getName(), propertyToUpdate.getStreetAddress(), propertyToUpdate.getUnit(),
+                propertyToUpdate.getState(), propertyToUpdate.getZip(), propertyToUpdate.getBedrooms(),
+                propertyToUpdate.getBathrooms(), propertyToUpdate.getSquareFootage(), propertyToUpdate.getOwnerId(),
+                propertyToUpdate.getDescription(), propertyToUpdate.getImgUrl(), id);
+>>>>>>> create-property
     }
+
     // Delete property
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
