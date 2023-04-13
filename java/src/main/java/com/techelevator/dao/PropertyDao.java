@@ -15,6 +15,8 @@ public interface PropertyDao {
 
     public void deleteProperty(int id);
 
-    public void update(PropertyDto propertyToUpdate, int id);
+//    public boolean update(PropertyDto propertyToUpdate, int id);
 
+    public boolean update(String name, String streetAddress, int unit, String state, String zip, int bedrooms,
+                int bathrooms, int squareFootage, int ownerId, String description, String imgUrl, int id);
 }
