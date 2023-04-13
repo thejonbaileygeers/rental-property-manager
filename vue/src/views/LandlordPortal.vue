@@ -3,8 +3,7 @@
     <h1>Welcome to the Landlord Portal!!</h1>
     <br /><placeholder-greeting />
 
-    <link rel="stylesheet" href="" :to="">
-    <div id="content" v-show="false">
+    <div id="content" v-show="true">
       <landlord-property-list :id="this.$store.state.user.id" />
       <!--Placeholder must be replaced with actual Maintenance Order Queue-->
       <div id="placeholder">PLACEHOLDER FOR MAINTENANCE REQUESTS</div>
@@ -21,7 +20,6 @@ export default {
 
   data() {
     return {
-
     } 
   },
   methods: {

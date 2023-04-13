@@ -13,7 +13,7 @@ import Property from '../views/Property.vue'
 import Payment from '../views/Payment.vue'
 import NewMaintenanceRequest from '../views/NewMaintenanceRequest.vue'
 import MaintenanceRequestDetails from '../views/MaintenanceRequestDetails.vue'
-
+import addPropertyForm from '../views/addPropertyForm.vue'
 
 
 
@@ -71,6 +71,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         requiredType: 'tenant'
+      }
+    },
+    {
+      path: "/add-property-form",
+      name: "add-property-form",
+      component: addPropertyForm,
+      meta: {
+        requiresAuth: true,
+        requiredType: 'landlord'
       }
     },
     {

@@ -2,7 +2,8 @@
   <div id="property-list">
     <section id="header">
       <h1>Your Properties:</h1>
-      <button>Add New Property</button>
+      
+      <router-link :to="{name:'add-property-form'}"><button>Add New Property</button></router-link>
     </section>
     <landlord-property-card
       v-for="property in propertyList"
