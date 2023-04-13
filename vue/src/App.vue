@@ -1,7 +1,7 @@
 <template>
   <div id="app" v-if="!isLoading">
     <navigation />
-    <router-view />
+    <router-view id="view" />
   </div>
 </template>
 
@@ -44,8 +44,12 @@ export default {
 </script>
 
 
-<style scoped>
-router-view {
-  margin: 1em;
+<style>
+* {
+  font-family: sans-serif;
+}
+
+#view {
+  margin-top: 5em;
 }
 </style>

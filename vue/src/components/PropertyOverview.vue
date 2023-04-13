@@ -1,20 +1,38 @@
 <template>
   <div id="overview">
-    <div id="title">
+    <div id="title" class="card">
       <h1 class="property-name">{{ property.name }}</h1>
       <h2 class="address">
         {{ property.streetAddress }}
         <span v-if="property.unit"
-          >Unit #{{ property.unit }}, {{ property.state }}
+          >Unit #{{ property.unit }}, {{ property.city }}, {{ property.state }}
           {{ property.zip }}</span
         >
       </h2>
     </div>
 
-    <img :src="property.imgUrl" />
+    <div id="center">
+      <img :src="property.imgUrl" class="card" />
+
+      <article id="owner-details" class="card">
+        <p>Contact for availability and pricing:</p>
+        <div class="owner-name">
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+          <span class="owner-info"
+            >{{ owner.firstName }} {{ owner.lastName }}</span
+          >
+        </div>
+        <div class="owner-contact-info">
+          <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+            class="owner-info"
+            >{{ owner.phone }}</span
+          >
+        </div>
+      </article>
+    </div>
 
     <div id="property-details">
-      <div id="property-description">
+      <article id="property-description" class="card">
         <h2>Details:</h2>
         <h3 class="info">
           <span
@@ -29,18 +47,7 @@
           <span>{{ property.squareFootage }} Sq Ft</span>
         </h3>
         <p class="description">{{ property.description }}</p>
-      </div>
-
-      <div id="owner-details">
-        <p>Contact for availability and pricing:</p>
-        <div class="owner-name">
-          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;{{ owner.firstName }}
-          {{ owner.lastName }}
-        </div>
-        <div class="owner-contact-info">
-          <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;{{ owner.phone }}
-        </div>
-      </div>
+      </article>
     </div>
   </div>
 </template>
@@ -58,48 +65,76 @@ export default {
 
 <style scoped>
 img {
-  max-height: 60vh;
-  width: auto;
+  max-width: 50vw;
+  max-height: 800px;
   object-fit: scale-down;
+  display: inline;
 }
 
 #owner-details {
-  border: black 1px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
   width: 18em;
+  min-height: 14em;
+  border-radius: 2rem;
 }
 
 #owner-details p {
   margin: 0;
 }
 
+#owner-details i {
+  color: #0087ff;
+}
 #property-details {
   display: flex;
   gap: 0.5em;
 }
 
+#center {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
 #property-description {
   flex: 1;
-  border: black 1px solid;
-  padding: 0 0.5em;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
 }
 
 img {
   width: 100%;
   margin: 0.5em;
   margin-top: 0.75em;
+  border-radius: 2rem;
 }
 
 #overview {
-  margin: 1em;
+  margin: 0em;
+  padding: 1rem 7rem;
+  background-color: #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 #title {
-  border: black 1px solid;
-  padding: 0 0.5em;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+}
+
+.address {
+  font-weight: 500;
+}
+
+.card {
+  /* Parameters: x-offset, y-offset, blur-radius, spread-radius, color */
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  background-color: white;
 }
 </style>

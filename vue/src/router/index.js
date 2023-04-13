@@ -29,6 +29,7 @@ Vue.use(Router)
  */
 
 const router = new Router({
+
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -135,8 +136,14 @@ const router = new Router({
         requiredType: 'maintenance'
       }
     }
-  ]
+  ],
+  scrollBehavior() {
+
+    return { x: 0, y: 0 };
+  }
 })
+
+
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication

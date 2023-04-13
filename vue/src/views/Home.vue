@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <div class="header">
-      <h1>Let's Rent!</h1>
-      <p>Browse our properties:</p>
-      <property-list />
-    </div>
+    <property-list />
   </div>
 </template>
 
@@ -22,7 +18,7 @@ p {
   text-align: center;
 }
 
-img {
-  width: 100vw;
+.home {
+  background-color: #e6e6e6;
 }
 </style>

@@ -3,7 +3,6 @@
     <h1>Welcome to the Landlord Portal!!</h1>
     <br /><placeholder-greeting />
 
-    <link rel="stylesheet" href="" :to="">
     <div id="content" v-show="false">
       <landlord-property-list :id="this.$store.state.user.id" />
       <!--Placeholder must be replaced with actual Maintenance Order Queue-->
@@ -20,15 +19,13 @@ export default {
   components: { PlaceholderGreeting, LandlordPropertyList },
 
   data() {
-    return {
-
-    } 
+    return {};
   },
   methods: {
     addProperty() {
-      console.log('hi');
-    }
-  }
+      console.log("hi");
+    },
+  },
 };
 </script>
 

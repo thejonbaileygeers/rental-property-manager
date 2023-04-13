@@ -2,7 +2,7 @@
   <nav id="nav">
     <!--Left Side Of Nav-->
     <router-link id="home-link" v-bind:to="{ name: 'home' }"
-      ><img src="../../src/assets/templatelogo.png" class="logo" />
+      ><img src="../../src/assets/property-quest.png" class="logo" />
     </router-link>
 
     <!--Right Side Of Nav-->
@@ -76,8 +76,14 @@ export default {
   background-color: #000;
   font-family: futura-pt, sans-serif;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   gap: 0.5em;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 #right-nav {
@@ -88,10 +94,11 @@ export default {
 }
 
 .logo {
-  margin-left: 10px;
   height: 100%;
-  border-radius: 20%;
-  height: 100%;
+  border-radius: 10%;
+  height: 80%;
+  margin: auto;
+  display: inline-block;
 }
 
 span {
@@ -103,6 +110,11 @@ span {
 .link:hover {
   color: #0087ff;
   text-decoration: none;
+}
+
+#home-link {
+  margin-left: 0.5em;
+  display: flex;
 }
 
 #portal-link,
