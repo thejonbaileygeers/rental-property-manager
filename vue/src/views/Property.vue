@@ -26,7 +26,7 @@ export default {
 
     const users = this.$store.state.users;
     let propOwner = users.find((user) => {
-      return (this.property.ownerId = user.id);
+      return this.property.ownerId == user.id;
     });
 
     this.owner = propOwner;
