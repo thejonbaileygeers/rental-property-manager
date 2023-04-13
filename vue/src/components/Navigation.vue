@@ -123,17 +123,6 @@ span {
   text-decoration: none;
 }
 
-/* #nav button {
-  margin: 0;
-  background-color: #0087ff;
-  height: 2em;
-  width: 8em;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
-} */
-
 #home-link {
   height: 100%;
 }

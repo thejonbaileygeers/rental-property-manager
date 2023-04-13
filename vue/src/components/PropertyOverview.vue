@@ -1,15 +1,20 @@
 <template>
   <div id="overview">
-    <div id="title" class="card">
-      <h1 class="property-name">{{ property.name }}</h1>
-      <h2 class="address">
-        {{ property.streetAddress }}
-        <span v-if="property.unit"
-          >Unit #{{ property.unit }}, {{ property.city }}, {{ property.state }}
-          {{ property.zip }}</span
-        >
-      </h2>
-    </div>
+    <header id="title" class="card">
+      <router-link :to="{ name: 'home' }">
+        <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+      </router-link>
+      <div>
+        <h1 class="property-name">{{ property.name }}</h1>
+        <h2 class="address">
+          {{ property.streetAddress }}
+          <span v-if="property.unit"
+            >Unit #{{ property.unit }}, {{ property.city }},
+            {{ property.state }} {{ property.zip }}</span
+          >
+        </h2>
+      </div>
+    </header>
 
     <div id="center">
       <img :src="property.imgUrl" class="card" />
@@ -71,6 +76,10 @@ img {
   display: inline;
 }
 
+#back {
+  color: black;
+}
+
 #owner-details {
   display: flex;
   flex-direction: column;
@@ -126,6 +135,10 @@ img {
 #title {
   padding: 0.5rem 2rem;
   border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
 }
 
 .address {

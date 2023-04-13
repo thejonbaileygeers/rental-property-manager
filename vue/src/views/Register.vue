@@ -1,79 +1,100 @@
 <template>
-  <div id="register" class="text-center">
-  <div class="register-container">
-    <form @submit.prevent="register">
-    <img src="../assets/templatelogo.png" alt="Logo" class="registerlogo">
-      <h1>Create Account</h1>
-      <p class="subheading">Start your journey!</p>
-      <div role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+  <div>
+    <div id="register" class="text-center">
+      <div class="register-container">
+        <form @submit.prevent="register">
+          <img
+            src="../assets/templatelogo.png"
+            alt="Logo"
+            class="registerlogo"
+          />
+          <h1>Create Account</h1>
+          <p class="subheading">Start your journey!</p>
+          <div role="alert" v-if="registrationErrors">
+            {{ registrationErrorMsg }}
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="username">Username</label>
+            </div>
+            <input
+              type="text"
+              id="username"
+              v-model="user.username"
+              required
+              autofocus
+            />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="password">Password</label>
+            </div>
+            <input
+              type="password"
+              id="password"
+              v-model="user.password"
+              required
+            />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+            <input
+              type="password"
+              id="confirmPassword"
+              v-model="user.confirmPassword"
+              required
+            />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="phone">Phone</label>
+            </div>
+            <input type="tel" id="phone" v-model="user.phone" required />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="first-name">First Name</label>
+            </div>
+            <input
+              type="text"
+              id="first-name"
+              v-model="user.firstName"
+              required
+            />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="last-name">Last Name</label>
+            </div>
+            <input
+              type="text"
+              id="last-name"
+              v-model="user.lastName"
+              required
+            />
+          </div>
+          <div class="form-input-group">
+            <div class="input-label">
+              <!--DROPDOWN FOR TYPE-->
+              <label for="type">User Type</label>
+            </div>
+            <select id="type" v-model="user.type" required>
+              <option :value="'tenant'">Tenant</option>
+              <option :value="'landlord'">Landlord</option>
+              <option :value="'maintenance'">Maintenance</option>
+            </select>
+          </div>
+          <button type="submit">Create Account</button>
+          <p>
+            <router-link :to="{ name: 'login' }"
+              >Already have an account? Log in.</router-link
+            >
+          </p>
+        </form>
       </div>
-      <div class="form-input-group">
-      <div class="input-label">
-        <label for="username">Username</label>
-        </div>
-        <input
-          type="text"
-          id="username"
-          v-model="user.username"
-          required
-          autofocus
-        />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="password">Password</label>
-        </div>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="confirmPassword">Confirm Password</label>
-        </div>
-        <input
-          type="password"
-          id="confirmPassword"
-          v-model="user.confirmPassword"
-          required
-        />
-      </div>
-      <div class="form-input-group">
-       <div class="input-label">
-        <label for="phone">Phone</label>
-        </div>
-        <input type="tel" id="phone" v-model="user.phone" required />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="first-name">First Name</label>
-        </div>
-        <input type="text" id="first-name" v-model="user.firstName" required />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="last-name">Last Name</label>
-        </div>
-        <input type="text" id="last-name" v-model="user.lastName" required />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <!--DROPDOWN FOR TYPE-->
-        <label for="type">User Type</label>
-        </div>
-        <select id="type" v-model="user.type" required>
-          <option :value="'tenant'">Tenant</option>
-          <option :value="'landlord'">Landlord</option>
-          <option :value="'maintenance'">Maintenance</option>
-        </select>
-      </div>
-      <button type="submit">Create Account</button>
-      <p>
-        <router-link :to="{ name: 'login' }"
-          >Already have an account? Log in.</router-link
-        >
-      </p>
-    </form>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -167,15 +188,15 @@ export default {
 </script>
 
 <style scoped>
-
 #register {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
-  }
+  margin: 10rem 0;
+}
 
 .form-input-group {
   margin-bottom: 1rem;
@@ -184,27 +205,28 @@ export default {
 }
 
 .input-label {
-    margin-bottom: 0.5rem;
-    margin-right: auto;
- }
+  margin-bottom: 0.5rem;
+  margin-right: auto;
+}
 
 .register-container {
-  border: 1px solid black;
-  border-radius: 5px;
+  /* border: 1px solid black; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
+  background-color: white;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  border-radius: 2rem;
 }
 
 label {
   margin-right: 6.5rem;
 }
 
-h1{
+h1 {
   text-align: center;
   font: 36px;
   margin-bottom: 20px;
 }
-
 
 .subheading {
   text-align: center;
@@ -218,7 +240,4 @@ h1{
   border-radius: 20%;
   margin-left: 35px;
 }
-
-
-
 </style>
