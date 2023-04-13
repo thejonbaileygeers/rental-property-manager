@@ -19,8 +19,7 @@ export default {
   components: { PlaceholderGreeting, LandlordPropertyList },
 
   data() {
-    return {
-    } 
+    return {};
   },
   methods: {
     addProperty() {
@@ -32,7 +31,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 #content {
   display: grid;
   height: 100%;

@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .property-card {
   display: inline-block;
   width: 100%;

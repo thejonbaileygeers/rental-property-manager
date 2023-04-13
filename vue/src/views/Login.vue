@@ -1,34 +1,50 @@
 <template>
   <div id="login">
-  <div class="login-container">
-    <form @submit.prevent="login">
-      <img src="../assets/templatelogo.png" alt="Logo" class="loginlogo">
-      <h1 >Login to your account</h1>
-      <p class="subheading">Welcome back! Please enter your account information to login.</p>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="username">Username</label>
+    <div class="login-container">
+      <form @submit.prevent="login">
+        <img src="../assets/templatelogo.png" alt="Logo" class="loginlogo" />
+        <h1>Login to your account</h1>
+        <p class="subheading">
+          Welcome back! Please enter your account information to login.
+        </p>
+        <div role="alert" v-if="invalidCredentials">
+          Invalid username and password!
         </div>
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
-      <div class="form-input-group">
-        <div class="input-label">
-        <label for="password">Password</label>
+        <div role="alert" v-if="this.$route.query.registration">
+          Thank you for registering, please sign in.
         </div>
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
-      <button type="submit">Sign in</button>
-      <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form>
+        <div class="form-input-group">
+          <div class="input-label">
+            <label for="username">Username</label>
+          </div>
+          <input
+            type="text"
+            id="username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-input-group">
+          <div class="input-label">
+            <label for="password">Password</label>
+          </div>
+          <input
+            type="password"
+            id="password"
+            v-model="user.password"
+            required
+          />
+        </div>
+        <button type="submit">Sign in</button>
+        <p>
+          <router-link :to="{ name: 'register' }"
+            >Need an account? Sign up.</router-link
+          >
+        </p>
+      </form>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -95,9 +111,9 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
-  }
+}
 
 .form-input-group {
   margin-bottom: 1rem;
@@ -121,7 +137,7 @@ label {
   margin-right: 6.5rem;
 }
 
-h1{
+h1 {
   text-align: center;
   font: 36px;
   margin-bottom: 20px;
