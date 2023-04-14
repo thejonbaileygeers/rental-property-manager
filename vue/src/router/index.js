@@ -137,6 +137,15 @@ const router = new Router({
       }
     },
     {
+      path: "/tenant-portal/maintenance-request/:id",
+      name: "maintenance-request-details",
+      component: MaintenanceRequestDetails,
+      meta: {
+        requiresAuth: true,
+        requiredType: 'tenant'
+      }
+    },
+    {
       path: "/maintenance-portal/:id/detail",
       name: "request-details",
       component: MaintenanceRequestDetails,

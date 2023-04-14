@@ -20,12 +20,7 @@
       <div class="input-label">
         <label for="repeat">Repeat Issue</label>
       </div>
-      <input
-        type="checkbox"
-        id="repeat"
-        v-model="request.repeatIssue"
-        required
-      />
+      <input type="checkbox" id="repeat" v-model="request.repeatIssue" />
       <router-link :to="{ name: 'tenant-portal' }">
         <button>Cancel</button>
       </router-link>
