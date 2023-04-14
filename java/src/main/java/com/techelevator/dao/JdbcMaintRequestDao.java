@@ -1,13 +1,14 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.MaintRequest;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcMaintRequestDao implements MaintRequestDAO {
 
     private final JdbcTemplate jdbcTemplate;
@@ -70,7 +71,7 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
     public MaintRequest createRequest(MaintRequest request) {
         String sql = "INSERT INTO maintenance_requests(\n" +
                 "\t property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status)\n" +
-                "\tVALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "\tVALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING request_id;";
 
         Integer id = jdbcTemplate.queryForObject(sql, Integer.class, request.getPropertyId(), request.getMaintenanceId(), request.getRequesterId(), request.getDescription(), request.getPriority(),
                 request.isRepeatIssue(), request.getDateRequested(), null, request.getStatus());
@@ -83,7 +84,10 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
 
         request.setRequestId(rs.getInt("request_id"));
         request.setPropertyId(rs.getInt("property_id"));
-        request.setMaintenanceId(rs.getInt("maintenance_id"));
+
+        int maintenanceId = rs.getInt("maintenance_id");
+        request.setMaintenanceId((maintenanceId == 0) ? null : maintenanceId);
+
         request.setRequesterId(rs.getInt("requester_id"));
         request.setDescription(rs.getString("description"));
         request.setPriority(rs.getString("priority"));

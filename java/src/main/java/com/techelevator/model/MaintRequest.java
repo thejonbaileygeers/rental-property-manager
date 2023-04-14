@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class MaintRequest {
 
-    public int requestId;
-    public int propertyId;
-    public int maintenanceId;
-    public int requesterId;
-    public String description;
-    public String priority;
-    public boolean isRepeatIssue;
-    public LocalDate dateRequested;
-    public LocalDate dateCompleted;
-    public String status;
+    private int requestId;
+    private int propertyId;
+    private Integer maintenanceId;
+    private int requesterId;
+    private String description;
+    private String priority;
+    private boolean isRepeatIssue;
+    private LocalDate dateRequested;
+    private LocalDate dateCompleted;
+    private String status;
 
     public int getRequestId() {
         return requestId;
@@ -31,11 +31,11 @@ public class MaintRequest {
         this.propertyId = propertyId;
     }
 
-    public int getMaintenanceId() {
+    public Integer getMaintenanceId() {
         return maintenanceId;
     }
 
-    public void setMaintenanceId(int maintenanceId) {
+    public void setMaintenanceId(Integer maintenanceId) {
         this.maintenanceId = maintenanceId;
     }
 
@@ -67,8 +67,8 @@ public class MaintRequest {
         return isRepeatIssue;
     }
 
-    public void setRepeatIssue(boolean repeatIssue) {
-        isRepeatIssue = repeatIssue;
+    public void setRepeatIssue(boolean isRepeatIssue) {
+        this.isRepeatIssue = isRepeatIssue;
     }
 
     public LocalDate getDateRequested() {

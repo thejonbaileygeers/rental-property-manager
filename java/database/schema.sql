@@ -59,7 +59,7 @@ CREATE TABLE users (
 		, repeat_issue BOOLEAN
 		, date_requested DATE NOT NULL
 		, date_completed DATE
-		, status VARCHAR(10) NOT NULL DEFAULT('pending')
+		, status VARCHAR(12) NOT NULL DEFAULT('pending')
 		
 		, CONSTRAINT FK_property_property FOREIGN KEY (property_id) REFERENCES properties(property_id)
 		, CONSTRAINT FK_worker_user FOREIGN KEY (maintenance_id) REFERENCES users(user_id)
