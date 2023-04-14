@@ -44,12 +44,11 @@ export default {
 
   align-content: center;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
   text-shadow: 1px 1px 10px black;
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
 }
 
 .header p {

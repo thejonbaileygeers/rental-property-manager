@@ -46,7 +46,7 @@ export default {
 
 <style>
 * {
-  font-family: sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 #view {

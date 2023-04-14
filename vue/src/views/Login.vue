@@ -131,7 +131,7 @@ export default {
   width: 30rem;
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
-  border-radius: 2em;
+  border-radius: 0.5rem;
 }
 
 .input-label {

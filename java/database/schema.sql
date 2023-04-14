@@ -3,6 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS leases;
 DROP TABLE IF EXISTS properties;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS maintenance_requests;
 
 CREATE TABLE users (
    user_id SERIAL,
@@ -47,5 +48,22 @@ CREATE TABLE users (
 		CONSTRAINT FK_leases_users_tenant_id FOREIGN KEY (tenant_id) REFERENCES users(user_id),
 		CONSTRAINT FK_leases_properties_property_id FOREIGN KEY (property_id) REFERENCES properties(property_id)
     );
+	
+	CREATE TABLE maintenance_requests (
+		request_id SERIAL PRIMARY KEY
+		, property_id INT NOT NULL
+		, maintenance_id INT
+		, requester_id INT NOT NULL
+		, description TEXT NOT NULL
+		, priority VARCHAR(10) NOT NULL
+		, repeat_issue BOOLEAN
+		, date_requested DATE NOT NULL
+		, date_completed DATE
+		, status VARCHAR(10) NOT NULL DEFAULT('pending')
+		
+		, CONSTRAINT FK_property_property FOREIGN KEY (property_id) REFERENCES properties(property_id)
+		, CONSTRAINT FK_worker_user FOREIGN KEY (maintenance_id) REFERENCES users(user_id)
+		, CONSTRAINT FK_requester_user FOREIGN KEY (requester_id) REFERENCES users(user_id)
+	);
 
 COMMIT TRANSACTION;
