@@ -8,6 +8,7 @@ public class MaintRequest {
     private int propertyId;
     private Integer maintenanceId;
     private int requesterId;
+    private String title;
     private String description;
     private String priority;
     private boolean isRepeatIssue;
@@ -93,6 +94,14 @@ public class MaintRequest {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }

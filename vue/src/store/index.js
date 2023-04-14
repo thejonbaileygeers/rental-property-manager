@@ -20,7 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    properties: []
+    properties: [],
+    requests: [],
+    leases: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -44,9 +46,18 @@ export default new Vuex.Store({
     },
     SET_USERS(state, users) {
       state.users = users;
-    }, 
+    },
     ADD_PROPERTY(state, property) {
       state.properties.push(property);
+    },
+    SET_REQUESTS(state, requests) {
+      state.requests = requests;
+    },
+    SET_LEASES(state, leases) {
+      state.leases = leases;
+    },
+    ADD_REQUEST(state, request) {
+      state.requests.push(request);
     }
   },
   getters: {

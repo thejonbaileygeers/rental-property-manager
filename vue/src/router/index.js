@@ -133,7 +133,7 @@ const router = new Router({
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
-        requiredType: 'maintenance'
+        requiredType: 'tenant'
       }
     },
     {

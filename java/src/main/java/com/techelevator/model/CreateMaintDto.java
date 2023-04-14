@@ -1,13 +1,20 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
 
 public class CreateMaintDto {
     private int propertyId;
+    private String title;
     private String description;
     private String priority;
     private boolean isRepeatIssue;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getPropertyId() {
         return propertyId;

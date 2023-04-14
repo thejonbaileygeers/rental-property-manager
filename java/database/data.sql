@@ -19,16 +19,16 @@ INSERT INTO leases (tenant_id, property_id, rent_amount, start_date, end_date) V
 INSERT INTO leases (tenant_id, property_id, rent_amount, start_date, end_date) VALUES(3, 3, 500, '2023-01-01', '2023-06-01');
 INSERT INTO leases (tenant_id, property_id, rent_amount, start_date, end_date) VALUES(4, 4, 1000, '2023-01-01', '2023-06-01');
 
-INSERT INTO maintenance_requests(property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status)
-	VALUES (4,1,7,'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
+INSERT INTO maintenance_requests(property_id, maintenance_id, requester_id, title, description, priority, repeat_issue, date_requested, date_completed, status)
+	VALUES (4,1,7, 'SEND MORBIUS PLEASE' ,'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.
 
 Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.
 
 Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.','medium',true,'7/29/2022','3/16/2023','pending'
 );
 
-INSERT INTO maintenance_requests(property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status)
-	VALUES (3,5,8,'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
+INSERT INTO maintenance_requests(property_id, maintenance_id, requester_id, title, description, priority, repeat_issue, date_requested, date_completed, status)
+	VALUES (3,5,8,'My Toilet is overflowing, please send help ASAP!!!','Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
 
 Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
 
