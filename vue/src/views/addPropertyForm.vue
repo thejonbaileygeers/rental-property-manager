@@ -2,95 +2,135 @@
   <form>
     <!-- // city, state, unit, zip, bathrooms, bedrooms, sqFootage, OwnerId, propertyName, description, ImgUrl -->
     <div class="addPropertyForm">
-      <label for="city">city</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.city"
-      >
 
-      <label for="state">state</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.state"
-      >
+      <div id="propertyNameContainer">
 
-      <label for="unit">unit</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.unit"
-      >
+        <label for="propertyName">Property Name</label>
+        <input type="text" name="" id="" value="enter info" v-model="property.name" placeholder="Name">
+      </div>
 
-      <label for="zip">zip</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.zip"
-      >
+      <div id="addressLine1">
+        <div id="streetAddressContainer">
+          <label for="streetAddress">Street Address</label>
+          <input type="text" name="" id="" value="enter info" v-model="property.streetAddress" placeholder="Street">
+        </div>
+        <div id="unitContainer">
+          <label for="unit">Unit</label>
+          <input type="text" name="" id="" value="enter info" v-model="property.unit" placeholder="Unit">
+        </div>
+      </div>
 
-      <label for="bathrooms">bathrooms</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.bathrooms"
-      >
+      <div id="addressLine2">
+        <div id="cityContainer">
+          <label for="city">City</label>
+          <input type="text" name="" id="" value="enter info" v-model="property.city" placeholder="City">
+        </div>
+        <!-- <input type="text" name="" id="" value="enter info" v-model="property.state" placeholder="State Abbrev."> -->
+        <div id="stateContainer">
+          <label for="state">State</label>
+          <select id="state" class="selectbox" v-model="property.state" required>
+            <option :value="'AL'">AL</option>
+            <option :value="'AK'">AK</option>
+            <option :value="'AZ'">AZ</option>
+            <option :value="'AR'">AR</option>
+            <option :value="'AS'">AS</option>
+            <option :value="'CA'">CA</option>
+            <option :value="'CO'">CO</option>
+            <option :value="'CT'">CT</option>
+            <option :value="'DE'">DE</option>
+            <option :value="'DC'">DC</option>
+            <option :value="'FL'">FL</option>
+            <option :value="'GA'">GA</option>
+            <option :value="'HI'">HI</option>
+            <option :value="'ID'">ID</option>
+            <option :value="'IL'">IL</option>
+            <option :value="'IN'">IN</option>
+            <option :value="'IA'">IA</option>
+            <option :value="'KS'">KS</option>
+            <option :value="'KY'">KY</option>
+            <option :value="'LA'">LA</option>
+            <option :value="'ME'">ME</option>
+            <option :value="'MD'">MD</option>
+            <option :value="'MA'">MA</option>
+            <option :value="'MI'">MI</option>
+            <option :value="'MN'">MN</option>
+            <option :value="'MS'">MS</option>
+            <option :value="'MO'">MO</option>
+            <option :value="'MT'">MT</option>
+            <option :value="'NE'">NE</option>
+            <option :value="'NV'">NV</option>
+            <option :value="'NH'">NH</option>
+            <option :value="'NJ'">NJ</option>
+            <option :value="'NM'">NM</option>
+            <option :value="'NY'">NY</option>
+            <option :value="'NC'">NC</option>
+            <option :value="'ND'">ND</option>
+            <option :value="'OH'">OH</option>
+            <option :value="'OK'">OK</option>
+            <option :value="'OR'">OR</option>
+            <option :value="'PA'">PA</option>
+            <option :value="'PR'">PR</option>
+            <option :value="'RI'">RI</option>
+            <option :value="'SC'">SC</option>
+            <option :value="'SD'">SD</option>
+            <option :value="'TN'">TN</option>
+            <option :value="'TX'">TX</option>
+            <option :value="'UT'">UT</option>
+            <option :value="'VT'">VT</option>
+            <option :value="'VA'">VA</option>
+            <option :value="'VI'">VI</option>
+            <option :value="'WA'">WA</option>
+            <option :value="'WV'">WV</option>
+            <option :value="'WI'">WI</option>
+            <option :value="'WY'">WY</option>
+          </select>
+        </div>
+        <div>
+          <label for="zip">Zip</label>
+          <input type="text" name="" id="" value="enter info" v-model="property.zip" placeholder="zip">
+        </div>
+      </div>
 
-      <label for="bedrooms">bedrooms</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.bedrooms"
-      >
 
-      <label for="sqFootage">Square Footage</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.sqFootage"
-      >
+      <div class="featuresContainer">
+        <div id="bathroomsContainer">
+          <label for="bathrooms">Bathrooms</label>
+          <select id="bathrooms" class="selectbox" v-model="property.bathrooms" required>
+            <option :value="'1'">1</option>
+            <option :value="'2'">2</option>
+            <option :value="'3'">3</option>
+            <option :value="'4'">4</option>
+            <option :value="'5'">5</option>
+            <option :value="'6'">6</option>
+            <option :value="'7'">7</option>
+            <option :value="'8'">8</option>
+            <option :value="'9'">9</option>
+          </select>
+        </div>
+        <div id="bedroomsContainer">
+          <label for="bedrooms">Bedrooms</label>
+          <select id="bedrooms" class="selectbox" v-model="property.bedrooms" required>
+            <option :value="'1'">1</option>
+            <option :value="'2'">2</option>
+            <option :value="'3'">3</option>
+            <option :value="'4'">4</option>
+            <option :value="'5'">5</option>
+            <option :value="'6'">6</option>
+            <option :value="'7'">7</option>
+            <option :value="'8'">8</option>
+            <option :value="'9'">9</option>
+          </select>
+        </div>
+        <div id="sqFootageContainer">
+          <label for="sqFootage">Square Footage</label>
+          <input type="text" name="" id="" value="enter info" v-model="property.sqFootage">
+        </div>
+      </div>
 
-      <label for="propertyName">Property Name</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.name"
-      >
-
-      <label for="streetAddress">Street Address</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.streetAddress"
-      >
-
-      <label for="description">Description</label>
-      <input
-        type="text"
-        name=""
-        id=""
-        value="enter info"
-        v-model="property.description"
-      >
+      <div>
+        <label for="description">Description</label>
+        <textarea  type="text" name="" id="" value="enter info" v-model="property.description" />
+      </div>
       <button @click.prevent="submitForm()">Submit</button>
     </div>
   </form>
@@ -143,7 +183,7 @@ export default {
           .addProperty(newProperty)
           .then((response) => {
             if (response.status === 201 || response.status === 200) {
-              this.$router.push(`/property/${newProperty.id}`);
+              this.$router.push(`/landlord-portal`);
               this.$store.commit("ADD_PROPERTY", newProperty);
             }
           })
@@ -156,16 +196,124 @@ export default {
     //   if (error.response) {
     //     this.errorMsg = `Error ${verb} property. Response received: ${error.response.statusText}`;
     //   } 
-      // else if (error.request) {
-      //   this.errorMsg = `Error ${verb} property. Server could not be reached`;
-      // } 
-      // else {
-      //   this.errorMsg = `Error ${verb} property. Request could not be created`;
-      // }
+    // else if (error.request) {
+    //   this.errorMsg = `Error ${verb} property. Server could not be reached`;
+    // } 
+    // else {
+    //   this.errorMsg = `Error ${verb} property. Request could not be created`;
+    // }
     // },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.addPropertyForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 15em 25em;
+}
+
+
+#propertyNameContainer {
+  width: 100%;
+}
+
+#propertyNameContainer > input{
+  width: 100%;
+}
+
+#streetAddressContainer {
+  width: 90%;
+}
+
+#cityContainer {
+  width: 60%;
+}
+
+#cityContainer > input {
+  width: 100%;
+}
+
+#stateContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+#stateContainer > select {
+  width: 100%;
+}
+
+#zipContainer {
+  width: 20%;
+}
+
+#unitContainer {
+  width: 10%;
+}
+
+#addressLine1,
+#addressLine2 {
+  display: flex; 
+  flex-direction: row;
+  width: 100%;
+}
+
+.featuresContainer {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+}
+
+#bathroomsContainer {
+  width: 20%;
+}
+#bedroomsContainer {
+  width: 20%;
+}
+
+featuresContainer > div {
+  padding-right: 5px;
+}
+
+
+#sqFootageContainer {
+  display: flex;
+  width: 60%;
+  justify-content: right;
+}
+
+#sqFootageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#sqFootage > input {
+  width: 20%;
+}
+
+/* #bedroomsContainer, #bathroomsContainer {
+  margin-bottom: 10px;
+  color: red;
+} */
+
+#streetAddressContainer, #unitContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 700;
+}
+
+div.addPropertyForm {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5em;
+}
 </style>
