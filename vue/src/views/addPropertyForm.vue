@@ -16,9 +16,10 @@
                 <label for="sqFootage">ft 2</label>
                 <input type="text" name="" id="" value="enter info" v-model="property.sqFootage">
               </div>
-              <div id="bathroomsContainer">
-                <label for="bathrooms">Bath</label>
-                <select id="bathrooms" class="selectbox" v-model="property.bathrooms" required>
+
+              <div id="bedroomsContainer">
+                <label for="bedrooms">Bed</label>
+                <select id="bedrooms" class="selectbox" v-model="property.bedrooms" required>
                   <option :value="'1'">1</option>
                   <option :value="'2'">2</option>
                   <option :value="'3'">3</option>
@@ -30,9 +31,10 @@
                   <option :value="'9'">9</option>
                 </select>
               </div>
-              <div id="bedroomsContainer">
-                <label for="bedrooms">Bed</label>
-                <select id="bedrooms" class="selectbox" v-model="property.bedrooms" required>
+
+              <div id="bathroomsContainer">
+                <label for="bathrooms">Bath</label>
+                <select id="bathrooms" class="selectbox" v-model="property.bathrooms" required>
                   <option :value="'1'">1</option>
                   <option :value="'2'">2</option>
                   <option :value="'3'">3</option>
@@ -264,6 +266,10 @@ export default {
   border-radius: 0.5em;
 }
 
+input {
+  padding-left: 0.5em;
+}
+
 .addPropertyForm>div {
   padding-top: 2em;
 }
@@ -290,7 +296,7 @@ export default {
 .featuresContainer {
   display: flex;
   flex-direction: row;
-  width: 30%;
+  width: 40%;
   justify-content: right;
 }
 
