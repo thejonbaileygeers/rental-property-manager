@@ -38,7 +38,7 @@ export default {
   width: 100%;
   grid-template-areas: "prop-list placeholder";
   grid-template-columns: 1fr 1fr;
-  gap: 5vw;
+  gap: 3vw;
 }
 
 landlord-property-list {
