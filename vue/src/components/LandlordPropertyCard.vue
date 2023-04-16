@@ -34,9 +34,24 @@ export default {
 
 <style scoped>
 .card {
-  border: 1px green solid;
-  display: flex;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  border-radius: 2rem;
+  overflow: hidden;
+  font-size: 20px;
+  transition: all 0.1s cubic-bezier(0, 0, 0.5, 1);
+  background-color: white;
 }
+
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
 
 .info {
   display: flex;
