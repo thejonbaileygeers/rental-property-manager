@@ -61,10 +61,10 @@ export default new Vuex.Store({
     },
     UPDATE_REQUEST(state, request) {
       const match = state.requests.find((req) => {
-        req.requestId == request.requestID;
+        return req.requestId == request.requestId;
       });
       const index = state.requests.indexOf(match);
-      state.requests[index] = request;
+      state.requests.splice(index, 1, request);
     }
   },
   getters: {

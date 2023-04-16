@@ -15,15 +15,30 @@
 import MaintenanceRequestRow from "./MaintenanceRequestRow.vue";
 
 export default {
+  data() {
+    return {
+      properties: [],
+    };
+  },
   components: { MaintenanceRequestRow },
-  props: ["property"],
   computed: {
     requests() {
       let allRequests = this.$store.state.requests;
       return allRequests.filter((req) => {
-        return req.propertyId == this.property.propertyId;
+        return this.propertyIds.includes(req.propertyId);
       });
     },
+    propertyIds() {
+      return this.properties.map((prop) => {
+        return prop.propertyId;
+      });
+    },
+  },
+  created() {
+    const landlordId = this.$store.state.user.id;
+    this.properties = this.$store.state.properties.filter((prop) => {
+      return prop.ownerId == landlordId;
+    });
   },
 };
 </script>

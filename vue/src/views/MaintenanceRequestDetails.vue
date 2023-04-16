@@ -21,8 +21,6 @@ export default {
     this.request = this.$store.state.requests.find((req) => {
       return req.requestId == this.$route.params.id;
     });
-
-    console.log(this.request);
   },
 };
 </script>

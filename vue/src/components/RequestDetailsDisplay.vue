@@ -10,7 +10,28 @@
           >Date Completed: {{ request.dateCompleted }}</span
         >
       </h3>
+      <form
+        @submit.prevent="assignMaintenance()"
+        v-if="userRole == 'landlord' && request.status != 'complete'"
+      >
+        <select v-model="maintenanceId">
+          <option
+            v-for="user in maintenanceUsers"
+            :key="user.id"
+            :value="user.id"
+          >
+            {{ user.firstName }} {{ user.lastName }}
+          </option>
+        </select>
+        <input type="submit" value="Assign Maintenance" />
+      </form>
       <p>{{ request.description }}</p>
+      <button
+        @click="completeRequest()"
+        v-if="userRole == 'maintenance' && request.status != 'complete'"
+      >
+        Request Complete
+      </button>
     </div>
   </div>
 </template>
@@ -19,6 +40,11 @@
 import MaintRequestService from "../services/MaintRequestService";
 
 export default {
+  data() {
+    return {
+      maintenanceId: -1,
+    };
+  },
   props: ["request"],
   computed: {
     userRole() {
@@ -38,22 +64,24 @@ export default {
       MaintRequestService.completeRequest(this.request.requestId)
         .then((response) => {
           this.$store.commit("UPDATE_REQUEST", response.data);
+          this.$router.push({ name: "tenant-portal" });
         })
         .catch((error) => {
           console.log(error);
           //Todo: Add Appropriate Error Handling
         });
     },
-    assignMaintenance(maintenanceId) {
+    assignMaintenance() {
       MaintRequestService.assignMaintenance(
         this.request.requestId,
-        maintenanceId
+        this.maintenanceId
       )
         .then((response) => {
           this.$store.commit("UPDATE_REQUEST", response.data);
+          this.$router.push({ name: "tenant-portal" });
         })
         .catch((error) => {
-          console.log(error);
+          console.log("ERROR" + error);
           //Todo: Add Appropriate Error Handling
         });
     },

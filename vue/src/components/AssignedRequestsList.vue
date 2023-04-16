@@ -15,13 +15,17 @@
 import MaintenanceRequestRow from "./MaintenanceRequestRow.vue";
 
 export default {
+  data() {
+    return {
+      properties: [],
+    };
+  },
   components: { MaintenanceRequestRow },
-  props: ["property"],
   computed: {
     requests() {
       let allRequests = this.$store.state.requests;
       return allRequests.filter((req) => {
-        return req.propertyId == this.property.propertyId;
+        return req.maintenanceId == this.$store.state.user.id;
       });
     },
   },
