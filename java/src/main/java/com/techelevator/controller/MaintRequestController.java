@@ -15,7 +15,6 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/maintenance")
-@PreAuthorize("isAuthenticated()")
 public class MaintRequestController {
 
     private MaintRequestDAO dao;
@@ -36,6 +35,7 @@ public class MaintRequestController {
         return dao.getById(id);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public MaintRequest create(@RequestBody CreateMaintDto dto, Principal principal) {
 
@@ -45,6 +45,7 @@ public class MaintRequestController {
         request.setRequesterId(userId);
         request.setPropertyId(dto.getPropertyId());
         request.setMaintenanceId(null);
+        request.setTitle(dto.getTitle());
         request.setDescription(dto.getDescription());
         request.setPriority(dto.getPriority());
         request.setRepeatIssue(dto.isRepeatIssue());
@@ -56,6 +57,7 @@ public class MaintRequestController {
     }
 
 
+    @PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public MaintRequest assignMaintenance(@PathVariable int id, @RequestBody AssignMaintDto dto) {
         MaintRequest request = dao.getById(id);
@@ -64,6 +66,7 @@ public class MaintRequestController {
         return dao.update(request);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}/complete")
     public MaintRequest completeRequest(@PathVariable int id) {
         MaintRequest request = dao.getById(id);

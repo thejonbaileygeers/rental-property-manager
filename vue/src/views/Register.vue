@@ -215,7 +215,7 @@ export default {
   padding: 20px;
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
-  border-radius: 2rem;
+  border-radius: 0.5em;
 }
 
 label {

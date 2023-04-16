@@ -133,7 +133,16 @@ const router = new Router({
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
-        requiredType: 'maintenance'
+        requiredType: 'tenant'
+      }
+    },
+    {
+      path: "/tenant-portal/maintenance-request/:id",
+      name: "maintenance-request-details",
+      component: MaintenanceRequestDetails,
+      meta: {
+        requiresAuth: true,
+        requiredType: 'tenant'
       }
     },
     {

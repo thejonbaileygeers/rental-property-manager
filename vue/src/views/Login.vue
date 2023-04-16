@@ -150,7 +150,7 @@ h1 {
 
 .subheading {
   text-align: center;
-  font-size: 10px;
+  font-size: 16px;
   margin-bottom: 30px;
 }
 

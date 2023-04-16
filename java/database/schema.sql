@@ -54,6 +54,7 @@ CREATE TABLE users (
 		, property_id INT NOT NULL
 		, maintenance_id INT
 		, requester_id INT NOT NULL
+		, title VARCHAR(50) NOT NULL
 		, description TEXT NOT NULL
 		, priority VARCHAR(10) NOT NULL
 		, repeat_issue BOOLEAN

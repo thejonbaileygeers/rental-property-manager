@@ -19,7 +19,7 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
 
     @Override
     public List<MaintRequest> getAll() {
-        String sql = "SELECT request_id, property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status\n" +
+        String sql = "SELECT request_id, property_id, maintenance_id, requester_id, title, description, priority, repeat_issue, date_requested, date_completed, status\n" +
                 "\tFROM maintenance_requests;";
         List<MaintRequest> requests = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
 
     @Override
     public MaintRequest getById(int id) {
-        String sql = "SELECT request_id, property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status\n" +
+        String sql = "SELECT request_id, property_id, maintenance_id, requester_id, title, description, priority, repeat_issue, date_requested, date_completed, status\n" +
                 "\tFROM maintenance_requests WHERE request_id = ?;";
 
         MaintRequest request = null;
@@ -49,11 +49,11 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
     @Override
     public MaintRequest update(MaintRequest request) {
         String sql = "UPDATE maintenance_requests\n" +
-                "\tSET property_id=?, maintenance_id=?, requester_id=?, description=?, priority=?, " +
+                "\tSET property_id=?, maintenance_id=?, requester_id=?, title=?, description=?, priority=?, " +
                 "repeat_issue=?, date_requested=?, date_completed=?, status=?\n" +
                 "\tWHERE request_id=? RETURNING request_id";
 
-        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, request.getPropertyId(), request.getMaintenanceId(), request.getRequesterId(), request.getDescription(), request.getPriority(),
+        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, request.getPropertyId(), request.getMaintenanceId(), request.getRequesterId(), request.getTitle(), request.getDescription(), request.getPriority(),
                 request.isRepeatIssue(), request.getDateRequested(), request.getDateCompleted(), request.getStatus(), request.getRequestId());
 
         return getById(id);
@@ -70,10 +70,11 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
     @Override
     public MaintRequest createRequest(MaintRequest request) {
         String sql = "INSERT INTO maintenance_requests(\n" +
-                "\t property_id, maintenance_id, requester_id, description, priority, repeat_issue, date_requested, date_completed, status)\n" +
-                "\tVALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING request_id;";
+                "\t property_id, maintenance_id, requester_id, title, description, priority, repeat_issue, date_requested, date_completed, status)\n" +
+                "\tVALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING request_id;";
 
-        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, request.getPropertyId(), request.getMaintenanceId(), request.getRequesterId(), request.getDescription(), request.getPriority(),
+        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, request.getPropertyId(), request.getMaintenanceId(),
+                request.getRequesterId(), request.getTitle(), request.getDescription(), request.getPriority(),
                 request.isRepeatIssue(), request.getDateRequested(), null, request.getStatus());
 
         return (id == null) ? null : getById(id);
@@ -84,11 +85,10 @@ public class JdbcMaintRequestDao implements MaintRequestDAO {
 
         request.setRequestId(rs.getInt("request_id"));
         request.setPropertyId(rs.getInt("property_id"));
-
         int maintenanceId = rs.getInt("maintenance_id");
         request.setMaintenanceId((maintenanceId == 0) ? null : maintenanceId);
-
         request.setRequesterId(rs.getInt("requester_id"));
+        request.setTitle(rs.getString("title"));
         request.setDescription(rs.getString("description"));
         request.setPriority(rs.getString("priority"));
         request.setRepeatIssue(rs.getBoolean("repeat_issue"));
