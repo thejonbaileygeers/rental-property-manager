@@ -20,7 +20,7 @@ CREATE TABLE users (
 
 	CREATE TABLE properties (
 	    property_id SERIAL,
-	    name varchar(50) NOT NULL UNIQUE,
+	    name varchar(50) NOT NULL,
 	    street_address varchar(50) NOT NULL,
 	    unit numeric (10) NOT NULL,
 	    city varchar(100) NOT NULL,
