@@ -1,37 +1,102 @@
 <template>
-  <div>
-    <div id="details">
-      <h1>ID: {{ request.requestId }} {{ request.title }}</h1>
-      <h2>Request Details:</h2>
+  <div id="content">
+    <div id="details" class="card">
+      <h1>Maintenance Request Details:</h1>
+
+      <h2>
+        ID: {{ request.requestId }} {{ request.title }} Date Opened:
+        {{ request.dateRequested }}
+      </h2>
       <h3>Priority: {{ request.priority }} Status: {{ request.status }}</h3>
+      <h3>Request Details:</h3>
+      <p>{{ request.description }}</p>
       <h3>
-        Date Opened: {{ request.dateRequested }}
         <span v-show="request.dateCompleted != null"
           >Date Completed: {{ request.dateCompleted }}</span
         >
       </h3>
-      <form
-        @submit.prevent="assignMaintenance()"
-        v-if="userRole == 'landlord' && request.status != 'complete'"
-      >
-        <select v-model="maintenanceId">
-          <option
-            v-for="user in maintenanceUsers"
-            :key="user.id"
-            :value="user.id"
-          >
-            {{ user.firstName }} {{ user.lastName }}
-          </option>
-        </select>
-        <input type="submit" value="Assign Maintenance" />
-      </form>
-      <p>{{ request.description }}</p>
       <button
         @click="completeRequest()"
         v-if="userRole == 'maintenance' && request.status != 'complete'"
       >
         Request Complete
       </button>
+    </div>
+    <div id="user-details">
+      <article id="landlord-details" class="card" v-if="userRole != 'landlord'">
+        <p>Property Owner Details:</p>
+        <div class="landlord-name">
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+          <span class="landlord-info"
+            >{{ landlord.firstName }} {{ landlord.lastName }}</span
+          >
+        </div>
+        <div class="landlord-contact-info">
+          <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+            class="landlord-info"
+            >{{ landlord.phone }}</span
+          >
+        </div>
+      </article>
+      <article id="tenant-details" class="card" v-if="userRole != 'tenant'">
+        <p>Tenant Information:</p>
+        <div class="tenant-name">
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+          <span class="tenant-info"
+            >{{ tenant.firstName }} {{ tenant.lastName }}</span
+          >
+        </div>
+        <div class="tenant-contact-info">
+          <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+            class="tenant-info"
+            >{{ tenant.phone }}</span
+          >
+        </div>
+      </article>
+      <article
+        v-if="userRole != 'maintenance'"
+        id="maintenance-details"
+        class="card"
+      >
+        <p>Maintenance Information:</p>
+        <div v-if="maintenance" class="maintenance-name">
+          <h3>Assigned Maintenance Employee:</h3>
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+          <span class="maintenance-info"
+            >{{ maintenance.firstName }} {{ maintenance.lastName }}</span
+          >
+        </div>
+        <div v-if="maintenance" class="maintenance-contact-info">
+          <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+            class="maintenance-info"
+            >{{ maintenance.phone }}</span
+          >
+        </div>
+        <form
+          @submit.prevent="assignMaintenance()"
+          v-if="userRole == 'landlord' && request.status != 'complete'"
+        >
+          <select v-model="maintenanceId">
+            <option
+              v-for="user in maintenanceUsers"
+              :key="user.id"
+              :value="user.id"
+            >
+              {{ user.firstName }} {{ user.lastName }}
+            </option>
+          </select>
+          <input type="submit" value="Assign Maintenance" />
+        </form>
+        <div id="maintenance-office">
+          <h3>24/7 Maintenance Hotline:</h3>
+          <div class="maintenance-contact-info">
+            <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+              class="maintenance-info"
+              >(808) 555-2310</span
+            >
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </template>
@@ -45,7 +110,7 @@ export default {
       maintenanceId: -1,
     };
   },
-  props: ["request"],
+  props: ["request", "landlord", "tenant", "maintenance", "property"],
   computed: {
     userRole() {
       return this.$store.state.user.type;
@@ -86,8 +151,21 @@ export default {
         });
     },
   },
+  mounted() {
+    let tag = document.createElement("script");
+    tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
+    document.head.appendChild(tag);
+  },
 };
 </script>
 
-<style>
+<style scoped>
+#content {
+  display: flex;
+}
+.card {
+  /* Parameters: x-offset, y-offset, blur-radius, spread-radius, color */
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  background-color: white;
+}
 </style>

@@ -11,6 +11,7 @@
         <tr>
           <th>ID</th>
           <th>Title</th>
+          <th v-if="userRole != 'tenant'">Address</th>
           <th>Date Opened</th>
           <th>Priority</th>
           <th v-if="userRole == 'landlord'">Repeat Issue</th>
@@ -22,6 +23,13 @@
       <tr v-for="request in requests" :key="request.requestId">
         <td>{{ request.requestId }}</td>
         <td>{{ request.title }}</td>
+        <td v-if="userRole != 'tenant'">
+          {{ requestProperty(request).streetAddress }}, Unit #
+          {{ requestProperty(request).unit }},
+          {{ requestProperty(request).city }},
+          {{ requestProperty(request).state }}
+          {{ requestProperty(request).zip }}
+        </td>
         <td>{{ request.dateRequested }}</td>
         <td>{{ request.priority }}</td>
         <td v-if="userRole == 'landlord'">{{ request.repeatIssue }}</td>
@@ -38,20 +46,11 @@
         </td>
       </tr>
     </table>
-
-    <!-- <maintenance-request-row
-      v-for="request in requests"
-      :key="request.requestId"
-      :request="request"
-    /> -->
   </div>
 </template>
 
 <script>
-// import MaintenanceRequestRow from "./MaintenanceRequestRow.vue";
-
 export default {
-  // components: { MaintenanceRequestRow },
   data() {
     return {
       requests: [],
@@ -65,6 +64,11 @@ export default {
   methods: {
     dateCompletedText(req) {
       return req.dateCompleted ? req.dateCompleted : "N/A";
+    },
+    requestProperty(request) {
+      return this.$store.state.properties.filter((prop) => {
+        return prop.propertyId == request.propertyId;
+      })[0];
     },
     tenantRequests(allRequests) {
       let propertyId = this.$store.state.leases.filter((lease) => {
