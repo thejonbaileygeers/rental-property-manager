@@ -19,6 +19,7 @@
                 value="enter info"
                 v-model="property.name"
                 placeholder="Name"
+                required
               />
             </div>
 
@@ -31,6 +32,7 @@
                   id=""
                   value="enter info"
                   v-model="property.squareFootage"
+                  required
                 />
               </div>
 
@@ -84,6 +86,7 @@
                 value="enter info"
                 v-model="property.streetAddress"
                 placeholder="Street"
+                required
               />
             </div>
             <div id="unitContainer">
@@ -108,6 +111,7 @@
                 value="enter info"
                 v-model="property.city"
                 placeholder="City"
+                required
               />
             </div>
             <!-- <input type="text" name="" id="" value="enter info" v-model="property.state" placeholder="State Abbrev."> -->
@@ -184,6 +188,7 @@
                 value="enter info"
                 v-model="property.zip"
                 placeholder="zip"
+                required
               />
             </div>
           </div>
@@ -195,6 +200,7 @@
               id=""
               value="enter info"
               v-model="property.description"
+              required
             />
           </div>
           <div id="urlContainer">
@@ -267,7 +273,7 @@ export default {
         zip: this.property.zip,
         bathrooms: this.property.bathrooms,
         bedrooms: this.property.bedrooms,
-        squareFootage: this.property.sqFootage,
+        squareFootage: this.property.squareFootage,
         description: this.property.description,
         imgUrl: this.property.imgUrl,
       };
