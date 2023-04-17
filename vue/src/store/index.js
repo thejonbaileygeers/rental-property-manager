@@ -50,6 +50,15 @@ export default new Vuex.Store({
     ADD_PROPERTY(state, property) {
       state.properties.push(property);
     },
+    UPDATE_PROPERTY(state, property ) {
+
+      const match = state.properties.find((prop) => {
+        return prop.propertyId == property.propertyId;
+      });
+      const index = state.properties.indexOf(match);
+      state.properties.splice(index, 1, property);
+
+    },
     SET_REQUESTS(state, requests) {
       state.requests = requests;
     },
