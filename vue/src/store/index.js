@@ -51,9 +51,13 @@ export default new Vuex.Store({
       state.properties.push(property);
     },
     UPDATE_PROPERTY(state, property ) {
-      Object.keys(property).forEach((prop) => {
-        state.property[prop] = property[prop];
-      })
+
+      const match = state.properties.find((prop) => {
+        return prop.propertyId == property.propertyId;
+      });
+      const index = state.properties.indexOf(match);
+      state.properties.splice(index, 1, property);
+
     },
     SET_REQUESTS(state, requests) {
       state.requests = requests;
