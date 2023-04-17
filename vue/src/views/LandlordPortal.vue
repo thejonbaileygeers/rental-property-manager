@@ -6,17 +6,22 @@
     <div id="content" v-show="true">
       <landlord-property-list :id="this.$store.state.user.id" />
       <!--Placeholder must be replaced with actual Maintenance Order Queue-->
-      <div id="placeholder">PLACEHOLDER FOR MAINTENANCE REQUESTS</div>
+      <maintenance-request-list />
     </div>
   </div>
 </template>
 
 <script>
 import LandlordPropertyList from "../components/LandlordPropertyList.vue";
+import MaintenanceRequestList from "../components/MaintenanceRequestList.vue";
 import PlaceholderGreeting from "../components/PlaceholderGreeting.vue";
 
 export default {
-  components: { PlaceholderGreeting, LandlordPropertyList },
+  components: {
+    PlaceholderGreeting,
+    LandlordPropertyList,
+    MaintenanceRequestList,
+  },
 
   data() {
     return {};

@@ -35,8 +35,6 @@ export default {
     this.property = this.$store.state.properties.find((prop) => {
       return prop.propertyId == lease.propertyId;
     });
-
-    console.log(this.property);
   },
 };
 </script>

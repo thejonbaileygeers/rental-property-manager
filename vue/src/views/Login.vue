@@ -9,14 +9,14 @@
             Welcome back! Please enter your account information to login.
           </p>
           <div role="alert" v-if="invalidCredentials">
-            Invalid username and password!
+            Invalid email and password!
           </div>
           <div role="alert" v-if="this.$route.query.registration">
             Thank you for registering, please sign in.
           </div>
           <div class="form-input-group">
             <div class="input-label">
-              <label for="username">Username</label>
+              <label for="username">Email</label>
             </div>
             <input
               type="text"

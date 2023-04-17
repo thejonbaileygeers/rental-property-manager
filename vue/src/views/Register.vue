@@ -15,10 +15,10 @@
           </div>
           <div class="form-input-group">
             <div class="input-label">
-              <label for="username">Username</label>
+              <label for="username">Email</label>
             </div>
             <input
-              type="text"
+              type="email"
               id="username"
               v-model="user.username"
               required

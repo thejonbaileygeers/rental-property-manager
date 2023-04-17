@@ -58,6 +58,13 @@ export default new Vuex.Store({
     },
     ADD_REQUEST(state, request) {
       state.requests.push(request);
+    },
+    UPDATE_REQUEST(state, request) {
+      const match = state.requests.find((req) => {
+        return req.requestId == request.requestId;
+      });
+      const index = state.requests.indexOf(match);
+      state.requests.splice(index, 1, request);
     }
   },
   getters: {

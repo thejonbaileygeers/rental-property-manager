@@ -71,7 +71,7 @@ const router = new Router({
       component: TenantPortal,
       meta: {
         requiresAuth: true,
-        requiredType: 'tenant'
+        requiredType: ['tenant']
       }
     },
     {
@@ -80,7 +80,7 @@ const router = new Router({
       component: addPropertyForm,
       meta: {
         requiresAuth: true,
-        requiredType: 'landlord'
+        requiredType: ['landlord']
       }
     },
     {
@@ -89,7 +89,7 @@ const router = new Router({
       component: LandlordPortal,
       meta: {
         requiresAuth: true,
-        requiredType: 'landlord'
+        requiredType: ['landlord']
       }
     },
     {
@@ -98,7 +98,7 @@ const router = new Router({
       component: MaintenancePortal,
       meta: {
         requiresAuth: true,
-        requiredType: 'maintenance'
+        requiredType: ['maintenance']
       }
     },
     {
@@ -115,7 +115,7 @@ const router = new Router({
       component: PropertyDetails,
       meta: {
         requiresAuth: true,
-        requiredType: 'landlord'
+        requiredType: ['landlord']
       }
     },
     {
@@ -124,7 +124,7 @@ const router = new Router({
       component: Payment,
       meta: {
         requiresAuth: true,
-        requiredType: 'tenant'
+        requiredType: ['tenant']
       }
     },
     {
@@ -133,16 +133,16 @@ const router = new Router({
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
-        requiredType: 'tenant'
+        requiredType: ['tenant']
       }
     },
     {
-      path: "/tenant-portal/maintenance-request/:id",
+      path: "/maintenance-request/:id",
       name: "maintenance-request-details",
       component: MaintenanceRequestDetails,
       meta: {
         requiresAuth: true,
-        requiredType: 'tenant'
+        requiredType: ['tenant', 'landlord', 'maintenance']
       }
     },
     {
@@ -151,7 +151,7 @@ const router = new Router({
       component: MaintenanceRequestDetails,
       meta: {
         requiresAuth: true,
-        requiredType: 'maintenance'
+        requiredType: ['maintenance']
       }
     }
   ],
@@ -175,11 +175,11 @@ router.beforeEach((to, from, next) => {
 
     //Check for required Type value
     const requiredType = to.meta.requiredType;
-    if (requiredType && store.state.user.type !== requiredType) {
+
+    if (requiredType && !requiredType.includes(store.state.user.type)) {
       next({ name: getDestinationPage() });
     } else {
       next();
-
     }
   }
 });
