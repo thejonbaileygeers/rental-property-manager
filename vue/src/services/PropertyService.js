@@ -13,5 +13,5 @@ export default {
     },
     deleteProperty(propertyId) {
         return axios.delete(`/properties/${propertyId}`);
-    }
+    } 
 }
