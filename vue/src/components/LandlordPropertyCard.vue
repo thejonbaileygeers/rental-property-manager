@@ -4,7 +4,7 @@
     <div class="info">
       <h1>Address: {{ property.streetAddress }}</h1>
       <h2>
-        Tenant:
+        Tenant: {{  getTenantFromLeaseId.firstName ??  'Vacant' }} {{ getTenantFromLeaseId.lastName }}
         <!--Todo: ADD TENANT INFO-->
       </h2>
       <h2>
@@ -29,6 +29,17 @@ export default {
     };
   },
   props: ["property"],
+  computed: {
+    getTenantFromLeaseId() {
+      const lease = this.$store.state.leases.find(ln => ln.propertyId === this.property.propertyId);
+      if (!lease) return 'open';
+      return this.$store.state.users.find(u => {
+        if(u.id === lease.tenantId) {
+          return u;
+        }
+      }) ?? 'None';
+    }
+  }
 };
 </script>
 
