@@ -50,6 +50,11 @@ export default new Vuex.Store({
     ADD_PROPERTY(state, property) {
       state.properties.push(property);
     },
+    UPDATE_PROPERTY(state, property ) {
+      Object.keys(property).forEach((prop) => {
+        state.property[prop] = property[prop];
+      })
+    },
     SET_REQUESTS(state, requests) {
       state.requests = requests;
     },

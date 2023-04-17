@@ -18,7 +18,7 @@
           <div id="propertyNameContainer">
             <div id="propertyNameItem">
               <label for="propertyName">Property Name</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.name" placeholder="Name">
+              <input type="text" name="" id="" value="property.name" placeholder="Name">
             </div>
 
             <div class="featuresContainer">
