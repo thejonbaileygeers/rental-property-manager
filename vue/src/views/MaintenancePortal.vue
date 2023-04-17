@@ -2,16 +2,16 @@
   <div>
     <h1>Welcome to the Maintenance Portal!!</h1>
     <br /><placeholder-greeting />
-    <assigned-requests-list />
+    <maintenance-request-list />
   </div>
 </template>
 
 <script>
-import AssignedRequestsList from "../components/AssignedRequestsList.vue";
+import MaintenanceRequestList from "../components/MaintenanceRequestList.vue";
 import PlaceholderGreeting from "../components/PlaceholderGreeting.vue";
 
 export default {
-  components: { PlaceholderGreeting, AssignedRequestsList },
+  components: { PlaceholderGreeting, MaintenanceRequestList },
 };
 </script>
 
