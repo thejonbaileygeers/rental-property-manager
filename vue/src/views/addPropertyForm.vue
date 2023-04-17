@@ -1,13 +1,7 @@
 <template>
   <div id="overall" class="text-center">
-
-
     <form @submit.prevent="submitForm()">
-
-
-
       <div class="addPropertyContainer">
-
         <div v-if="errors.length > 0" id="error-container">
           <ul>
             <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
@@ -18,18 +12,36 @@
           <div id="propertyNameContainer">
             <div id="propertyNameItem">
               <label for="propertyName">Property Name</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.name" placeholder="Name">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.name"
+                placeholder="Name"
+              />
             </div>
 
             <div class="featuresContainer">
               <div id="sqFootageContainer">
                 <label for="sqFootage">ft 2</label>
-                <input type="text" name="" id="" value="enter info" v-model="property.squareFootage">
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  value="enter info"
+                  v-model="property.squareFootage"
+                />
               </div>
 
               <div id="bedroomsContainer">
                 <label for="bedrooms">Bed</label>
-                <select id="bedrooms" class="selectbox" v-model="property.bedrooms" required>
+                <select
+                  id="bedrooms"
+                  class="selectbox"
+                  v-model="property.bedrooms"
+                  required
+                >
                   <option :value="'1'">1</option>
                   <option :value="'2'">2</option>
                   <option :value="'3'">3</option>
@@ -43,7 +55,12 @@
               </div>
               <div id="bathroomsContainer">
                 <label for="bathrooms">Bath</label>
-                <select id="bathrooms" class="selectbox" v-model="property.bathrooms" required>
+                <select
+                  id="bathrooms"
+                  class="selectbox"
+                  v-model="property.bathrooms"
+                  required
+                >
                   <option :value="'1'">1</option>
                   <option :value="'2'">2</option>
                   <option :value="'3'">3</option>
@@ -60,22 +77,48 @@
           <div id="addressLine1">
             <div id="streetAddressContainer">
               <label for="streetAddress">Street Address</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.streetAddress" placeholder="Street">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.streetAddress"
+                placeholder="Street"
+              />
             </div>
             <div id="unitContainer">
               <label for="unit">Unit</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.unit" placeholder="Unit">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.unit"
+                placeholder="Unit"
+              />
             </div>
           </div>
           <div id="addressLine2">
             <div id="cityContainer">
               <label for="city">City</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.city" placeholder="City">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.city"
+                placeholder="City"
+              />
             </div>
             <!-- <input type="text" name="" id="" value="enter info" v-model="property.state" placeholder="State Abbrev."> -->
             <div id="stateContainer">
               <label for="state">State</label>
-              <select id="state" class="selectbox" v-model="property.state" required>
+              <select
+                id="state"
+                class="selectbox"
+                v-model="property.state"
+                required
+              >
                 <option :value="'AL'">AL</option>
                 <option :value="'AK'">AK</option>
                 <option :value="'AZ'">AZ</option>
@@ -134,20 +177,40 @@
             </div>
             <div id="zipContainer">
               <label for="zip">Zip</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.zip" placeholder="zip">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.zip"
+                placeholder="zip"
+              />
             </div>
           </div>
           <div id="descriptionContainer">
             <label for="description">Description</label>
-            <textarea type="text" name="" id="" value="enter info" v-model="property.description" />
+            <textarea
+              type="text"
+              name=""
+              id=""
+              value="enter info"
+              v-model="property.description"
+            />
           </div>
           <div id="urlContainer">
             <ValidationProvider rules="required" id="urlContainer">
               <label for="url">Url</label>
-              <input type="text" name="" id="" value="enter info" v-model="property.imgUrl" placeholder="url">
+              <input
+                type="text"
+                name=""
+                id=""
+                value="enter info"
+                v-model="property.imgUrl"
+                placeholder="url"
+              />
             </ValidationProvider>
           </div>
-          <button type="submit"> Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </div>
     </form>
@@ -158,15 +221,13 @@
 
 <script>
 import propertyService from "../services/PropertyService";
-import { ValidationProvider, extend } from 'vee-validate';
-import { required } from 'vee-validate/dist/rules';
+import { ValidationProvider, extend } from "vee-validate";
+import { required } from "vee-validate/dist/rules";
 
-
-extend('required', {
+extend("required", {
   ...required,
   message: "Property field must not be blank. (actual)",
 });
-
 
 export default {
   name: "add-property-form",
@@ -191,7 +252,7 @@ export default {
     };
   },
   components: {
-    ValidationProvider
+    ValidationProvider,
   },
   methods: {
     submitForm() {
@@ -212,7 +273,7 @@ export default {
       };
 
       if (newProperty.propertyId === 0) {
-        console.log('ok');
+        console.log("ok");
         propertyService
           .addProperty(newProperty)
           .then((response) => {
@@ -240,13 +301,12 @@ export default {
   /* margin: 15em 25em; */
 }
 
-
 #overall {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Roboto', Sans-serif;
+  font-family: "Roboto", Sans-serif;
   text-align: center;
 }
 
@@ -260,9 +320,8 @@ export default {
   max-width: 700px;
 }
 
-#app>div {
+#app > div {
   margin: 10em 5em;
-
 }
 
 .addPropertyForm input {
@@ -274,10 +333,9 @@ input {
   padding-left: 0.5em;
 }
 
-.addPropertyForm>div {
+.addPropertyForm > div {
   padding-top: 2em;
 }
-
 
 #propertyNameContainer {
   display: flex;
@@ -303,7 +361,6 @@ input {
   width: 40%;
   justify-content: right;
 }
-
 
 #sqFootageContainer {
   display: flex;
@@ -356,7 +413,6 @@ select {
   text-align: center;
 }
 
-
 #zipContainer {
   display: flex;
   flex-direction: column;
@@ -378,7 +434,6 @@ select {
   width: 100%;
   justify-content: space-between;
 }
-
 
 /* #bedroomsContainer, #bathroomsContainer {
   margin-bottom: 10px;

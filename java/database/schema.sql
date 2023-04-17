@@ -44,6 +44,7 @@ CREATE TABLE users (
         rent_amount numeric(6),
         start_date date NOT NULL,
         end_date date NOT NULL,
+		is_active boolean DEFAULT(true),
 		CONSTRAINT PK_leases_lease_id PRIMARY KEY (lease_id),
 		CONSTRAINT FK_leases_users_tenant_id FOREIGN KEY (tenant_id) REFERENCES users(user_id),
 		CONSTRAINT FK_leases_properties_property_id FOREIGN KEY (property_id) REFERENCES properties(property_id)
