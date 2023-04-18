@@ -3,52 +3,42 @@
     <router-link :to="{ name: 'home' }">
       <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
     </router-link>
-    <form @submit.prevent="newLease ? createLease() : deleteLease()">
-      <div class="input-label">
-        <label for="tenant">Tenant</label>
+    <div id="form-container">
+      <div id="lease-details-form">
+        <h1>Lease Details</h1>
+        <form @submit.prevent="newLease ? createLease() : deleteLease()">
+          <div class="form-top">
+            <div class="input-label">
+              <label for="tenant">Tenant</label>
+              <select v-model="lease.tenantId" :disabled="newLease == false" required>
+                <option v-if="currentTenant" :value="currentTenant.id">
+                  {{ currentTenant.firstName }} {{ currentTenant.lastName }} ({{
+                    currentTenant.username
+                  }})
+                </option>
+                <option v-for="user in freeUsers" :key="user.id" :value="user.id">
+                  {{ user.firstName }} {{ user.lastName }} ({{ user.username }})
+                </option>
+              </select>
+            </div>
+            <div class="input-label">
+              <label for="start">Start Date</label>
+              <input type="date" id="start" v-model="lease.startDate" :disabled="newLease == false" required />
+            </div>
+            <div class="input-label">
+              <label for="date">End Date</label>
+              <input type="date" id="date" v-model="lease.endDate" :disabled="newLease == false" required />
+            </div>
+            <div class="input-label">
+              <label for="rent">Rent Price</label>
+              <input type="money" id="rent" v-model="lease.rentAmount" :disabled="newLease == false" required />
+            </div>
+          </div>
+          
+          <input type="submit" :value="buttonText" />
+        </form>
       </div>
-      <select v-model="lease.tenantId" :disabled="newLease == false" required>
-        <option v-if="currentTenant" :value="currentTenant.id">
-          {{ currentTenant.firstName }} {{ currentTenant.lastName }} ({{
-            currentTenant.username
-          }})
-        </option>
-        <option v-for="user in freeUsers" :key="user.id" :value="user.id">
-          {{ user.firstName }} {{ user.lastName }} ({{ user.username }})
-        </option>
-      </select>
-      <div class="input-label">
-        <label for="start">Start Date</label>
-      </div>
-      <input
-        type="date"
-        id="start"
-        v-model="lease.startDate"
-        :disabled="newLease == false"
-        required
-      />
-      <div class="input-label">
-        <label for="date">End Date</label>
-      </div>
-      <input
-        type="date"
-        id="date"
-        v-model="lease.endDate"
-        :disabled="newLease == false"
-        required
-      />
-      <div class="input-label">
-        <label for="rent">Rent Price</label>
-      </div>
-      <input
-        type="money"
-        id="rent"
-        v-model="lease.rentAmount"
-        :disabled="newLease == false"
-        required
-      />
-      <input type="submit" :value="buttonText" />
-    </form>
+    </div>
   </div>
 </template>
 
@@ -139,5 +129,62 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#form-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  background-color: white;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  border-radius: 0.5em;
+  margin-top: 100px;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+#lease-details-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+input, select {
+  border: 2px solid black;
+  border-radius: 0.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="money"] {
+  height: 1rem;
+}
+
+label {
+  font-weight: 700;
+}
+
+
+
+.input-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-top {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+}
+
+input[type="submit"] {
+  margin-top: 2em;
+  width: 30%;
+}
+
 </style>
