@@ -4,9 +4,11 @@
       v-if="userRole != 'maintenance'"
       :to="{ name: 'maintenance-request' }"
     >
-      <button v-if="userRole == 'tenant'">Make New Request</button>
+      <button class="new-request-button" v-if="userRole == 'tenant'">Make New Request</button>
     </router-link>
-    <table>
+    <div class="maintenance-request-container">
+      <h2 class="maintenance-request-title">Maintenance Request Table</h2>
+      <table class="maintenance-request-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -46,6 +48,7 @@
         </td>
       </tr>
     </table>
+  </div>
   </div>
 </template>
 
@@ -111,5 +114,100 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+.maintenance-request-container {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #f8f9fa; /* set background color for container */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* add box-shadow */
+}
+
+.maintenance-request-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.new-request-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  float: right; /* align the button to the right */
+  margin-top: 0.3rem; /* adjust margin-top to align with the top of the table */
+}
+
+.maintenance-request-table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff; /* set background color for table */
+}
+
+.maintenance-request-table th,
+.maintenance-request-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.maintenance-request-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.maintenance-request-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.maintenance-request-table td:first-child {
+  width: 10%;
+}
+
+.maintenance-request-table td:nth-child(2) {
+  width: 20%;
+}
+
+.maintenance-request-table td:nth-child(3) {
+  width: 30%;
+}
+
+.maintenance-request-table td:nth-child(4) {
+  width: 10%;
+}
+
+.maintenance-request-table td:nth-child(5) {
+  width: 10%;
+}
+
+.maintenance-request-table td:nth-child(6) {
+  width: 10%;
+}
+
+.maintenance-request-table td:nth-child(7) {
+  width: 10%;
+}
+
+.maintenance-request-table td:last-child {
+  width: 10%;
+  text-align: center;
+}
+
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
 </style>
