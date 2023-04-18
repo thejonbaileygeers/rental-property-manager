@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <div id="details-container">
     <div id="details" class="card">
       <h1>Maintenance Request Details:</h1>
 
@@ -160,12 +160,43 @@ export default {
 </script>
 
 <style scoped>
-#content {
-  display: flex;
-}
-.card {
-  /* Parameters: x-offset, y-offset, blur-radius, spread-radius, color */
-  box-shadow: 0.2rem 0.2rem 5px 0px grey;
-  background-color: white;
-}
+  #details-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 2rem;
+    gap: 2rem;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+  }
+
+  #details {
+    flex: 2;
+  }
+
+  #user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  #maintenance-office {
+    margin-top: 1rem;
+  }
 </style>
