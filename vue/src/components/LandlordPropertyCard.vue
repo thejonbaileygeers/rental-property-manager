@@ -2,12 +2,20 @@
   <div class="card">
     <img :src="property.imgUrl" />
     <div class="info">
-      <h2>Property Details:</h2>
+      <div class="section-title">
+        <h2>Property Details</h2>
+        <router-link
+          :to="{ name: 'property-detail', params: { id: property.propertyId } }"
+        >
+          <button>Edit Property</button>
+        </router-link>
+      </div>
       <div id="property-details">
         <div class="text">
-          <p>Name: {{ property.name }}</p>
+          <p><span class="label">Name:</span>&nbsp; {{ property.name }}</p>
           <p>
-            Address: {{ property.streetAddress }}
+            <span class="label">Address:</span>&nbsp;
+            {{ property.streetAddress }}
             {{ property.unit ? "Unit #" + property.unit : "" }},
             {{ property.city }}, {{ property.state }}, {{ property.zip }}
           </p>
@@ -20,29 +28,43 @@
             <span>{{ property.squareFootage }} Sq Ft</span>
           </p>
         </div>
-        <router-link
-          :to="{ name: 'property-detail', params: { id: property.propertyId } }"
-        >
-          <button>View Details</button>
-        </router-link>
       </div>
-      <h2>Lease Details:</h2>
 
       <div id="lease-details">
-        <div class="text">
-          <p>
-            Tenant: {{ getTenantFromLeaseId.firstName ?? "Vacant" }}
-            {{ getTenantFromLeaseId.lastName }}
-          </p>
-          <p>Start Date: {{ propertyLease.startDate }}</p>
-          <p>End Date: {{ propertyLease.endDate }}</p>
-          <p>Rent: ${{ propertyLease.rentAmount }} /mo.</p>
+        <div class="section-title">
+          <h2>Lease Details</h2>
+          <router-link
+            :to="{ name: 'lease-details', params: { id: property.propertyId } }"
+          >
+            <button>{{ buttonText }}</button>
+          </router-link>
         </div>
-        <router-link
-          :to="{ name: 'lease-details', params: { id: property.propertyId } }"
-        >
-          <button>View Lease</button>
-        </router-link>
+        <p v-if="!propertyLease">There is no active lease for this property.</p>
+        <div class="text" v-if="propertyLease">
+          <div class="lease-row">
+            <p>
+              <span class="label">Tenant:</span>&nbsp;
+              {{ getTenantFromLeaseId.firstName ?? "Vacant" }}
+              {{ getTenantFromLeaseId.lastName }}
+            </p>
+            <p v-if="propertyLease">
+              <span class="label">Start Date:</span>&nbsp;
+              {{ propertyLease.startDate }}
+            </p>
+            <p v-if="propertyLease">
+              <span class="label">End Date:</span>&nbsp;
+              {{ propertyLease.endDate }}
+            </p>
+          </div>
+          <div class="lease-row">
+            <p v-if="propertyLease">
+              <span class="label">Rent:</span>&nbsp; ${{
+                propertyLease.rentAmount
+              }}
+              /mo.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -77,6 +99,9 @@ export default {
         (ln) => ln.propertyId === this.property.propertyId
       );
     },
+    buttonText() {
+      return this.propertyLease ? "Edit Lease" : "Create Lease";
+    },
   },
 };
 </script>
@@ -103,9 +128,43 @@ export default {
 .info {
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 }
 
 img {
   width: 20rem;
 }
+
+h2 {
+  display: block;
+  text-align: left;
+  margin: 10px 0;
+}
+
+.lease-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: 600;
+  vertical-align: bottom;
+  line-height: 19px;
+}
+
+i {
+  margin-right: 0.5rem;
+}
+
+/* .lease-row p {
+  display: flex;
+  align-items: center;
+} */
 </style>

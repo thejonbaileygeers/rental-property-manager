@@ -12,7 +12,6 @@ import MaintRequestService from "./services/MaintRequestService.js";
 import UserService from "./services/UserService.js";
 import LeaseService from "./services/LeaseService.js";
 
-
 export default {
   data() {
     return {
@@ -60,6 +59,11 @@ export default {
         //Todo: Add more appropriate error handling
         console.log(error);
       });
+  },
+  mounted() {
+    let tag = document.createElement("script");
+    tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
+    document.head.appendChild(tag);
   },
 };
 </script>
