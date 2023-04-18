@@ -3,13 +3,14 @@
     <div id="overall" class="text-center">
       <form @submit.prevent="updateForm()">
         <div class="addPropertyContainer">
-          <div id="tippytop">
+          <div id="topRibbon">
             <div id="buttonWrapper">
               <router-link :to="{ name: 'landlord-portal' }">
                 <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
               </router-link>
             </div>
             <h1>Update Property</h1>
+            <div id="emptyDiv"></div>
           </div>
           <div class="addPropertyForm">
             <div id="propertyNameContainer">
@@ -273,6 +274,12 @@ export default {
         });
     },
   },
+
+  mounted() {
+    let tag = document.createElement("script");
+    tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
+    document.head.appendChild(tag);
+  },
 };
 </script>
 
@@ -469,7 +476,7 @@ button {
   order: -1;
 }
 
-#tippytop {
+#topRibbon {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -477,17 +484,25 @@ button {
 }
 
 #buttonWrapper {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center;
   align-items: center;
   margin-right: auto;
-  margin-left: 20px;
+  margin-left: 20px; */
+  flex: 1 1 auto;
+  max-width: 32px;
 }
 
 h1 {
   margin: 0;
   text-align: center;
-  flex: 1;
-  margin-left: -64;
+  flex: 2 1 auto;
+  max-width: 100%;
+  /* margin-left: -64px; */
+}
+
+#emptyDiv {
+  flex: 1 1 auto;
+  max-width: 32px;
 }
 </style>
