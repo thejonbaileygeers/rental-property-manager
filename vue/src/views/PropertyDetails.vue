@@ -1,10 +1,16 @@
 <template>
   <div>
-    <h1>Update Property</h1>
-
     <div id="overall" class="text-center">
       <form @submit.prevent="updateForm()">
         <div class="addPropertyContainer">
+          <div id="tippytop">
+            <div id="buttonWrapper">
+              <router-link :to="{ name: 'landlord-portal' }">
+                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+              </router-link>
+            </div>
+            <h1>Update Property</h1>
+          </div>
           <div class="addPropertyForm">
             <div id="propertyNameContainer">
               <div id="propertyNameItem">
@@ -195,7 +201,7 @@
             </div>
             <div id="urlContainer">
               <ValidationProvider rules="required" id="urlContainer">
-                <label for="url">Url</label>
+                <label for="url">Image URL</label>
                 <input
                   type="text"
                   name=""
@@ -432,7 +438,7 @@ label {
 div.addPropertyForm {
   display: flex;
   flex-direction: column;
-  padding-top: 5em;
+  /* padding-top: 5em; */
 }
 
 #descriptionContainer {
@@ -456,5 +462,32 @@ textarea {
 
 button {
   margin: 3em 0;
+}
+
+#back {
+  color: black;
+  order: -1;
+}
+
+#tippytop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-grow: 1; */
+}
+
+#buttonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  flex: 1;
+  margin-left: -64;
 }
 </style>
