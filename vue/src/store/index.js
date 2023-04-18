@@ -75,12 +75,11 @@ export default new Vuex.Store({
       const index = state.requests.indexOf(match);
       state.requests.splice(index, 1, request);
     },
-    DEACTIVATE_LEASE(state, lease) {
+    DELETE_LEASE(state, propertyId) {
       const index = state.leases.indexOf(state.leases.find((ls) => {
-        return ls.leaseId == lease.leaseId;
+        return ls.propertyId == propertyId;
       }));
-      lease.active = false;
-      state.index.splice(index, 1, lease);
+      state.leases.splice(index, 1);
     },
     CREATE_LEASE(state, lease) {
       state.leases.push(lease);

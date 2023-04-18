@@ -11,5 +11,9 @@ export default {
 
     updateLease(leaseId, lease) {
         return axios.put(`/leases/${leaseId}`, lease);
+    },
+
+    deleteLease(leaseId) {
+        return axios.delete(`/leases/${leaseId}`);
     }
 }
