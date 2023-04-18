@@ -20,7 +20,7 @@
 
               <div class="featuresContainer">
                 <div id="sqFootageContainer">
-                  <label for="sqFootage">ft 2</label>
+                  <label for="sqFootage">Sq Ft</label>
                   <input
                     type="text"
                     name=""
@@ -255,14 +255,12 @@ export default {
   },
   methods: {
     updateForm() {
-
       propertyService
         .updateProperty(this.property.propertyId, this.property)
         .then((response) => {
           console.log(response);
-            this.$store.commit("UPDATE_PROPERTY", this.property);
-            this.$router.push({ name: "landlord-portal" });
-
+          this.$store.commit("UPDATE_PROPERTY", this.property);
+          this.$router.push({ name: "landlord-portal" });
         })
         .catch((error) => {
           console.log("failed to add new property", error);
