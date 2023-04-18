@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div class="#overall">
+    <div id="overall">
       <div id="add-maintenance-container">
         <form @submit.prevent="createrequest" id="maintenance-request-form">
+          <h1>New Maintenance Request</h1>
+          
           <div class="input-label">
             <label for="title">Title</label>
           </div>
@@ -32,7 +34,7 @@
             <router-link :to="{ name: 'tenant-portal' }" id="cancel-btn">
               <button>Cancel</button>
             </router-link>
-            <button type="submit" id="create-request">SUBMIT</button>
+            <button type="submit" id="create-request">Submit</button>
           </div>
         </form>
       </div>
@@ -78,20 +80,29 @@ label {
   line-height: 
 }
 
-<style>
+<style scoped>
 #overall {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Roboto", Sans-serif;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
 }
 
 label {
   font-weight: 700;
 }
 
-input, select, textarea {
+input,
+select {
+  border: solid 2px black;
+  border-radius: 0.5em;
+  height: 2em;
+}
+
+textarea {
+  height: 8em;
   border: solid 2px black;
   border-radius: 0.5em;
 }
@@ -106,11 +117,11 @@ input, select, textarea {
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
   max-width: 700px;
-  height: 100%;
+  width: 50rem;
 
 }
 
-#add-maintenance-container > div {
+#add-maintenance-container>div {
   margin-top: 0.5em;
 }
 
@@ -123,6 +134,8 @@ input, select, textarea {
   margin: auto;
 
 }
+
+;
 
 textarea {
   width: 99%;
@@ -148,10 +161,18 @@ textarea {
 
 #cancel-btn {
   width: 25%;
+  margin-right: 1rem;
 }
 
 #create-request {
   width: 25%;
 }
 
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  align-items: flex-start;
+  width: 25%;
+}
 </style>
