@@ -1,10 +1,13 @@
 <template>
   <div>
-    <form @submit.prevent="deleteLease">
+    <router-link :to="{ name: 'home' }">
+      <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+    </router-link>
+    <form @submit.prevent="newLease ? createLease() : deleteLease()">
       <div class="input-label">
         <label for="tenant">Tenant</label>
       </div>
-      <select v-model="lease.tenantId" :disabled="newLease == false">
+      <select v-model="lease.tenantId" :disabled="newLease == false" required>
         <option v-if="currentTenant" :value="currentTenant.id">
           {{ currentTenant.firstName }} {{ currentTenant.lastName }} ({{
             currentTenant.username
@@ -17,16 +20,34 @@
       <div class="input-label">
         <label for="start">Start Date</label>
       </div>
-      <input type="date" id="start" v-model="lease.startDate" />
+      <input
+        type="date"
+        id="start"
+        v-model="lease.startDate"
+        :disabled="newLease == false"
+        required
+      />
       <div class="input-label">
         <label for="date">End Date</label>
       </div>
-      <input type="date" id="date" v-model="lease.endDate" />
+      <input
+        type="date"
+        id="date"
+        v-model="lease.endDate"
+        :disabled="newLease == false"
+        required
+      />
       <div class="input-label">
         <label for="rent">Rent Price</label>
       </div>
-      <input type="money" id="rent" v-model="lease.rentAmount" />
-      <input type="submit" value="KILL LEASE" />
+      <input
+        type="money"
+        id="rent"
+        v-model="lease.rentAmount"
+        :disabled="newLease == false"
+        required
+      />
+      <input type="submit" :value="buttonText" />
     </form>
   </div>
 </template>
@@ -57,9 +78,26 @@ export default {
   },
   methods: {
     createLease() {
-      LeaseService.createLease(this.lease);
+      LeaseService.createLease(this.lease)
+        .then((response) => {
+          if (response.status) {
+            this.$store.commit("CREATE_LEASE", response.data);
+            this.newLease = false;
+          }
+        })
+        .catch((error) => {
+          //Todo: Appropriate Error Handling
+          console.log(error);
+        });
     },
     deleteLease() {
+      if (
+        !confirm(
+          "Are you sure you would like to deactivate this lease? This action cannot be undone."
+        )
+      ) {
+        return;
+      }
       LeaseService.deleteLease(this.lease.leaseId)
         .then((response) => {
           if (response.status) {
@@ -89,6 +127,14 @@ export default {
         return usr.id == this.lease.tenantId;
       });
     },
+    buttonText() {
+      return this.newLease ? "Create New Lease" : "Deactivate Lease";
+    },
+  },
+  mounted() {
+    let tag = document.createElement("script");
+    tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
+    document.head.appendChild(tag);
   },
 };
 </script>

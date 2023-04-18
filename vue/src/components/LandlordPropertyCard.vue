@@ -4,12 +4,14 @@
     <div class="info">
       <h1>Address: {{ property.streetAddress }}</h1>
       <h2>
-        Tenant: {{  getTenantFromLeaseId.firstName ??  'Vacant' }} {{ getTenantFromLeaseId.lastName }}
+        Tenant: {{ getTenantFromLeaseId.firstName ?? "Vacant" }}
+        {{ getTenantFromLeaseId.lastName }}
+        <router-link
+          :to="{ name: 'lease-details', params: { id: property.propertyId } }"
+        >
+          <button>View Lease</button>
+        </router-link>
         <!--Todo: ADD TENANT INFO-->
-      </h2>
-      <h2>
-        Rent Status:
-        <!--ADD RENT STATUS BASED ON TRANSACTIONS-->
       </h2>
       <router-link
         :to="{ name: 'property-detail', params: { id: property.propertyId } }"
@@ -31,15 +33,19 @@ export default {
   props: ["property"],
   computed: {
     getTenantFromLeaseId() {
-      const lease = this.$store.state.leases.find(ln => ln.propertyId === this.property.propertyId);
-      if (!lease) return 'open';
-      return this.$store.state.users.find(u => {
-        if(u.id === lease.tenantId) {
-          return u;
-        }
-      }) ?? 'None';
-    }
-  }
+      const lease = this.$store.state.leases.find(
+        (ln) => ln.propertyId === this.property.propertyId
+      );
+      if (!lease) return "open";
+      return (
+        this.$store.state.users.find((u) => {
+          if (u.id === lease.tenantId) {
+            return u;
+          }
+        }) ?? "None"
+      );
+    },
+  },
 };
 </script>
 
@@ -56,13 +62,11 @@ export default {
   background-color: white;
 }
 
-
 .card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
-
 
 .info {
   display: flex;

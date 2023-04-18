@@ -24,13 +24,14 @@ public class JdbcLeaseDao implements LeaseDao {
     @Override
     public int create(Lease lease) {
         String sql = "INSERT INTO leases (tenant_id, property_id, rent_amount, start_date, end_date) VALUES (?,?,?,?,?) RETURNING lease_id";
-        int leaseId = jdbcTemplate.queryForObject(sql, Integer.class, lease.getTenantId(), lease.getPropertyId(), lease.getRentAmount(), lease.getStartDate(), lease.getEndDate());
+        int leaseId = jdbcTemplate.queryForObject(sql, Integer.class, lease.getTenantId(),
+                lease.getPropertyId(), lease.getRentAmount(), lease.getStartDate(), lease.getEndDate());
         return leaseId;
     }
 
     public Lease getLeaseById(int id) {
         String sql = "SELECT * FROM leases WHERE lease_id = ?;";
-        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
         Lease lease = null;
         if(rs.next()) {
             lease = new Lease();
