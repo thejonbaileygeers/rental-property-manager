@@ -3,7 +3,9 @@
     <div class="card">
       <img :src="property.imgUrl" />
       <div class="text">
-        <h2 id="name">{{ property.name }}</h2>
+        <h2>Your Home</h2>
+
+        <h3 id="name">{{ property.name }}</h3>
         <span id="address"
           >{{ property.streetAddress }}, {{ property.city }},
           {{ property.state }} {{ property.zip }}</span
@@ -32,6 +34,15 @@
             >
           </div>
         </div>
+
+        <h3>Lease Info:</h3>
+        <div id="lease-details">
+          <div class="lease-text">
+            <p>Start Date: {{ currentLease.startDate }}</p>
+            <p>End Date: {{ currentLease.endDate }}</p>
+            <p>Rent: ${{ currentLease.rentAmount }} /mo.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +55,11 @@ export default {
     owner() {
       return this.$store.state.users.find((ele) => {
         return ele.id == this.property.ownerId;
+      });
+    },
+    currentLease() {
+      return this.$store.state.leases.find((lease) => {
+        return lease.tenantId == this.$store.state.user.id;
       });
     },
   },
