@@ -4,10 +4,18 @@
       <h1>Maintenance Request Details:</h1>
 
       <h2>
-        ID: {{ request.requestId }} {{ request.title }} Date Opened:
-        {{ request.dateRequested }}
+        ID: {{ request.requestId }} {{ request.title }}
       </h2>
-      <h3>Priority: {{ request.priority }} Status: {{ request.status }}</h3>
+      <h2>
+        Date Opened:
+        {{ request.dateRequested }}
+        </h2>
+      <h3>
+        Priority: {{ request.priority }} 
+      </h3>
+      <h3>
+        Status: {{ request.status }}
+        </h3>
       <h3>Request Details:</h3>
       <p>{{ request.description }}</p>
       <h3>
@@ -39,7 +47,7 @@
         </div>
       </article>
       <article id="tenant-details" class="card" v-if="userRole != 'tenant'">
-        <p>Tenant Information:</p>
+        <h1>Tenant Information:</h1>
         <div class="tenant-name">
           <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
           <span class="tenant-info"
@@ -58,10 +66,10 @@
         id="maintenance-details"
         class="card"
       >
-        <p>Maintenance Information:</p>
+        <h1>Maintenance Information:</h1>
         <div v-if="maintenance" class="maintenance-name">
           <h3>Assigned Maintenance Employee:</h3>
-          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+          <i class="fa-solid fa-user"> </i>&nbsp;&nbsp;
           <span class="maintenance-info"
             >{{ maintenance.firstName }} {{ maintenance.lastName }}</span
           >
@@ -160,7 +168,7 @@ export default {
 </script>
 
 <style scoped>
-  #details-container {
+   #details-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -170,7 +178,7 @@ export default {
     font-family: "Roboto", sans-serif;
   }
 
-  .card {
+   .card {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background-color: white;
     border: 1px solid black;
@@ -179,24 +187,90 @@ export default {
     width: 100%;
   }
 
-  #details {
-    flex: 2;
-  }
-
-  #user-details {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex: 1;
-  }
-
-  h1,
-  h2,
-  h3 {
+  #user-details article {
     margin-bottom: 1rem;
+  }
+
+   #details {
+    width: 60%;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  #details h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  #maintenance-details input[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: #cccccc;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #user-details .landlord-name, #user-details .tenant-name, #user-details .maintenance-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  #user-details article {
+    margin-bottom: 1rem;
+  }
+
+  #user-details h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  #user-details h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  #user-details .landlord-info, #user-details .tenant-info, #user-details .maintenance-info {
+    font-size: 1rem;
+  }
+
+  #maintenance-details select {
+    font-size: 1rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #details button {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+
+  #maintenance-details input[type="submit"]:hover {
+    background-color: #ebebeb;
   }
 
   #maintenance-office {
     margin-top: 1rem;
+  }
+
+  #maintenance-office h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
   }
 </style>
