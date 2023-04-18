@@ -1,12 +1,16 @@
 <template>
   <div>
-    <router-link :to="{ name: 'home' }">
-      <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
-    </router-link>
     <div id="overall" class="text-center">
       <form @submit.prevent="submitForm()">
         <div class="addPropertyContainer">
-          <h1>Add New Property</h1>
+          <div id="tippytop">
+            <div id="buttonWrapper">
+              <router-link :to="{ name: 'landlord-portal' }">
+                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+              </router-link>
+            </div>
+            <h1>Add New Property</h1>
+          </div>
           <div v-if="errors.length > 0" id="error-container">
             <ul>
               <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
@@ -210,7 +214,7 @@
             </div>
             <div id="urlContainer">
               <ValidationProvider rules="required" id="urlContainer">
-                <label for="url">Url</label>
+                <label for="url">Image URL</label>
                 <input
                   type="text"
                   name=""
@@ -489,5 +493,32 @@ textarea {
 
 button {
   margin: 3em 0;
+}
+
+#back {
+  color: black;
+  order: -1;
+}
+
+#tippytop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-grow: 1; */
+}
+
+#buttonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  flex: 1;
+  margin-left: -32px;
 }
 </style>
