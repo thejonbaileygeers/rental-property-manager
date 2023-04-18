@@ -14,6 +14,7 @@ import Payment from '../views/Payment.vue'
 import NewMaintenanceRequest from '../views/NewMaintenanceRequest.vue'
 import MaintenanceRequestDetails from '../views/MaintenanceRequestDetails.vue'
 import addPropertyForm from '../views/addPropertyForm.vue'
+import LeaseDetails from '../views/LeaseDetails.vue'
 
 
 
@@ -152,6 +153,15 @@ const router = new Router({
       meta: {
         requiresAuth: true,
         requiredType: ['maintenance']
+      }
+    },
+    {
+      path: '/property-detail/:id/lease',
+      name: "lease-details",
+      component: LeaseDetails,
+      meta: {
+        requiresAuth: true,
+        requiredType: ['landlord']
       }
     }
   ],

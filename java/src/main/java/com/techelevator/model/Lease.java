@@ -12,6 +12,8 @@ public class Lease {
    private int rentAmount;
    private LocalDate startDate;
    private LocalDate endDate;
+   private boolean isActive;
+
 
     public Lease() {
     }
@@ -71,6 +73,22 @@ public class Lease {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     @Override

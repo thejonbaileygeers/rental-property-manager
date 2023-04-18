@@ -4,7 +4,7 @@
       v-if="userRole != 'maintenance'"
       :to="{ name: 'maintenance-request' }"
     >
-      <button>Make New Request</button>
+      <button v-if="userRole == 'tenant'">Make New Request</button>
     </router-link>
     <table>
       <thead>

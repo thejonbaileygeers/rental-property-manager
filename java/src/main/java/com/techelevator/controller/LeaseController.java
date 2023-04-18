@@ -17,9 +17,14 @@ public class LeaseController {
     }
 
     @PostMapping(path = "/leases")
-    public int create(@RequestBody Lease lease) {
+    public Lease create(@RequestBody Lease lease) {
+//        Lease existingLease = leaseDao.getLeaseByPropertyId(lease.getPropertyId());
+//        if (existingLease != null) {
+//            existingLease.setActive(false);
+//            leaseDao.updateLease(existingLease.getId(), existingLease);
+//        }
         int leaseId = leaseDao.create(lease);
-        return leaseId;
+        return leaseDao.getLeaseById(leaseId);
     }
 
     @GetMapping(path = "/leases")
@@ -35,5 +40,10 @@ public class LeaseController {
     @PutMapping(path="/leases/{id}")
     public void updateLease(@PathVariable int id, @RequestBody Lease updatedLease ) {
         leaseDao.updateLease(id, updatedLease);
+    }
+
+    @DeleteMapping("/leases/{id}")
+    public void deleteLease(@PathVariable int id) {
+        leaseDao.deleteLease(id);
     }
 }

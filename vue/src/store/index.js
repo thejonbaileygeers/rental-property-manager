@@ -50,7 +50,7 @@ export default new Vuex.Store({
     ADD_PROPERTY(state, property) {
       state.properties.push(property);
     },
-    UPDATE_PROPERTY(state, property ) {
+    UPDATE_PROPERTY(state, property) {
 
       const match = state.properties.find((prop) => {
         return prop.propertyId == property.propertyId;
@@ -74,6 +74,16 @@ export default new Vuex.Store({
       });
       const index = state.requests.indexOf(match);
       state.requests.splice(index, 1, request);
+    },
+    DEACTIVATE_LEASE(state, lease) {
+      const index = state.leases.indexOf(state.leases.find((ls) => {
+        return ls.leaseId == lease.leaseId;
+      }));
+      lease.active = false;
+      state.index.splice(index, 1, lease);
+    },
+    CREATE_LEASE(state, lease) {
+      state.leases.push(lease);
     }
   },
   getters: {
