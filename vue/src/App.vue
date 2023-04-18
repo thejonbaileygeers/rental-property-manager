@@ -77,4 +77,17 @@ export default {
 #view {
   margin-top: 5em;
 }
+
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
 </style>
