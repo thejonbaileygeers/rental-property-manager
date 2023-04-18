@@ -2,22 +2,48 @@
   <div class="card">
     <img :src="property.imgUrl" />
     <div class="info">
-      <h1>Address: {{ property.streetAddress }}</h1>
-      <h2>
-        Tenant: {{ getTenantFromLeaseId.firstName ?? "Vacant" }}
-        {{ getTenantFromLeaseId.lastName }}
+      <h2>Property Details:</h2>
+      <div id="property-details">
+        <div class="text">
+          <p>Name: {{ property.name }}</p>
+          <p>
+            Address: {{ property.streetAddress }}
+            {{ property.unit ? "Unit #" + property.unit : "" }},
+            {{ property.city }}, {{ property.state }}, {{ property.zip }}
+          </p>
+          <p>
+            <span
+              >{{ property.bedrooms }} &nbsp;<i class="fa-solid fa-bed" /></span
+            ><span
+              >{{ property.bathrooms }} &nbsp;<i class="fa-solid fa-bath"
+            /></span>
+            <span>{{ property.squareFootage }} Sq Ft</span>
+          </p>
+        </div>
+        <router-link
+          :to="{ name: 'property-detail', params: { id: property.propertyId } }"
+        >
+          <button>View Details</button>
+        </router-link>
+      </div>
+      <h2>Lease Details:</h2>
+
+      <div id="lease-details">
+        <div class="text">
+          <p>
+            Tenant: {{ getTenantFromLeaseId.firstName ?? "Vacant" }}
+            {{ getTenantFromLeaseId.lastName }}
+          </p>
+          <p>Start Date: {{ propertyLease.startDate }}</p>
+          <p>End Date: {{ propertyLease.endDate }}</p>
+          <p>Rent: ${{ propertyLease.rentAmount }} /mo.</p>
+        </div>
         <router-link
           :to="{ name: 'lease-details', params: { id: property.propertyId } }"
         >
           <button>View Lease</button>
         </router-link>
-        <!--Todo: ADD TENANT INFO-->
-      </h2>
-      <router-link
-        :to="{ name: 'property-detail', params: { id: property.propertyId } }"
-      >
-        <button>View Details</button>
-      </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +54,7 @@ export default {
     return {
       tenant: {},
       transactions: {},
+      lease: {},
     };
   },
   props: ["property"],
@@ -43,6 +70,11 @@ export default {
             return u;
           }
         }) ?? "None"
+      );
+    },
+    propertyLease() {
+      return this.$store.state.leases.find(
+        (ln) => ln.propertyId === this.property.propertyId
       );
     },
   },
