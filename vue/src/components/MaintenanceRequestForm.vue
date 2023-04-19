@@ -1,20 +1,30 @@
 <template>
   <div>
-    <div id="overall">
+    <div id="request-maintenance" class="text-center">
       <div id="add-maintenance-container">
         <form @submit.prevent="createRequest" id="maintenance-request-form">
+          <div id="logo-container">
+            <img
+              src="../assets/templatelogo.png"
+              alt="Logo"
+              class="registerlogo"
+            />
+          </div>
           <h1>New Maintenance Request</h1>
-          
-          <div class="input-label">
-            <label for="title">Title</label>
+          <p class="subheading">Help is on the way!</p>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="title">Title</label>
+            </div>
+            <input type="text" id="title" v-model="request.title" required />
           </div>
-          <input type="text" id="title" v-model="request.title" required />
-          <div class="input-label">
-            <label for="desc">Description</label>
+          <div class="form-input-group">
+            <div class="input-label">
+              <label for="desc">Description</label>
+            </div>
+            <textarea id="desc" v-model="request.description" required />
           </div>
-          <textarea id="desc" v-model="request.description" required />
-
-          <div class="options-container">
+          <div class="form-input-group">
             <div class="input-label">
               <label for="priority">Priority</label>
             </div>
@@ -23,14 +33,14 @@
               <option :value="'medium'">medium</option>
               <option :value="'low'">low</option>
             </select>
+          </div>
+          <div class="form-input-group">
             <div class="input-label">
               <label for="repeat">Repeat issue</label>
             </div>
             <input type="checkbox" id="repeat" v-model="request.repeatissue" />
-
           </div>
-
-          <div class="buttons-container">
+          <div id="button-container">
             <router-link :to="{ name: 'tenant-portal' }" id="cancel-btn">
               <button>Cancel</button>
             </router-link>
@@ -76,66 +86,62 @@ export default {
 };
 </script>
 
-label {
-  line-height: 
-}
+
 
 <style scoped>
-#overall {
+#request-maintenance {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Roboto", Sans-serif;
   height: 100vh;
-  width: 100%;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin: 10rem 0;
 }
-
-label {
-  font-weight: 700;
-}
-
-input,
-select {
-  border: solid 2px black;
-  border-radius: 0.5em;
-  height: 2em;
-}
-
-textarea {
-  height: 8em;
-  border: solid 2px black;
-  border-radius: 0.5em;
-}
-
-
 
 #add-maintenance-container {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin: auto;
   padding: 20px;
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
-  max-width: 700px;
-  width: 50rem;
-
+  width: 30rem;
 }
 
-#add-maintenance-container>div {
-  margin-top: 0.5em;
-}
-
-#maintenance-request-form {
+.form-input-group {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  width: 70%;
-  margin: auto;
-
 }
 
-;
+.input-label {
+  margin-bottom: 0.5rem;
+  margin-right: auto;
+}
+
+label {
+  margin-right: 6.5rem;
+}
+
+h1 {
+  text-align: center;
+  font: 36px;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.registerlogo {
+  display: flex;
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
+}
 
 textarea {
   width: 99%;
@@ -143,29 +149,17 @@ textarea {
   resize: none;
 }
 
-
-.buttons-container * {
-  width: 100%;
-}
-
-
-.input-label {
-  margin-top: 1em;
-}
-
-.buttons-container {
+#logo-container {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
+  justify-content: center;
 }
 
-#cancel-btn {
-  width: 25%;
-  margin-right: 1rem;
-}
-
-#create-request {
-  width: 25%;
+.registerlogo {
+  display: flex;
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
 }
 
 .options-container {
@@ -174,5 +168,19 @@ textarea {
   align-self: flex-start;
   align-items: flex-start;
   width: 25%;
+}
+
+#repeat {
+  align-self: flex-start;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  width: 100px;
 }
 </style>
