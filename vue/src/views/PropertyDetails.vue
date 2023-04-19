@@ -326,12 +326,10 @@ export default {
 
 .addPropertyContainer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* margin: auto; */
   padding: 20px;
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
-  /* max-width: 1000px; */
 }
 
 #app > div {
@@ -470,14 +468,12 @@ textarea {
   width: 99%;
   height: 8em;
   resize: none;
-  /* border: 2px solid black; */
 }
 
 #h1-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-top: 21.44px;
 }
 

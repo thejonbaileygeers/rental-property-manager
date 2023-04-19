@@ -2,15 +2,12 @@
   <div>
     <div id="form-container">
       <div id="lease-details-form">
-      
-          <div id="logo-container">
-            <img
-              src="../assets/templatelogo.png"
-              alt="Logo"
-              class="registerlogo"
-            />
-          </div>
-        <h1>Lease Details</h1>
+
+        <div id="logo-container">
+          <img src="../assets/templatelogo.png" alt="Logo" class="registerlogo" />
+
+          <h1>Lease Details</h1>
+        </div>
         <form @submit.prevent="newLease ? createLease() : deleteLease()">
           <div class="form-top">
             <div class="input-label">
@@ -151,12 +148,16 @@ export default {
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
-  margin-top: 100px;
-  height: 30vh;
+  margin-top: 200px;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 30em;
+}
+
+#form-container {
+  height: 25em;
 }
 
 #lease-details-form {
@@ -186,18 +187,24 @@ label {
 .input-label {
   display: flex;
   flex-direction: column;
+  margin-top: 2em;
+}
+
+#form-container {
+  height: 40em; 
 }
 
 .form-top {
   display: flex;
-  width: 80%;
+  flex-direction: column;
+  width: 50%;
   justify-content: space-around;
 }
 
 .buttons-container {
   display: flex;
   width: 100%;
-  justify-content: right;
+  justify-content: center;
   margin-top: 2em;
 }
 
@@ -207,16 +214,15 @@ label {
 
 #logo-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .registerlogo {
   display: flex;
-  max-width: 20%;
+  /* max-width: 20%; */
   height: auto;
   border-radius: 20%;
-  margin-left: 35px;
+  width: 80px;
 }
-
-
 </style>

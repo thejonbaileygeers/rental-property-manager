@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="register" class="text-center">
-      <div class="register-container">
+      <div id="register-container">
         <form @submit.prevent="register">
           <img
             src="../assets/templatelogo.png"
@@ -213,6 +213,15 @@ export default {
   margin: 10rem 0;
 }
 
+#register-container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  border-radius: 0.5em;
+  width: 30rem;
+}
+
 .form-input-group {
   margin-bottom: 1rem;
   display: flex;
@@ -222,15 +231,6 @@ export default {
 .input-label {
   margin-bottom: 0.5rem;
   margin-right: auto;
-}
-
-.register-container {
-  /* border: 1px solid black; */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0.2rem 0.2rem 5px 0px grey;
-  border-radius: 0.5em;
 }
 
 label {
