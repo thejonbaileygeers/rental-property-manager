@@ -4,7 +4,7 @@
       <div id="header">
         <h1 class="maintenance-request-title">Maintenance Requests</h1>
         <router-link
-          v-if="userRole != 'maintenance'"
+          v-if="userRole == 'tenant'"
           :to="{ name: 'maintenance-request' }"
         >
           <button class="new-request-button">Make New Request</button>
