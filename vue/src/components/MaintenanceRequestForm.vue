@@ -76,9 +76,6 @@ export default {
 };
 </script>
 
-label {
-  line-height: 
-}
 
 <style scoped>
 #overall {
@@ -108,7 +105,6 @@ textarea {
 }
 
 
-
 #add-maintenance-container {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: auto;
@@ -135,7 +131,6 @@ textarea {
 
 }
 
-;
 
 textarea {
   width: 99%;
@@ -175,4 +170,9 @@ textarea {
   align-items: flex-start;
   width: 25%;
 }
+
+#cancel-btn button {
+  margin-right: 2em;
+}
+
 </style>
