@@ -1,5 +1,10 @@
 <template>
-  <div id="details-container">
+<div id="details-container">
+  <div class="smallRowElement">
+              <router-link :to="{ name: 'landlord-portal' }">
+                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+              </router-link>
+            </div>
     <div id="details" class="card">
       <h1>Maintenance Request Details</h1>
 
@@ -175,6 +180,33 @@ export default {
   gap: 2rem;
   font-family: "Roboto", sans-serif;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
+}
+
+.fa-circle-chevron-left {
+  color: black;
+  margin-top: 20px;
+}
+
+.back-button {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  position: relative;
+  padding-left: 20px;
+}
+
+.arrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  color:black;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #333;
 }
 
 .card {
