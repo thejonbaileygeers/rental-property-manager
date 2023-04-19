@@ -1,7 +1,7 @@
 <template>
   <div id="details-container">
     <div id="details" class="card">
-      <h1>Maintenance Request Details:</h1>
+      <h1>Maintenance Request Details</h1>
 
       <h2>
         ID: {{ request.requestId }} {{ request.title }}
@@ -47,7 +47,7 @@
         </div>
       </article>
       <article id="tenant-details" class="card" v-if="userRole != 'tenant'">
-        <h1>Tenant Information:</h1>
+        <h1>Tenant Information</h1>
         <div class="tenant-name">
           <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
           <span class="tenant-info"
@@ -66,9 +66,9 @@
         id="maintenance-details"
         class="card"
       >
-        <h1>Maintenance Information:</h1>
+        <h1>Maintenance Information</h1>
+        <h3>Assigned Maintenance Employee:</h3>
         <div v-if="maintenance" class="maintenance-name">
-          <h3>Assigned Maintenance Employee:</h3>
           <i class="fa-solid fa-user"> </i>&nbsp;&nbsp;
           <span class="maintenance-info"
             >{{ maintenance.firstName }} {{ maintenance.lastName }}</span
@@ -170,7 +170,7 @@ export default {
 <style scoped>
    #details-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     height: 100vh;
     padding: 2rem;
@@ -183,7 +183,7 @@ export default {
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 20px;
+    padding: 1rem;
     width: 100%;
   }
 
@@ -207,8 +207,8 @@ export default {
 
   #maintenance-details input[type="submit"] {
     padding: 0.5rem 1rem;
-    background-color: #cccccc;
-    color: rgb(0, 0, 0);
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -233,7 +233,7 @@ export default {
   #user-details h3 {
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   #user-details .landlord-info, #user-details .tenant-info, #user-details .maintenance-info {
@@ -242,7 +242,7 @@ export default {
 
   #maintenance-details select {
     font-size: 1rem;
-    padding: 0.5rem;
+    padding: .3rem;
     gap: 0.5rem;
     margin-top: 0.5rem;
     margin-right: 0.5rem;
@@ -250,18 +250,18 @@ export default {
   }
 
   #details button {
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
-    color: white;
+    padding: 1rem;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
     border: none;
-    border-radius: 4px;
+    border-radius: 1rem;
     cursor: pointer;
     margin-top: 1rem;
   }
 
 
   #maintenance-details input[type="submit"]:hover {
-    background-color: #ebebeb;
+    background-color: #0069d9;
   }
 
   #maintenance-office {
