@@ -217,8 +217,8 @@ export default {
 
 #maintenance-details input[type="submit"] {
   padding: 0.5rem 1rem;
-  background-color: #cccccc;
-  color: rgb(0, 0, 0);
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
   cursor: pointer;
