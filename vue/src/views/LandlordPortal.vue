@@ -55,6 +55,7 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 landlord-property-list {
