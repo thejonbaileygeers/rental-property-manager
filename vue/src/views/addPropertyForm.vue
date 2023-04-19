@@ -12,11 +12,6 @@
           </div>
 
           <div class="row">
-            <div class="smallRowElement">
-              <router-link :to="{ name: 'landlord-portal' }">
-                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
-              </router-link>
-            </div>
             <h1 class="mainRowElement">Add New Property</h1>
             <div class="smallRowElement"></div>
           </div>
@@ -249,6 +244,9 @@
               </ValidationProvider>
             </div>
             <div id="button-container">
+              <router-link :to="{ name: 'tenant-portal' }" id="cancel-btn">
+                <button>Cancel</button>
+              </router-link>
               <button type="submit" id="submit">Submit</button>
             </div>
           </div>
@@ -524,10 +522,14 @@ textarea {
 #button-container {
   padding-top: 1em;
   margin: 0px;
+  display: flex;
+  justify-items: center;
+  gap: 2rem;
 }
 
 button {
   margin: 0em 0;
+  width: 8rem;
 }
 
 #back {
@@ -539,6 +541,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-top: 21.44px;
   /* flex-grow: 1; */
 }
@@ -561,8 +564,7 @@ button {
 .mainRowElement {
   margin: 0;
   text-align: center;
-  flex: 2 1 auto;
-  max-width: 100%;
+  width: 100%;
   /* margin-left: -64px; */
 }
 
