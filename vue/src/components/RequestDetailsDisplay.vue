@@ -166,32 +166,28 @@ export default {
 </script>
 
 <style scoped>
-   #details-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    padding: 2rem;
-    gap: 2rem;
-    font-family: "Roboto", sans-serif;
-  }
-
-   .card {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 1rem;
-    width: 100%;
-  }
+#details-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+}
 
 .card {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 20px;
-  width: 100%;
+  padding: 1rem;
+}
+
+.card h1 {
+  margin-top: 0.4rem;
 }
 
 #user-details article {
@@ -203,17 +199,17 @@ export default {
   padding: 1rem;
   border: 1px solid black;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
 }
 
-  #maintenance-details input[type="submit"] {
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+#maintenance-details input[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 #maintenance-details input[type="submit"] {
   padding: 0.5rem 1rem;
@@ -236,11 +232,11 @@ export default {
   margin-bottom: 1rem;
 }
 
-  #user-details h3 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-  }
+#user-details h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
 
 #user-details h3 {
   font-size: 1rem;
@@ -248,24 +244,24 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-  #maintenance-details select {
-    font-size: 1rem;
-    padding: .3rem;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
+#maintenance-details select {
+  font-size: 1rem;
+  padding: 0.3rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
-  #details button {
-    padding: 1rem;
-    background-color: #007bff;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-  }
+#details button {
+  padding: 1rem;
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
 
 #details button {
   padding: 0.5rem 1rem;
@@ -277,9 +273,13 @@ export default {
   margin-top: 1rem;
 }
 
-  #maintenance-details input[type="submit"]:hover {
-    background-color: #0069d9;
-  }
+#maintenance-details h3 {
+  margin-bottom: 0.8rem;
+}
+
+#maintenance-details input[type="submit"]:hover {
+  background-color: #0069d9;
+}
 
 #maintenance-office {
   margin-top: 1rem;
@@ -288,6 +288,6 @@ export default {
 #maintenance-office h3 {
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 </style>
