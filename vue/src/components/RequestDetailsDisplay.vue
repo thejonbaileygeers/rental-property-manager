@@ -1,7 +1,7 @@
 <template>
   <div id="details-container">
     <div id="details" class="card">
-      <h1>Maintenance Request Details:</h1>
+      <h1>Maintenance Request Details</h1>
 
       <h2>ID: {{ request.requestId }} {{ request.title }}</h2>
       <h2>
@@ -64,9 +64,9 @@
         id="maintenance-details"
         class="card"
       >
-        <h1>Maintenance Information:</h1>
+        <h1>Maintenance Information</h1>
+        <h3>Assigned Maintenance Employee:</h3>
         <div v-if="maintenance" class="maintenance-name">
-          <h3>Assigned Maintenance Employee:</h3>
           <i class="fa-solid fa-user"> </i>&nbsp;&nbsp;
           <span class="maintenance-info"
             >{{ maintenance.firstName }} {{ maintenance.lastName }}</span
@@ -166,15 +166,24 @@ export default {
 </script>
 
 <style scoped>
-#details-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  padding: 2rem;
-  gap: 2rem;
-  font-family: "Roboto", sans-serif;
-}
+   #details-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 2rem;
+    gap: 2rem;
+    font-family: "Roboto", sans-serif;
+  }
+
+   .card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 100%;
+  }
 
 .card {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -197,16 +206,19 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-#details h2 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
+  #maintenance-details input[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
 #maintenance-details input[type="submit"] {
   padding: 0.5rem 1rem;
-  background-color: #cccccc;
-  color: rgb(0, 0, 0);
+  background-color: #007bff;
+  color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -224,11 +236,11 @@ export default {
   margin-bottom: 1rem;
 }
 
-#user-details h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+  #user-details h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
 
 #user-details h3 {
   font-size: 1rem;
@@ -236,20 +248,24 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-#user-details .landlord-info,
-#user-details .tenant-info,
-#user-details .maintenance-info {
-  font-size: 1rem;
-}
+  #maintenance-details select {
+    font-size: 1rem;
+    padding: .3rem;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-#maintenance-details select {
-  font-size: 1rem;
-  padding: 0.5rem;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  #details button {
+    padding: 1rem;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
 
 #details button {
   padding: 0.5rem 1rem;
@@ -261,9 +277,9 @@ export default {
   margin-top: 1rem;
 }
 
-#maintenance-details input[type="submit"]:hover {
-  background-color: #ebebeb;
-}
+  #maintenance-details input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
 
 #maintenance-office {
   margin-top: 1rem;
