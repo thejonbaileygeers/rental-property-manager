@@ -1,54 +1,58 @@
 <template>
   <div>
-    <router-link
-      v-if="userRole != 'maintenance'"
-      :to="{ name: 'maintenance-request' }"
-    >
-      <button class="new-request-button" v-if="userRole == 'tenant'">Make New Request</button>
-    </router-link>
     <div class="maintenance-request-container">
-      <h2 class="maintenance-request-title">Maintenance Request Table</h2>
-      <table class="maintenance-request-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th v-if="userRole != 'tenant'">Address</th>
-          <th>Date Opened</th>
-          <th>Priority</th>
-          <th v-if="userRole == 'landlord'">Repeat Issue</th>
-          <th>Status</th>
-          <th>Date Complete</th>
-          <th></th>
+      <div id="header">
+        <h1 class="maintenance-request-title">Maintenance Requests</h1>
+        <router-link
+          v-if="userRole != 'maintenance'"
+          :to="{ name: 'maintenance-request' }"
+        >
+          <button class="new-request-button">Make New Request</button>
+        </router-link>
+      </div>
+      <h2 v-if="requests.length == 0">There are no requests to display</h2>
+      <table v-if="requests.length > 0" class="maintenance-request-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th v-if="userRole != 'tenant'">Address</th>
+            <th>Date Opened</th>
+            <th>Priority</th>
+            <th v-if="userRole == 'landlord'">Repeat Issue</th>
+            <th>Status</th>
+            <th>Date Complete</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr v-for="request in requests" :key="request.requestId">
+          <td>{{ request.requestId }}</td>
+          <td>{{ request.title }}</td>
+          <td v-if="userRole != 'tenant'">
+            {{ requestProperty(request).streetAddress }}, Unit #
+            {{ requestProperty(request).unit }},
+            {{ requestProperty(request).city }},
+            {{ requestProperty(request).state }}
+            {{ requestProperty(request).zip }}
+          </td>
+          <td>{{ request.dateRequested }}</td>
+          <td>{{ request.priority }}</td>
+          <td v-if="userRole == 'landlord'">{{ request.repeatIssue }}</td>
+          <td>{{ request.status }}</td>
+          <td>{{ dateCompletedText(request) }}</td>
+          <td>
+            <router-link
+              :to="{
+                name: 'maintenance-request-details',
+                params: { id: request.requestId },
+              }"
+              ><button>View Details</button></router-link
+            >
+          </td>
         </tr>
-      </thead>
-      <tr v-for="request in requests" :key="request.requestId">
-        <td>{{ request.requestId }}</td>
-        <td>{{ request.title }}</td>
-        <td v-if="userRole != 'tenant'">
-          {{ requestProperty(request).streetAddress }}, Unit #
-          {{ requestProperty(request).unit }},
-          {{ requestProperty(request).city }},
-          {{ requestProperty(request).state }}
-          {{ requestProperty(request).zip }}
-        </td>
-        <td>{{ request.dateRequested }}</td>
-        <td>{{ request.priority }}</td>
-        <td v-if="userRole == 'landlord'">{{ request.repeatIssue }}</td>
-        <td>{{ request.status }}</td>
-        <td>{{ dateCompletedText(request) }}</td>
-        <td>
-          <router-link
-            :to="{
-              name: 'maintenance-request-details',
-              params: { id: request.requestId },
-            }"
-            ><button>View Details</button></router-link
-          >
-        </td>
-      </tr>
-    </table>
-  </div>
+      </table>
+      <div id="padder" />
+    </div>
   </div>
 </template>
 
@@ -115,19 +119,37 @@ export default {
 </script>
 
 <style scoped>
-
 .maintenance-request-container {
-  margin-top: 2rem;
   text-align: center;
   background-color: #f8f9fa; /* set background color for container */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* add box-shadow */
+  border-radius: 2rem;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+}
+
+#header button {
+  margin-right: 1rem;
 }
 
 .maintenance-request-title {
-  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
   display: inline-block;
+  margin: 1rem 1.5rem;
+  font-size: 1.8rem;
+}
+
+h2 {
+  text-align: left;
+  margin-left: 1.5rem;
 }
 
 .new-request-button {
@@ -210,4 +232,7 @@ button:hover {
   background-color: #0069d9;
 }
 
+#padder {
+  height: 2rem;
+}
 </style>
