@@ -11,16 +11,14 @@
             />
           </div>
 
-          <div class="row">
-            <h1 class="mainRowElement">Add New Property</h1>
-            <div class="smallRowElement"></div>
+          <div id="h1-container">
+            <h1>Add New Property</h1>
           </div>
           <div v-if="errors.length > 0" id="error-container">
             <ul>
               <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
             </ul>
           </div>
-
           <div class="addPropertyForm">
             <div id="propertyNameContainer">
               <div id="propertyNameItem">
@@ -37,7 +35,6 @@
                   required
                 />
               </div>
-
               <div class="featuresContainer">
                 <div id="sqFootageContainer">
                   <div class="input-label">
@@ -113,7 +110,9 @@
                 />
               </div>
               <div id="unitContainer">
-                <div class="input-label"><label for="unit">Unit</label></div>
+                <div class="input-label">
+                  <label for="unit">Unit</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -126,7 +125,9 @@
             </div>
             <div id="addressLine2">
               <div id="cityContainer">
-                <div class="input-label"><label for="city">City</label></div>
+                <div class="input-label">
+                  <label for="city">City</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -430,7 +431,6 @@ input {
   flex-direction: column;
 }
 
-/* bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded" */
 #error-container {
   border: red 1px solid;
   color: red;
@@ -443,14 +443,9 @@ input {
 }
 
 select {
-  /* border: 2px solid black; */
-  /* border-radius: 0.5em; */
+  text-align: center;
   height: 100%;
   width: 100%;
-}
-
-select {
-  text-align: center;
 }
 
 #zipContainer {
@@ -476,21 +471,11 @@ select {
   padding: 0px;
 }
 
-/* #bedroomsContainer, #bathroomsContainer {
-  margin-bottom: 10px;
-  color: red;
-} */
-
 #streetAddressContainer,
 #unitContainer {
   display: flex;
   flex-direction: column;
 }
-
-/* delete to conform to registration form */
-/* label {
-  font-weight: 700;
-} */
 
 div.addPropertyForm {
   display: flex;
@@ -519,53 +504,18 @@ textarea {
   /* border: 2px solid black; */
 }
 
-#button-container {
-  padding-top: 1em;
-  margin: 0px;
-  display: flex;
-  justify-items: center;
-  gap: 2rem;
-}
-
-button {
-  margin: 0em 0;
-  width: 8rem;
-}
-
-#back {
-  color: black;
-  order: -1;
-}
-
-.row {
+#h1-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   margin-top: 21.44px;
-  /* flex-grow: 1; */
 }
 
-.smallRowElement {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center;
-  margin-right: auto;
-  margin-left: 20px; */
-  flex: 1 1 auto;
-  max-width: 32px;
-}
-
-.mediumRowElement {
-  flex: 1 1 auto;
-  max-width: px;
-}
-
-.mainRowElement {
+h1 {
   margin: 0;
   text-align: center;
   width: 100%;
-  /* margin-left: -64px; */
 }
 
 #logo-container {
@@ -581,9 +531,13 @@ button {
   margin-left: 35px;
 }
 
-/* #smallRowElement
- {
-  flex: 1 1 auto;
-  max-width: 32px;
-} */
+#button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  width: 100px;
+}
 </style>
