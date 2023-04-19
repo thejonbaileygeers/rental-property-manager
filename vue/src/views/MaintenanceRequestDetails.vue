@@ -35,23 +35,27 @@ export default {
   },
   computed: {
     tenant() {
-      let tenantId = this.$store.state.leases.filter((lease) => {
+      let tenantLease = this.$store.state.leases.find((lease) => {
         return lease.propertyId == this.request.propertyId;
-      })[0].tenantId;
+      });
 
-      return this.$store.state.users.filter((usr) => {
-        return usr.id == tenantId;
-      })[0];
+      if (tenantLease) {
+        return this.$store.state.users.find((usr) => {
+          return usr.id == tenantLease.tenantId;
+        });
+      } else {
+        return undefined;
+      }
     },
     landlord() {
-      return this.$store.state.users.filter((usr) => {
+      return this.$store.state.users.find((usr) => {
         return usr.id == this.property.ownerId;
-      })[0];
+      });
     },
     maintenance() {
-      return this.$store.state.users.filter((usr) => {
+      return this.$store.state.users.find((usr) => {
         return usr.id == this.request.maintenanceId;
-      })[0];
+      });
     },
   },
 };

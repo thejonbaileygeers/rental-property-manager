@@ -3,19 +3,13 @@
     <div id="details" class="card">
       <h1>Maintenance Request Details</h1>
 
-      <h2>
-        ID: {{ request.requestId }} {{ request.title }}
-      </h2>
+      <h2>ID: {{ request.requestId }} {{ request.title }}</h2>
       <h2>
         Date Opened:
         {{ request.dateRequested }}
-        </h2>
-      <h3>
-        Priority: {{ request.priority }} 
-      </h3>
-      <h3>
-        Status: {{ request.status }}
-        </h3>
+      </h2>
+      <h3>Priority: {{ request.priority }}</h3>
+      <h3>Status: {{ request.status }}</h3>
       <h3>Request Details:</h3>
       <p>{{ request.description }}</p>
       <h3>
@@ -46,8 +40,12 @@
           >
         </div>
       </article>
-      <article id="tenant-details" class="card" v-if="userRole != 'tenant'">
-        <h1>Tenant Information</h1>
+      <article
+        id="tenant-details"
+        class="card"
+        v-if="userRole != 'tenant' && tenant != undefined"
+      >
+        <h1>Tenant Information:</h1>
         <div class="tenant-name">
           <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
           <span class="tenant-info"
@@ -187,23 +185,26 @@ export default {
     width: 100%;
   }
 
-  #user-details article {
-    margin-bottom: 1rem;
-  }
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+}
 
-   #details {
-    width: 60%;
-    padding: 1rem;
-    border: 1px solid black;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+#user-details article {
+  margin-bottom: 1rem;
+}
 
-  #details h2 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+#details {
+  width: 60%;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
   #maintenance-details input[type="submit"] {
     padding: 0.5rem 1rem;
@@ -214,21 +215,26 @@ export default {
     cursor: pointer;
   }
 
-  #user-details .landlord-name, #user-details .tenant-name, #user-details .maintenance-name {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
+#maintenance-details input[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #cccccc;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  #user-details article {
-    margin-bottom: 1rem;
-  }
+#user-details .landlord-name,
+#user-details .tenant-name,
+#user-details .maintenance-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
 
-  #user-details h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
+#user-details article {
+  margin-bottom: 1rem;
+}
 
   #user-details h3 {
     font-size: 1rem;
@@ -236,9 +242,11 @@ export default {
     margin-bottom: 0.25rem;
   }
 
-  #user-details .landlord-info, #user-details .tenant-info, #user-details .maintenance-info {
-    font-size: 1rem;
-  }
+#user-details h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 
   #maintenance-details select {
     font-size: 1rem;
@@ -259,18 +267,27 @@ export default {
     margin-top: 1rem;
   }
 
+#details button {
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
 
   #maintenance-details input[type="submit"]:hover {
     background-color: #0069d9;
   }
 
-  #maintenance-office {
-    margin-top: 1rem;
-  }
+#maintenance-office {
+  margin-top: 1rem;
+}
 
-  #maintenance-office h3 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+#maintenance-office h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 </style>

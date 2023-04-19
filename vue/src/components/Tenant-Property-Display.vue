@@ -1,34 +1,40 @@
 <template>
-  <div>
+  <div id="display">
+    <section id="header">
+      <h1>Residence Details</h1>
+    </section>
     <div class="card">
       <img :src="property.imgUrl" />
       <div class="text">
-        <h2>Your Home</h2>
-
-        <h3 id="name">{{ property.name }}</h3>
-        <span id="address"
-          >{{ property.streetAddress }}, {{ property.city }},
-          {{ property.state }} {{ property.zip }}</span
-        >
-        <p>
-          <span
-            >{{ property.bedrooms }} &nbsp;<i class="fa-solid fa-bed" /></span
-          ><span
-            >{{ property.bathrooms }} &nbsp;<i class="fa-solid fa-bath"
-          /></span>
-          <span>{{ property.squareFootage }} Sq Ft</span>
-        </p>
+        <div id="property-details">
+          <h3>Property Info:</h3>
+          <p><span class="label">Name:</span>&nbsp; {{ property.name }}</p>
+          <p>
+            <span class="label">Address:</span>&nbsp;
+            {{ property.streetAddress }}
+            {{ property.unit ? "Unit #" + property.unit : "" }},
+            {{ property.city }}, {{ property.state }}, {{ property.zip }}
+          </p>
+          <p>
+            <span
+              >{{ property.bedrooms }} &nbsp;<i class="fa-solid fa-bed" /></span
+            ><span
+              >{{ property.bathrooms }} &nbsp;<i class="fa-solid fa-bath"
+            /></span>
+            <span>{{ property.squareFootage }} Sq Ft</span>
+          </p>
+        </div>
 
         <div id="owner-info">
           <h3>Owner Contact Info:</h3>
           <div class="owner-name">
-            <i class="fa-solid fa-user"></i>&nbsp;&nbsp;
+            <span class="label">Name:</span>&nbsp;&nbsp;&nbsp;
             <span class="owner-info"
               >{{ owner.firstName }} {{ owner.lastName }}</span
             >
           </div>
           <div class="owner-contact-info">
-            <i class="fa-solid fa-phone"></i>&nbsp;&nbsp;<span
+            <span class="label">Phone:</span>&nbsp;&nbsp;&nbsp;<span
               class="owner-info"
               >{{ owner.phone }}</span
             >
@@ -38,9 +44,20 @@
         <h3>Lease Info:</h3>
         <div id="lease-details">
           <div class="lease-text">
-            <p>Start Date: {{ currentLease.startDate }}</p>
-            <p>End Date: {{ currentLease.endDate }}</p>
-            <p>Rent: ${{ currentLease.rentAmount }} /mo.</p>
+            <p>
+              <span class="label">Start Date:</span>&nbsp;
+              {{ currentLease.startDate }}
+            </p>
+            <p>
+              <span class="label">End Date:</span>&nbsp;
+              {{ currentLease.endDate }}
+            </p>
+            <p>
+              <span class="label">Rent:</span>&nbsp;${{
+                currentLease.rentAmount
+              }}
+              /mo.
+            </p>
           </div>
         </div>
       </div>
@@ -71,29 +88,39 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  background-color: white;
+  border-radius: 2rem;
+  margin: auto;
+  margin-bottom: 1rem;
+  padding: 0;
+  width: 100%;
+}
+
 .card {
   display: inline-block;
   width: 100%;
-  height: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 2rem;
   overflow: hidden;
   font-size: 20px;
   transition: all 0.1s cubic-bezier(0, 0, 0.5, 1);
   background-color: white;
+  padding-bottom: 1rem;
 }
 
 .card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
 
 .card #name,
@@ -121,6 +148,10 @@ export default {
   margin: 0;
 }
 
+.owner-contact-info {
+  margin-top: 1rem;
+}
+
 /* Spacing and alignment of the bed/bath/sqft */
 .card p {
   margin-bottom: 0;
@@ -140,5 +171,24 @@ export default {
 
 #owner-info i {
   color: #0087ff;
+}
+
+#display {
+  width: 100%;
+}
+
+.label {
+  font-weight: 600;
+  vertical-align: bottom;
+  line-height: 19px;
+}
+
+i {
+  margin-right: 0.5rem;
+}
+
+#header h1 {
+  margin: 1rem 1.5rem;
+  font-size: 1.8rem;
 }
 </style>
