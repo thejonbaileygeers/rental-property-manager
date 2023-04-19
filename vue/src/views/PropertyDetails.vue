@@ -3,19 +3,22 @@
     <div id="overall" class="text-center">
       <form @submit.prevent="updateForm()">
         <div class="addPropertyContainer">
-          <div id="topRibbon">
-            <div id="buttonWrapper">
-              <router-link :to="{ name: 'landlord-portal' }">
-                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
-              </router-link>
-            </div>
+          <div id="logo-container">
+            <img
+              src="../assets/templatelogo.png"
+              alt="Logo"
+              class="registerlogo"
+            />
+          </div>
+          <div id="h1-container">
             <h1>Update Property</h1>
-            <div id="emptyDiv"></div>
           </div>
           <div class="addPropertyForm">
             <div id="propertyNameContainer">
               <div id="propertyNameItem">
-                <label for="propertyName">Property Name</label>
+                <div class="input-label">
+                  <label for="propertyName">Property Name</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -24,10 +27,11 @@
                   placeholder="Name"
                 />
               </div>
-
               <div class="featuresContainer">
                 <div id="sqFootageContainer">
-                  <label for="sqFootage">Sq Ft</label>
+                  <div class="input-label">
+                    <label for="sqFootage">Sq Ft</label>
+                  </div>
                   <input
                     type="text"
                     name=""
@@ -38,7 +42,9 @@
                 </div>
 
                 <div id="bedroomsContainer">
-                  <label for="bedrooms">Bed</label>
+                  <div class="input-label">
+                    <label for="bedrooms">Bed</label>
+                  </div>
                   <select
                     id="bedrooms"
                     class="selectbox"
@@ -57,7 +63,9 @@
                   </select>
                 </div>
                 <div id="bathroomsContainer">
-                  <label for="bathrooms">Bath</label>
+                  <div class="input-label">
+                    <label for="bathrooms">Bath</label>
+                  </div>
                   <select
                     id="bathrooms"
                     class="selectbox"
@@ -79,7 +87,9 @@
             </div>
             <div id="addressLine1">
               <div id="streetAddressContainer">
-                <label for="streetAddress">Street Address</label>
+                <div class="input-label">
+                  <label for="streetAddress">Street Address</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -90,7 +100,9 @@
                 />
               </div>
               <div id="unitContainer">
-                <label for="unit">Unit</label>
+                <div class="input-label">
+                  <label for="unit">Unit</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -103,7 +115,9 @@
             </div>
             <div id="addressLine2">
               <div id="cityContainer">
-                <label for="city">City</label>
+                <div class="input-label">
+                  <label for="city">City</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -115,7 +129,7 @@
               </div>
               <!-- <input type="text" name="" id="" value="enter info" v-model="property.state" placeholder="State Abbrev."> -->
               <div id="stateContainer">
-                <label for="state">State</label>
+                <div class="input-label"><label for="state">State</label></div>
                 <select
                   id="state"
                   class="selectbox"
@@ -179,7 +193,7 @@
                 </select>
               </div>
               <div id="zipContainer">
-                <label for="zip">Zip</label>
+                <div class="input-label"><label for="zip">Zip</label></div>
                 <input
                   type="text"
                   name=""
@@ -191,7 +205,9 @@
               </div>
             </div>
             <div id="descriptionContainer">
-              <label for="description">Description</label>
+              <div class="input-label">
+                <label for="description">Description</label>
+              </div>
               <textarea
                 type="text"
                 name=""
@@ -202,7 +218,9 @@
             </div>
             <div id="urlContainer">
               <ValidationProvider rules="required" id="urlContainer">
-                <label for="url">Image URL</label>
+                <div class="input-label">
+                  <label for="url">Image URL</label>
+                </div>
                 <input
                   type="text"
                   name=""
@@ -213,7 +231,12 @@
                 />
               </ValidationProvider>
             </div>
-            <button type="submit">Submit</button>
+            <div id="button-container">
+              <router-link :to="{ name: 'tenant-portal' }" id="cancel-btn">
+                <button>Cancel</button>
+              </router-link>
+              <button type="submit" id="submit">Submit</button>
+            </div>
           </div>
         </div>
       </form>
@@ -290,7 +313,6 @@ export default {
   justify-content: center;
   align-content: center;
   align-items: center;
-  /* margin: 15em 25em; */
 }
 
 #overall {
@@ -299,26 +321,21 @@ export default {
   align-items: center;
   height: 100vh;
   font-family: "Roboto", Sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 .addPropertyContainer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin: auto;
+  /* margin: auto; */
   padding: 20px;
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
-  max-width: 700px;
+  /* max-width: 1000px; */
 }
 
 #app > div {
   margin: 10em 5em;
-}
-
-.addPropertyForm input {
-  height: 2em;
-  border-radius: 0.5em;
 }
 
 input {
@@ -339,6 +356,7 @@ input {
   display: flex;
   width: 100%;
   flex-direction: column;
+  padding-top: 0px;
 }
 
 #propertyNameItem {
@@ -357,15 +375,15 @@ input {
 #sqFootageContainer {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 40%;
 }
 
 #bathroomsContainer,
 #bedroomsContainer {
   display: flex;
   flex-direction: column;
-  max-width: 15%;
-  margin-left: 30px;
+  max-width: 30%;
+  margin-left: 10px;
 }
 
 #streetAddressContainer {
@@ -382,7 +400,6 @@ input {
   flex-direction: column;
 }
 
-/* bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded" */
 #error-container {
   border: red 1px solid;
   color: red;
@@ -395,14 +412,9 @@ input {
 }
 
 select {
-  border: 2px solid black;
-  border-radius: 0.5em;
+  text-align: center;
   height: 100%;
   width: 100%;
-}
-
-select {
-  text-align: center;
 }
 
 #zipContainer {
@@ -425,21 +437,13 @@ select {
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
+  padding: 0px;
 }
-
-/* #bedroomsContainer, #bathroomsContainer {
-  margin-bottom: 10px;
-  color: red;
-} */
 
 #streetAddressContainer,
 #unitContainer {
   display: flex;
   flex-direction: column;
-}
-
-label {
-  font-weight: 700;
 }
 
 div.addPropertyForm {
@@ -453,10 +457,12 @@ div.addPropertyForm {
   flex-direction: column;
   width: 100%;
   height: 8em;
+  padding-top: 0px;
 }
 
 .input-label {
   margin-bottom: 0.5rem;
+  margin-top: 0.7rem;
   margin-right: auto;
 }
 
@@ -464,45 +470,43 @@ textarea {
   width: 99%;
   height: 8em;
   resize: none;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
-button {
-  margin: 3em 0;
-}
-
-#back {
-  color: black;
-  order: -1;
-}
-
-#topRibbon {
+#h1-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* flex-grow: 1; */
-}
 
-#buttonWrapper {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center;
-  margin-right: auto;
-  margin-left: 20px; */
-  flex: 1 1 auto;
-  max-width: 32px;
+  margin-top: 21.44px;
 }
 
 h1 {
   margin: 0;
   text-align: center;
-  flex: 2 1 auto;
-  max-width: 100%;
-  /* margin-left: -64px; */
+  width: 100%;
 }
 
-#emptyDiv {
-  flex: 1 1 auto;
-  max-width: 32px;
+#logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.registerlogo {
+  display: flex;
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  width: 100px;
 }
 </style>
