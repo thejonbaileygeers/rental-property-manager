@@ -1,6 +1,9 @@
 <template>
   <div class="card">
-    <img :src="property.imgUrl" />
+    <img
+      :src="property.imgUrl"
+      onerror="this.onerror=null; this.src='https://www.hopkinsmedicine.org/sebin/o/i/noimageavailable.png'"
+    />
     <div class="info">
       <div class="section-title">
         <h2>Property Details</h2>

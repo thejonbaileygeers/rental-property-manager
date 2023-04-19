@@ -5,7 +5,10 @@
       $router.push({ name: 'property', params: { id: property.propertyId } })
     "
   >
-    <img :src="property.imgUrl" />
+    <img
+      :src="property.imgUrl"
+      onerror="this.onerror=null; this.src='https://www.hopkinsmedicine.org/sebin/o/i/noimageavailable.png'"
+    />
     <div class="text">
       <h2 id="name">{{ property.name }}</h2>
       <span id="address"

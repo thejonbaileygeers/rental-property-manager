@@ -4,7 +4,10 @@
       <h1>Residence Details</h1>
     </section>
     <div class="card">
-      <img :src="property.imgUrl" />
+      <img
+        :src="property.imgUrl"
+        onerror="this.onerror=null; this.src='https://www.hopkinsmedicine.org/sebin/o/i/noimageavailable.png'"
+      />
       <div class="text">
         <div id="property-details">
           <h3>Property Info:</h3>

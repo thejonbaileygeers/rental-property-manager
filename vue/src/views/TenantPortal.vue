@@ -19,7 +19,7 @@
       <tenant-property-display :property="property" />
       <maintenance-request-list :property="property" />
     </div>
-    <div id="new-tenant">
+    <div id="new-tenant" v-if="!property.propertyId">
       <h1>Oops, looks like you don't currently have an active lease!</h1>
       <router-link :to="{ name: 'home' }"
         ><button>View Properties Here</button>

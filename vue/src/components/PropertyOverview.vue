@@ -17,7 +17,11 @@
     </header>
 
     <div id="center">
-      <img :src="property.imgUrl" class="card" />
+      <img
+        :src="property.imgUrl"
+        onerror="this.onerror=null; this.src='https://www.hopkinsmedicine.org/sebin/o/i/noimageavailable.png'"
+        class="card"
+      />
 
       <article id="owner-details" class="card">
         <p>Contact for availability and pricing:</p>
