@@ -1,67 +1,52 @@
 <template>
   <div>
-    <router-link :to="{ name: 'home' }">
-      <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
-    </router-link>
     <div id="form-container">
       <div id="lease-details-form">
+      
+          <div id="logo-container">
+            <img
+              src="../assets/templatelogo.png"
+              alt="Logo"
+              class="registerlogo"
+            />
+          </div>
         <h1>Lease Details</h1>
         <form @submit.prevent="newLease ? createLease() : deleteLease()">
           <div class="form-top">
             <div class="input-label">
               <label for="tenant">Tenant</label>
-              <select
-                v-model="lease.tenantId"
-                :disabled="newLease == false"
-                required
-              >
+              <select v-model="lease.tenantId" :disabled="newLease == false" required>
                 <option v-if="currentTenant" :value="currentTenant.id">
                   {{ currentTenant.firstName }} {{ currentTenant.lastName }} ({{
                     currentTenant.username
                   }})
                 </option>
-                <option
-                  v-for="user in freeUsers"
-                  :key="user.id"
-                  :value="user.id"
-                >
+                <option v-for="user in freeUsers" :key="user.id" :value="user.id">
                   {{ user.firstName }} {{ user.lastName }} ({{ user.username }})
                 </option>
               </select>
             </div>
             <div class="input-label">
               <label for="start">Start Date</label>
-              <input
-                type="date"
-                id="start"
-                v-model="lease.startDate"
-                :disabled="newLease == false"
-                required
-              />
+              <input type="date" id="start" v-model="lease.startDate" :disabled="newLease == false" required />
             </div>
             <div class="input-label">
               <label for="date">End Date</label>
-              <input
-                type="date"
-                id="date"
-                v-model="lease.endDate"
-                :disabled="newLease == false"
-                required
-              />
+              <input type="date" id="date" v-model="lease.endDate" :disabled="newLease == false" required />
             </div>
             <div class="input-label">
               <label for="rent">Rent Price</label>
-              <input
-                type="money"
-                id="rent"
-                v-model="lease.rentAmount"
-                :disabled="newLease == false"
-                required
-              />
+              <input type="money" id="rent" v-model="lease.rentAmount" :disabled="newLease == false" required />
             </div>
           </div>
 
-          <button type="submit">{{ buttonText }}</button>
+          <div class="buttons-container">
+            <router-link id="cancel-container" :to="{ name: 'landlord-portal' }">
+              <button>Cancel</button>
+            </router-link>
+            <button type="submit">{{ buttonText }}</button>
+
+          </div>
         </form>
       </div>
     </div>
@@ -180,9 +165,8 @@ export default {
   width: 90%;
 }
 
-input,
 select {
-  border-radius: 0.5em;
+  height: 1.7em;
 }
 
 form {
@@ -210,8 +194,29 @@ label {
   justify-content: space-around;
 }
 
-button {
+.buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: right;
   margin-top: 2em;
-  width: 20%;
 }
+
+#cancel-container {
+  margin-right: 1em;
+}
+
+#logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.registerlogo {
+  display: flex;
+  max-width: 20%;
+  height: auto;
+  border-radius: 20%;
+  margin-left: 35px;
+}
+
+
 </style>
