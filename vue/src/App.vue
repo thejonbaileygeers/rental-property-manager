@@ -2,6 +2,7 @@
   <div id="app" v-if="!isLoading">
     <navigation />
     <router-view id="view" />
+    <p id="version-no">v0.3</p>
   </div>
 </template>
 
@@ -89,5 +90,11 @@ button {
 
 button:hover {
   background-color: #0069d9;
+}
+
+#version-no {
+  text-align: right;
+  margin-right: 1rem;
+  font-size: 0.8rem;
 }
 </style>

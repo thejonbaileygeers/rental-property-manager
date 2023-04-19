@@ -231,6 +231,7 @@ export default {
   background-color: white;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 0.5em;
+  width: 30rem;
 }
 
 label {
