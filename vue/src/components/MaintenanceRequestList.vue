@@ -122,7 +122,7 @@ export default {
 .maintenance-request-container {
   text-align: center;
   background-color: #f8f9fa; /* set background color for container */
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* add box-shadow */
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 2rem;
 }
 
@@ -137,6 +137,7 @@ export default {
 
 #header button {
   margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .maintenance-request-title {

@@ -3,21 +3,33 @@
     <div class="header">
       <img src="../assets/skyline-crop-3.jpg" alt="Skyline" />
       <div class="title">
-        <h1>Welcome to the <span>Tenant Portal</span></h1>
-        <div class="placeholder"><br /><placeholder-greeting /></div>
+        <h1>
+          Welcome,
+          <span
+            >{{ this.$store.state.user.firstName }}
+            {{ this.$store.state.user.lastName }}</span
+          >!
+        </h1>
+        <br />
+        <p>View your current residence and submit maintenance requests</p>
       </div>
     </div>
     <div id="black-bar" />
-    <div class="content">
+    <div id="content" v-if="property.propertyId">
       <tenant-property-display :property="property" />
       <maintenance-request-list :property="property" />
+    </div>
+    <div id="new-tenant">
+      <h1>Oops, looks like you don't currently have an active lease!</h1>
+      <router-link :to="{ name: 'home' }"
+        ><button>View Properties Here</button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 import MaintenanceRequestList from "../components/MaintenanceRequestList.vue";
-import PlaceholderGreeting from "../components/PlaceholderGreeting.vue";
 import TenantPropertyDisplay from "../components/Tenant-Property-Display.vue";
 
 export default {
@@ -27,7 +39,6 @@ export default {
     };
   },
   components: {
-    PlaceholderGreeting,
     MaintenanceRequestList,
     TenantPropertyDisplay,
   },
@@ -44,6 +55,20 @@ export default {
 </script>
 
 <style scoped>
+#content {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+#black-bar {
+  height: 0.2rem;
+  background-color: black;
+  margin-bottom: 1rem;
+}
+
 .content {
   display: flex;
   align-items: flex-start;
@@ -100,8 +125,21 @@ img {
   font-style: italic;
 }
 
-#black-bar {
-  height: 0.2rem;
-  background-color: black;
+#new-tenant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0.2rem 0.2rem 5px 0px grey;
+  background-color: white;
+  border-radius: 2rem;
+  width: 60rem;
+  padding: 1.2rem;
+  margin: auto;
+}
+
+#new-tenant button {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 </style>
