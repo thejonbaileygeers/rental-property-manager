@@ -78,6 +78,9 @@ export default {
   },
   methods: {
     createLease() {
+      if (!confirm("Create new lease?")) {
+        return;
+      }
       LeaseService.createLease(this.lease)
         .then((response) => {
           if (response.status) {

@@ -4,9 +4,7 @@
       <img src="../assets/skyline-crop-3.jpg" alt="Skyline" />
       <div class="title">
         <h1>Welcome to the <span>Tenant Portal</span></h1>
-        <div class="placeholder">
-        <br /><placeholder-greeting />
-        </div>
+        <div class="placeholder"><br /><placeholder-greeting /></div>
       </div>
     </div>
     <div id="black-bar" />
@@ -63,13 +61,12 @@ export default {
   text-shadow: 1px 1px 10px black;
 }
 
-.placeholder{
+.placeholder {
   color: white;
   text-align: center;
   align-content: center;
   font-weight: 500;
   text-shadow: 1px 1px 10px black;
-
 }
 
 .header h1 {

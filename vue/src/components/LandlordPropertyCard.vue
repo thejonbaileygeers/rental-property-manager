@@ -110,7 +110,6 @@ export default {
 .card {
   display: inline-block;
   width: 100%;
-  margin-bottom: 20px;
   box-shadow: 0.2rem 0.2rem 5px 0px grey;
   border-radius: 2rem;
   overflow: hidden;
@@ -123,6 +122,14 @@ export default {
   width: 100%;
   height: 150px;
   object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  top: 9rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100%;
 }
 
 .info {
@@ -145,6 +152,16 @@ h2 {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+}
+
+.lease-row p {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#lease-details {
+  margin-bottom: 1rem;
 }
 
 .section-title {
