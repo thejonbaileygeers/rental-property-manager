@@ -10,7 +10,9 @@
           <button class="new-request-button">Make New Request</button>
         </router-link>
       </div>
-      <h2 v-if="requests.length == 0">There are no requests to display</h2>
+      <h2 v-if="requests.length == 0" id="none">
+        There are no requests to display
+      </h2>
       <table v-if="requests.length > 0" class="maintenance-request-table">
         <thead>
           <tr>
@@ -51,7 +53,8 @@
           </td>
         </tr>
       </table>
-      <div id="padder" />
+      <div id="padder" v-if="requests.length > 0" />
+      <div id="nothing-padder" v-if="requests.length == 0" />
     </div>
   </div>
 </template>
@@ -166,7 +169,8 @@ h2 {
 
 .maintenance-request-table {
   border-collapse: collapse;
-  width: 100%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   background-color: #fff; /* set background color for table */
 }
 
@@ -235,5 +239,9 @@ button:hover {
 
 #padder {
   height: 2rem;
+}
+
+#nothing-padder {
+  height: 0.1rem;
 }
 </style>

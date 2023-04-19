@@ -100,6 +100,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import UserService from "../services/UserService";
 
 export default {
   name: "register",
@@ -129,6 +130,8 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              this.refreshUsers();
+
               this.login();
             }
           })
@@ -172,6 +175,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+
             this.$router.push(this.getDestinationPage());
           }
         })
@@ -181,6 +185,17 @@ export default {
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
+        });
+    },
+    refreshUsers() {
+      UserService.getAll()
+        .then((response) => {
+          if (response.status == 200) {
+            this.$store.commit("SET_USERS", response.data);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
         });
     },
   },
