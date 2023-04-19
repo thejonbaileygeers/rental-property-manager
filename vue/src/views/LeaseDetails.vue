@@ -35,7 +35,7 @@
             </div>
           </div>
           
-          <input type="submit" :value="buttonText" />
+          <button type="submit" >Deactivate</button>
         </form>
       </div>
     </div>
@@ -151,7 +151,6 @@ export default {
 }
 
 input, select {
-  border: 2px solid black;
   border-radius: 0.5em;
 }
 
@@ -182,9 +181,9 @@ label {
   justify-content: space-around;
 }
 
-input[type="submit"] {
+button {
   margin-top: 2em;
-  width: 30%;
+  width: 20%;
 }
 
 </style>
