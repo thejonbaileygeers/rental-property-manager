@@ -129,12 +129,12 @@ const router = new Router({
       }
     },
     {
-      path: "/tenant-portal/maintenance-request",
+      path: "/maintenance-request/new",
       name: "maintenance-request",
       component: NewMaintenanceRequest,
       meta: {
         requiresAuth: true,
-        requiredType: ['tenant']
+        requiredType: ['tenant', 'landlord']
       }
     },
     {

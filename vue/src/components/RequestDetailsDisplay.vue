@@ -21,7 +21,7 @@
         @click="completeRequest()"
         v-if="userRole == 'maintenance' && request.status != 'complete'"
       >
-        Request Complete
+        Mark as Complete
       </button>
     </div>
     <div id="user-details">
@@ -132,6 +132,13 @@ export default {
   },
   methods: {
     completeRequest() {
+      if (
+        !confirm(
+          "Are you sure you would like to mark this request as complete? This action cannot be undone."
+        )
+      ) {
+        return;
+      }
       MaintRequestService.completeRequest(this.request.requestId)
         .then((response) => {
           this.$store.commit("UPDATE_REQUEST", response.data);
@@ -253,7 +260,7 @@ export default {
   margin-bottom: 0.5rem;
 }
 
-#details button {
+/* #details button {
   padding: 1rem;
   background-color: #007bff;
   color: rgb(255, 255, 255);
@@ -261,11 +268,11 @@ export default {
   border-radius: 1rem;
   cursor: pointer;
   margin-top: 1rem;
-}
+} */
 
 #details button {
   padding: 0.5rem 1rem;
-  background-color: #4caf50;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
