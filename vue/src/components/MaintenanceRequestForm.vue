@@ -2,7 +2,7 @@
   <div>
     <div id="overall">
       <div id="add-maintenance-container">
-        <form @submit.prevent="createrequest" id="maintenance-request-form">
+        <form @submit.prevent="createRequest" id="maintenance-request-form">
           <h1>New Maintenance Request</h1>
           
           <div class="input-label">
