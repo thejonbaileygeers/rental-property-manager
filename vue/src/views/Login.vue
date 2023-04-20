@@ -17,31 +17,16 @@
           <div class="form-input-group">
             <div class="input-label">
               <label for="username">Email</label>
+              <input type="text" id="username" v-model="user.username" required autofocus />
             </div>
-            <input
-              type="text"
-              id="username"
-              v-model="user.username"
-              required
-              autofocus
-            />
-          </div>
-          <div class="form-input-group">
-            <div class="input-label">
+            <div class="input-label" id="password-input">
               <label for="password">Password</label>
+              <input type="password" id="password" v-model="user.password" required />
             </div>
-            <input
-              type="password"
-              id="password"
-              v-model="user.password"
-              required
-            />
           </div>
           <button type="submit">Sign in</button>
           <p>
-            <router-link :to="{ name: 'register' }"
-              >Need an account? Sign up.</router-link
-            >
+            <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link>
           </p>
         </form>
       </div>
@@ -124,6 +109,8 @@ export default {
   align-items: center;
 }
 
+
+
 .login-container {
   /* border: 1px solid black; */
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
@@ -135,12 +122,15 @@ export default {
 }
 
 .input-label {
-  padding-left: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-label {
-  margin-right: 6.5rem;
+#password-input {
+  margin-top: 1em;
 }
+
 
 h1 {
   text-align: center;
