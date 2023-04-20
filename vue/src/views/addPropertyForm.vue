@@ -528,7 +528,6 @@ h1 {
   max-width: 20%;
   height: auto;
   border-radius: 20%;
-  margin-left: 35px;
 }
 
 #button-container {
