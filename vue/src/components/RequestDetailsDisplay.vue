@@ -1,10 +1,10 @@
 <template>
-<div id="details-container">
-  <div class="smallRowElement">
-              <router-link :to="{ name: 'landlord-portal' }">
-                <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
-              </router-link>
-            </div>
+  <div id="details-container">
+    <div class="smallRowElement">
+      <router-link :to="{ name: 'landlord-portal' }">
+        <i id="back" class="fa-solid fa-circle-chevron-left fa-2xl" />
+      </router-link>
+    </div>
     <div id="details" class="card">
       <h1>Maintenance Request Details</h1>
 
@@ -71,6 +71,7 @@
       >
         <h1>Maintenance Information</h1>
         <h3>Assigned Maintenance Employee:</h3>
+        <div v-if="!maintenance">No Employee has been assigned.</div>
         <div v-if="maintenance" class="maintenance-name">
           <i class="fa-solid fa-user"> </i>&nbsp;&nbsp;
           <span class="maintenance-info"
@@ -208,7 +209,7 @@ export default {
   position: absolute;
   left: 0;
   top: 50%;
-  color:black;
+  color: black;
   width: 0;
   height: 0;
   border-top: 10px solid transparent;

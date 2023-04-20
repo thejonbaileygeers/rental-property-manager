@@ -60,7 +60,7 @@ export default {
   height: 100%;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  padding: 0 1rem;
+  padding: 0 6rem;
 }
 
 #black-bar {

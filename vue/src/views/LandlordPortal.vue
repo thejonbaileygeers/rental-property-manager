@@ -54,7 +54,7 @@ export default {
   grid-template-areas: "prop-list placeholder";
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  padding: 0 1rem;
+  padding: 0 6rem;
   margin-bottom: 1rem;
 }
 

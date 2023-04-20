@@ -37,6 +37,7 @@
             >{{ owner.phone }}</span
           >
         </div>
+        <a :href="emailLink"><button>Email Owner</button></a>
       </article>
     </div>
 
@@ -68,6 +69,16 @@ export default {
     let tag = document.createElement("script");
     tag.setAttribute("src", "https://kit.fontawesome.com/ae58b87c40.js");
     document.head.appendChild(tag);
+  },
+  computed: {
+    emailLink() {
+      return (
+        "mailto:" +
+        this.owner.username +
+        "?subject=Rental @ " +
+        this.property.name
+      );
+    },
   },
 };
 </script>
